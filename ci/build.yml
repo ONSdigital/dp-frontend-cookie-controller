@@ -1,0 +1,22 @@
+---
+
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: golang
+    tags: 
+
+inputs:
+  - name: dp-frontend-dataset-controller
+    path: go/src/github.com/ONSdigital/dp-frontend-cookie-controller
+
+outputs:
+  - name: build
+
+caches:
+  - path: go/
+
+run:
+  path: go/src/github.com/ONSdigital/dp-frontend-cookie-controller/ci/scripts/build.sh
