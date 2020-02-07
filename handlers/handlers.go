@@ -47,44 +47,47 @@ func Edit() http.HandlerFunc {
 }
 
 func acceptAll(w http.ResponseWriter, req *http.Request) {
-	ctx := req.Context()
-	greetingsModel := mapper.HelloModel{Greeting: "Hello", Who: "World"}
-	m := mapper.HelloWorld(ctx, greetingsModel)
-
-	b, err := json.Marshal(m)
-	if err != nil {
-		setStatusCode(req, w, err)
-		return
-	}
-
-	_, err = w.Write(b)
-	if err != nil {
-		log.Event(ctx, "failed to write bytes for http response", log.Error(err))
-		setStatusCode(req, w, err)
-		return
-	}
+	//ctx := req.Context()
+	//greetingsModel := mapper.HelloModel{Greeting: "Hello", Who: "World"}
+	//m := mapper.HelloWorld(ctx, greetingsModel)
+	//
+	//b, err := json.Marshal(m)
+	//if err != nil {
+	//	setStatusCode(req, w, err)
+	//	return
+	//}
+	//
+	//_, err = w.Write(b)
+	//if err != nil {
+	//	log.Event(ctx, "failed to write bytes for http response", log.Error(err))
+	//	setStatusCode(req, w, err)
+	//	return
+	//}
+	read(w,req)
 	return
 }
 
 
 func edit(w http.ResponseWriter, req *http.Request) {
-	ctx := req.Context()
-	greetingsModel := mapper.HelloModel{Greeting: "Hello", Who: "World"}
-	m := mapper.HelloWorld(ctx, greetingsModel)
-
-	b, err := json.Marshal(m)
-	if err != nil {
-		setStatusCode(req, w, err)
-		return
-	}
-
-	_, err = w.Write(b)
-    	if err != nil {
-    		log.Event(ctx, "failed to write bytes for http response", log.Error(err))
-    		setStatusCode(req, w, err)
-    		return
-    	}
-    	return
+	//ctx := req.Context()
+	//greetingsModel := mapper.HelloModel{Greeting: "Hello", Who: "World"}
+	//m := mapper.HelloWorld(ctx, greetingsModel)
+	//
+	//b, err := json.Marshal(m)
+	//if err != nil {
+	//	setStatusCode(req, w, err)
+	//	return
+	//}
+	//
+	//_, err = w.Write(b)
+    //	if err != nil {
+    //		log.Event(ctx, "failed to write bytes for http response", log.Error(err))
+    //		setStatusCode(req, w, err)
+    //		return
+    //	}
+    //	return
+     read(w, req)
+     return
 }
 
 func read(w http.ResponseWriter, req *http.Request) {
