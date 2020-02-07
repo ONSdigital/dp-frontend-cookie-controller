@@ -8,4 +8,5 @@ require (
 	github.com/ONSdigital/log.go v1.0.0
 	github.com/gorilla/mux v1.7.3
 	github.com/kelseyhightower/envconfig v1.4.0
+	github.com/smartystreets/goconvey v1.6.4
 )

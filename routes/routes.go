@@ -15,5 +15,7 @@ import (
 func Init(ctx context.Context, r *mux.Router, cfg *config.Config, hc health.HealthCheck) {
     log.Event(ctx, "adding routes")
 	r.StrictSlash(true).Path("/health").HandlerFunc(hc.Handler)
-	r.StrictSlash(true).Path("/helloworld").Methods("GET").HandlerFunc(handlers.HelloWorld(*cfg))
-}
+
+	r.StrictSlash(true).Path("/cookie/accept-all").Methods("GET").HandlerFunc(handlers.AcceptAll())
+	r.StrictSlash(true).Path("/cookie/edit").Methods("GET").HandlerFunc(handlers.Read())
+	r.StrictSlash(true).Path("/cookie/edit").Methods("POST").HandlerFunc(handlers.Edit())}

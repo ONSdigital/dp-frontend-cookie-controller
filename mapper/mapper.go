@@ -15,7 +15,7 @@ type HelloWorldModel struct {
 	HelloWho string `json:"hello-who"`
 }
 
-func HelloWorld(ctx context.Context, hm HelloModel, cfg config.Config) HelloWorldModel {
+func CreateCookieSettingPage(ctx context.Context, []byte) HelloWorldModel {
 	var hwm HelloWorldModel
 	hwm.HelloWho = fmt.Sprintf("%s %s", hm.Greeting, hm.Who)
 	if cfg.Emphasise {
