@@ -4,15 +4,21 @@ import (
 	"dp-frontend-cookie-controller/mapper"
 	"encoding/base64"
 	"encoding/json"
-	"fmt"
+	"errors"
 	"github.com/ONSdigital/log.go/log"
 	"net/http"
+	"net/url"
 )
 
 // ClientError is an interface that can be used to retrieve the status code if a client has errored
 type ClientError interface {
 	Error() string
 	Code() int
+}
+
+// RenderClient is an interface with methods for require for rendering a template
+type RenderClient interface {
+	Do(string, []byte) ([]byte, error)
 }
 
 func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
@@ -26,6 +32,8 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 	w.WriteHeader(status)
 }
 
+// AcceptAll handler for setting all cookies to enabled then refresh the page. when JS has been disabled
+// Example usage; JavaScript disabled.
 func AcceptAll() http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		acceptAll(w, req)
@@ -33,9 +41,9 @@ func AcceptAll() http.HandlerFunc {
 }
 
 // Edit Handler
-func Read() http.HandlerFunc {
+func Read(rendC RenderClient) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		read(w, req)
+		read(w, req, rendC)
 	}
 }
 
@@ -48,46 +56,24 @@ func Edit() http.HandlerFunc {
 
 func acceptAll(w http.ResponseWriter, req *http.Request) {
 	ctx := req.Context()
-	greetingsModel := mapper.HelloModel{Greeting: "Hello", Who: "World"}
-	m := mapper.HelloWorld(ctx, greetingsModel)
-
-	b, err := json.Marshal(m)
-	if err != nil {
+	redirectURL := url.QueryEscape(req.URL.Query().Get("redirect"))
+	if redirectURL == "" {
+		err := errors.New("missing redirect URL")
+		log.Event(ctx, "setting-response-status", log.Error(err))
 		setStatusCode(req, w, err)
 		return
 	}
 
-	_, err = w.Write(b)
-	if err != nil {
-		log.Event(ctx, "failed to write bytes for http response", log.Error(err))
-		setStatusCode(req, w, err)
-		return
-	}
+	http.Redirect(w, req, redirectURL, 301)
+}
+
+func edit(w http.ResponseWriter, req *http.Request) {
+	//ctx := req.Context()
+
 	return
 }
 
-
-func edit(w http.ResponseWriter, req *http.Request) {
-	ctx := req.Context()
-	greetingsModel := mapper.HelloModel{Greeting: "Hello", Who: "World"}
-	m := mapper.HelloWorld(ctx, greetingsModel)
-
-	b, err := json.Marshal(m)
-	if err != nil {
-		setStatusCode(req, w, err)
-		return
-	}
-
-	_, err = w.Write(b)
-    	if err != nil {
-    		log.Event(ctx, "failed to write bytes for http response", log.Error(err))
-    		setStatusCode(req, w, err)
-    		return
-    	}
-    	return
-}
-
-func read(w http.ResponseWriter, req *http.Request) {
+func read(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
 	ctx := req.Context()
 
 	cookie, err := req.Cookie("cookies_policy")
@@ -96,8 +82,6 @@ func read(w http.ResponseWriter, req *http.Request) {
 		log.Event(ctx, "no cookie_policy found on request")
 		return
 	}
-
-	fmt.Printf("%s=%s\r\n", cookie.Name, cookie.Value)
 
 	// Use base64 to avoid issues with any illegal characters
 	data, err := base64.StdEncoding.DecodeString(cookie.Value)
@@ -113,11 +97,14 @@ func read(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	_, err = w.Write(b)
+	templateHTML, err := rendC.Do("cookies-preferences", b)
 	if err != nil {
-		log.Event(ctx, "failed to write bytes for http response", log.Error(err))
 		setStatusCode(req, w, err)
 		return
+	}
+
+	if _, err := w.Write(templateHTML); err != nil {
+		log.Event(ctx, "error on write of cookie template", log.Error(err))
 	}
 	return
 }
