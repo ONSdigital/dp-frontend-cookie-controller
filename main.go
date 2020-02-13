@@ -2,14 +2,12 @@ package main
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"github.com/ONSdigital/dp-api-clients-go/renderer"
+	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
 	"os"
 	"os/signal"
 	"syscall"
-
-	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
 
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/routes"
@@ -97,20 +95,16 @@ func run(ctx context.Context) error {
 
 func gracefulShutdown(cfg *config.Config, s *server.Server, hc health.HealthCheck) error {
 	log.Event(nil, fmt.Sprintf("shutdown with timeout: %s", cfg.GracefulShutdownTimeout))
-
 	ctx, cancel := context.WithTimeout(context.Background(), cfg.GracefulShutdownTimeout)
-	if err := s.Shutdown(ctx); err != nil {
-		log.Event(nil, "failed to gracefully shutdown http server", log.Error(err))
-	}
-	log.Event(nil, "graceful shutdown of http server complete", nil)
+	log.Event(ctx, "shutting service down gracefully")
+	defer cancel()
+
+	// Stop health check tickers
 	hc.Stop()
 	if err := s.Server.Shutdown(ctx); err != nil {
 		log.Event(ctx, "failed to shutdown http server", log.Error(err))
 	}
-	log.Event(nil, "shutdown complete", nil)
-	cancel()
-	err := errors.New("graceful shut down complete")
-	return err
+	return nil
 }
 
 func registerCheckers(ctx context.Context, h *health.HealthCheck, r *renderer.Renderer) (err error) {
