@@ -4,12 +4,10 @@ import (
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/mapper"
 	"encoding/json"
-	"fmt"
+	"errors"
 	"github.com/ONSdigital/dp-cookies/cookies"
-	"github.com/ONSdigital/go-ns/common"
 	"github.com/ONSdigital/log.go/log"
 	"net/http"
-	"net/url"
 	"strconv"
 	"time"
 )
@@ -61,31 +59,22 @@ func Edit(cfg *config.Config) http.HandlerFunc {
 }
 
 func acceptAll(w http.ResponseWriter, req *http.Request, cfg *config.Config) {
-	ctx := req.Context()
 	// TODO ensure XSS protection
-	lang := common.GetLangFromSubDomain(req)
-	uri := req.URL.Query().Get("redirect")
-	uri, err := url.PathUnescape(uri)
-	if err != nil {
-		log.Event(ctx, "error fetching redirect", log.Error(err))
-		setStatusCode(req, w, err)
-		return
-	}
-	redirectURL := ""
-	if lang != common.LangEN {
-		redirectURL = fmt.Sprintf("https://%s.%s/%s", lang, cfg.SiteDomain, uri)
-	} else {
-		redirectURL = fmt.Sprintf("https://%s/%s", cfg.SiteDomain, uri)
-	}
-
+	ctx := req.Context()
 	cp := cookies.Policy{
 		Essential: true,
 		Usage:     true,
 	}
 	cookies.SetPolicy(w, cp, cfg.SiteDomain)
 	cookies.SetPreferenceIsSet(w, cfg.SiteDomain)
-
-	http.Redirect(w, req, redirectURL, 301)
+	referer := req.Header.Get("Referer")
+	if referer == "" {
+		err := errors.New("no referer header found")
+		log.Event(ctx, "no referer header found", log.Error(err))
+		setStatusCode(req, w, err)
+		return
+	}
+	http.Redirect(w, req, referer, 301)
 }
 
 func edit(w http.ResponseWriter, req *http.Request, cfg *config.Config) {

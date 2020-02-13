@@ -38,6 +38,7 @@ func main() {
 		os.Exit(exitFail)
 	}
 }
+
 func run(ctx context.Context) error {
 	log.Namespace = "dp-frontend-cookie-controller"
 
