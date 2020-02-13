@@ -46,7 +46,7 @@ func AcceptAll(cfg *config.Config) http.HandlerFunc {
 	}
 }
 
-// Edit Handler
+// Read Handler
 func Read(rendC RenderClient) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		read(w, req, rendC)

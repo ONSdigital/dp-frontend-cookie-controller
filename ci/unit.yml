@@ -9,7 +9,7 @@ image_resource:
     tag: 
 
 inputs:
-  - name: dp-frontend-dataset-controller
+  - name: dp-frontend-cookie-controller
     path: go/src/github.com/ONSdigital/dp-frontend-cookie-controller
 
 run:
