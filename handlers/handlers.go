@@ -117,12 +117,14 @@ func read(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
 
 	b, err := json.Marshal(m)
 	if err != nil {
+		log.Event(ctx, "unable to marshal cookie preferences", log.Error(err))
 		setStatusCode(req, w, err)
 		return
 	}
 
 	templateHTML, err := rendC.Do("cookies-preferences", b)
 	if err != nil {
+		log.Event(ctx, "getting template from renderer cookies-preferences failed", log.Error(err))
 		setStatusCode(req, w, err)
 		return
 	}
