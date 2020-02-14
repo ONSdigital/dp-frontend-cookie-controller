@@ -8,7 +8,6 @@ import (
 // Config represents service configuration for dp-frontend-cookie-controller
 type Config struct {
 	BindAddr                   string        `envconfig:"BIND_ADDR"`
-	SiteDomain                 string        `envconfig:"SITE_DOMAIN"`
 	RendererURL                string        `envconfig:"RENDERER_URL"`
 	GracefulShutdownTimeout    time.Duration `envconfig:"GRACEFUL_SHUTDOWN_TIMEOUT"`
 	HealthCheckInterval        time.Duration `envconfig:"HEALTHCHECK_INTERVAL"`
@@ -26,7 +25,6 @@ func Get() (*Config, error) {
 
 	cfg := &Config{
 		BindAddr:                   ":23800",
-		SiteDomain:                 "develop.onsdigital.co.uk",
 		RendererURL:                "http://localhost:20010",
 		GracefulShutdownTimeout:    5 * time.Second,
 		HealthCheckInterval:        10 * time.Second,

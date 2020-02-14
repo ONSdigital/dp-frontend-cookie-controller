@@ -1,13 +1,12 @@
 package handlers
 
 import (
-	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/mapper"
 	"encoding/json"
-	"errors"
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/log.go/log"
 	"net/http"
+	"net/url"
 	"strconv"
 	"time"
 )
@@ -38,9 +37,9 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 
 // AcceptAll handler for setting all cookies to enabled then refresh the page. when JS has been disabled
 // Example usage; JavaScript disabled.
-func AcceptAll(cfg *config.Config) http.HandlerFunc {
+func AcceptAll() http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		acceptAll(w, req, cfg)
+		acceptAll(w, req)
 	}
 }
 
@@ -52,32 +51,31 @@ func Read(rendC RenderClient) http.HandlerFunc {
 }
 
 // Edit Handler
-func Edit(cfg *config.Config) http.HandlerFunc {
+func Edit() http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		edit(w, req, cfg)
+		edit(w, req)
 	}
 }
 
-func acceptAll(w http.ResponseWriter, req *http.Request, cfg *config.Config) {
-	// TODO ensure XSS protection
+func acceptAll(w http.ResponseWriter, req *http.Request) {
 	ctx := req.Context()
 	cp := cookies.Policy{
 		Essential: true,
 		Usage:     true,
 	}
-	cookies.SetPolicy(w, cp, cfg.SiteDomain)
-	cookies.SetPreferenceIsSet(w, cfg.SiteDomain)
-	referer := req.Header.Get("Referer")
-	if referer == "" {
-		err := errors.New("no referer header found")
-		log.Event(ctx, "no referer header found", log.Error(err))
-		setStatusCode(req, w, err)
-		return
+	reqUrl, err := url.Parse(req.URL.Path)
+	if err != nil {
+		log.Event(ctx, "unable to parse url", log.Error(err))
 	}
-	http.Redirect(w, req, referer, 301)
+
+	cookies.SetPolicy(w, cp, reqUrl.Hostname())
+	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
+	referer := req.Header.Get("Referer")
+
+	http.Redirect(w, req, referer, http.StatusMovedPermanently)
 }
 
-func edit(w http.ResponseWriter, req *http.Request, cfg *config.Config) {
+func edit(w http.ResponseWriter, req *http.Request) {
 	ctx := req.Context()
 	if err := req.ParseForm(); err != nil {
 		log.Event(ctx, "failed to parse form input", log.Error(err))
@@ -101,11 +99,15 @@ func edit(w http.ResponseWriter, req *http.Request, cfg *config.Config) {
 		Essential: essential,
 		Usage:     usage,
 	}
-	cookies.SetPreferenceIsSet(w, cfg.SiteDomain)
+	reqUrl, err := url.Parse(req.URL.Path)
+	if err != nil {
+		log.Event(ctx, "unable to parse url", log.Error(err))
+	}
+	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
 	if !usage {
 		removeNonProtectedCookies(w, req)
 	}
-	cookies.SetPolicy(w, cp, cfg.SiteDomain)
+	cookies.SetPolicy(w, cp, reqUrl.Hostname())
 	return
 }
 
