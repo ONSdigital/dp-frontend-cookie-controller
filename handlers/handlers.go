@@ -3,6 +3,7 @@ package handlers
 import (
 	"dp-frontend-cookie-controller/mapper"
 	"encoding/json"
+	"errors"
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/log.go/log"
 	"net/http"
@@ -66,13 +67,20 @@ func acceptAll(w http.ResponseWriter, req *http.Request) {
 	reqUrl, err := url.Parse(req.URL.Path)
 	if err != nil {
 		log.Event(ctx, "unable to parse url", log.Error(err))
+		setStatusCode(req, w, err)
+		return
 	}
-
 	cookies.SetPolicy(w, cp, reqUrl.Hostname())
 	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
 	referer := req.Header.Get("Referer")
+	if referer == "" {
+		err := errors.New("cannot redirect due to no referer header")
+		log.Event(ctx, "unable to parse url", log.Error(err))
+		setStatusCode(req, w, err)
+		return
+	}
 
-	http.Redirect(w, req, referer, http.StatusMovedPermanently)
+	http.Redirect(w, req, referer, http.StatusFound)
 }
 
 func edit(w http.ResponseWriter, req *http.Request) {
@@ -159,7 +167,7 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 				Path:    "/",
 				Expires: time.Unix(0, 0),
 
-				HttpOnly: true,
+				HttpOnly: false,
 			}
 			http.SetCookie(w, cookie)
 		}

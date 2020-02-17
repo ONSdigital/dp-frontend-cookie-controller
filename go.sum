@@ -2,6 +2,8 @@ github.com/ONSdigital/dp-api-clients-go v1.1.0 h1:j2zmSFcWWRbHs58m0+LltmijHBqbnO
 github.com/ONSdigital/dp-api-clients-go v1.1.0/go.mod h1:9lqor0I7caCnRWr04gU/r7x5dqxgoODob8L48q+cE4E=
 github.com/ONSdigital/dp-cookies v0.0.0-20200210180758-b372a41b7bde h1:rWtWQMD1EsVB85cpCs9zlx+f0uScYWuJUZhNcugl+g8=
 github.com/ONSdigital/dp-cookies v0.0.0-20200210180758-b372a41b7bde/go.mod h1:7HvRBm+mU0xz2pryTa+vwphKxe5HYpXtmPe/e6FEIJU=
+github.com/ONSdigital/dp-cookies v0.0.0-20200214134455-04af19eb3925 h1:NNrmPEH/ryCME7BPtQ3BVDjXkoPu556CY5flOQw4goQ=
+github.com/ONSdigital/dp-cookies v0.0.0-20200214134455-04af19eb3925/go.mod h1:7HvRBm+mU0xz2pryTa+vwphKxe5HYpXtmPe/e6FEIJU=
 github.com/ONSdigital/dp-frontend-models v1.1.0 h1:dpVTBIqyJqk4q0DJlj9xEv56HDxebC/cHQPbO5OduLw=
 github.com/ONSdigital/dp-frontend-models v1.1.0/go.mod h1:TT96P7Mi69N3Tc/jFNdbjiwG4GAaMjP26HLotFQ6BPw=
 github.com/ONSdigital/dp-frontend-models v1.2.0 h1:HqlXJbnzsLkN31nYQ+gU11N7K1ppxu5ViDlOLsMss0I=
@@ -25,6 +27,7 @@ github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5Kwzbycv
 github.com/fatih/color v1.9.0 h1:8xPHl4/q1VyqGIPif1F+1V3Y3lSmrq01EabUW3CoW5s=
 github.com/fatih/color v1.9.0/go.mod h1:eQcE1qtQxscV5RaZvpXrrb8Drkc3/DdQ+uUYCNjL+zU=
 github.com/go-avro/avro v0.0.0-20171219232920-444163702c11/go.mod h1:kxj6THYP0dmFPk4Z+bijIAhJoGgeBfyOKXMduhvdJPA=
+github.com/golang/mock v1.3.1 h1:qGJ6qTW+x6xX/my+8YUVl4WNpX9B7+/l2tRsHGZ7f2s=
 github.com/golang/mock v1.3.1/go.mod h1:sBzyDLLjw3U8JLTeZvSv8jJB+tU5PVekmnlKIyFUx0Y=
 github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1 h1:EGx4pi6eqNxGaHF6qqu48+N2wcFQ5qg5FXgOdqsJ5d8=
 github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1/go.mod h1:wJfORRmW1u3UXTncJ5qlYoELFm8eSnnEO6hX4iZ3EWY=
