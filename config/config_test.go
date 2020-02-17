@@ -6,7 +6,9 @@ import (
 	"time"
 )
 
-func TestSpec(t *testing.T) {
+// TestConfig tests config options correctly default if not set
+func TestConfig(t *testing.T) {
+	t.Parallel()
 	Convey("Given an environment with no environment variables set", t, func() {
 		cfg, err := Get()
 

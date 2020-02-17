@@ -22,5 +22,5 @@ func Init(ctx context.Context, r *mux.Router, cfg *config.Config, hc health.Heal
 
 	r.StrictSlash(true).Path("/cookies/accept-all").Methods("GET").HandlerFunc(handlers.AcceptAll())
 	r.StrictSlash(true).Path("/cookies/edit").Methods("GET").HandlerFunc(handlers.Read(rendC))
-	r.StrictSlash(true).Path("/cookies/edit").Methods("POST").HandlerFunc(handlers.Edit())
+	r.StrictSlash(true).Path("/cookies/edit").Methods("POST").HandlerFunc(handlers.Edit(rendC))
 }

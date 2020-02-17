@@ -9,7 +9,9 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 )
 
+// TestUnitMapper tests mapper functions
 func TestUnitMapper(t *testing.T) {
+	t.Parallel()
 	cookiesPolicy := cookies.Policy{
 		Essential: true,
 		Usage:     false,
