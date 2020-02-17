@@ -2,8 +2,6 @@ module dp-frontend-cookie-controller
 
 go 1.12
 
-replace github.com/ONSdigital/dp-cookies => /Users/danielwalford/dev/GoMod/dp-cookies
-
 require (
 	github.com/ONSdigital/dp-api-clients-go v1.1.0
 	github.com/ONSdigital/dp-cookies v0.0.0-20200214134455-04af19eb3925
