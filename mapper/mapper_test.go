@@ -33,6 +33,9 @@ func TestUnitMapper(t *testing.T) {
 			Usage:     false,
 		},
 		CookiesPreferenceSet: true,
+		Metadata: model.Metadata{
+			Title: "Cookies",
+		},
 	}
 	Convey("test CreateCookieSettingPage", t, func() {
 		mcp := CreateCookieSettingPage(cookiesPolicy)

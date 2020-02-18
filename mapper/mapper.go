@@ -17,6 +17,7 @@ func CreateCookieSettingPage(policy cookies.Policy) model.Page {
 			Title: "Cookies",
 		},
 	}
+	page.Metadata.Title = "Cookies"
 	page.CookiesPreferenceSet = true
 	page.CookiesPolicy.Essential = policy.Essential
 	page.CookiesPolicy.Usage = policy.Usage
