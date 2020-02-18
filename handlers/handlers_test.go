@@ -140,8 +140,8 @@ func TestUnitHandlers(t *testing.T) {
 			mockCtrl := gomock.NewController(t)
 			mockRend := NewMockRenderClient(mockCtrl)
 			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			req := httptest.NewRequest("GET", "/cookies/edit", nil)
-			w := doTestRequest("/cookies/edit", req, Read(mockRend), nil)
+			req := httptest.NewRequest("GET", "/cookies", nil)
+			w := doTestRequest("/cookies", req, Read(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusOK)
 			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
 		})
@@ -159,8 +159,8 @@ func TestUnitHandlers(t *testing.T) {
 			mockCtrl := gomock.NewController(t)
 			mockRend := NewMockRenderClient(mockCtrl)
 			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			req := httptest.NewRequest("GET", "/cookies/edit", nil)
-			w = doTestRequest("/cookies/edit", req, Read(mockRend), w)
+			req := httptest.NewRequest("GET", "/cookies", nil)
+			w = doTestRequest("/cookies", req, Read(mockRend), w)
 			So(w.Code, ShouldEqual, http.StatusOK)
 			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
 
@@ -170,8 +170,8 @@ func TestUnitHandlers(t *testing.T) {
 			mockCtrl := gomock.NewController(t)
 			mockRend := NewMockRenderClient(mockCtrl)
 			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return(nil, errors.New("error from renderer"))
-			req := httptest.NewRequest("GET", "/cookies/edit", nil)
-			w := doTestRequest("/cookies/edit", req, Read(mockRend), nil)
+			req := httptest.NewRequest("GET", "/cookies", nil)
+			w := doTestRequest("/cookies", req, Read(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusInternalServerError)
 		})
 	})
@@ -202,10 +202,10 @@ func TestUnitHandlers(t *testing.T) {
 				Usage:     true,
 			}
 			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			b := `essential=true&usage=true`
-			req := httptest.NewRequest("POST", "/cookies/edit", bytes.NewBufferString(b))
+			b := `cookie-policy-usage=true`
+			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies/edit", req, Edit(mockRend), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusOK)
 			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
 			cookiePolicyTest(w, cookiesPol)
@@ -215,8 +215,8 @@ func TestUnitHandlers(t *testing.T) {
 			collection := "collection"
 			lang := "cy"
 			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			b := `essential=true&usage=false`
-			req := httptest.NewRequest("POST", "/cookies/edit", bytes.NewBufferString(b))
+			b := `cookie-policy-usage=false`
+			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 			cookiesPol := cookies.Policy{
 				Essential: true,
@@ -231,7 +231,7 @@ func TestUnitHandlers(t *testing.T) {
 			cookies.SetLang(w, lang, "domain")
 			http.SetCookie(w, cookieRememberBasket)
 			http.SetCookie(w, cookieTimeSeriesBasket)
-			w = doTestRequest("/cookies/edit", req, Edit(mockRend), w)
+			w = doTestRequest("/cookies", req, Edit(mockRend), w)
 			So(w.Code, ShouldEqual, http.StatusOK)
 			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
 			cookiePolicyTest(w, cookiesPol)
@@ -241,26 +241,26 @@ func TestUnitHandlers(t *testing.T) {
 
 		Convey("fail with bad form names", func() {
 			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			b := `waffles=true&usage=true`
-			req := httptest.NewRequest("POST", "/cookies/edit", bytes.NewBufferString(b))
+			b := `cookie-policy-waffles=true`
+			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies/edit", req, Edit(mockRend), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusInternalServerError)
 		})
 		Convey("fail with bad form values", func() {
 			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			b := `essential=nonboolvalue&usage=true`
-			req := httptest.NewRequest("POST", "/cookies/edit", bytes.NewBufferString(b))
+			b := `cookie-policy-usage=nonbool`
+			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies/edit", req, Edit(mockRend), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusInternalServerError)
 		})
 		Convey("fail with renderer error", func() {
 			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return(nil, errors.New("error from renderer"))
-			b := `essential=true&usage=true`
-			req := httptest.NewRequest("POST", "/cookies/edit", bytes.NewBufferString(b))
+			b := `cookie-policy-usage=true`
+			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies/edit", req, Edit(mockRend), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusInternalServerError)
 		})
 	})

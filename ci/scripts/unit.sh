@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
-export GOPATH=$(pwd)/go
+cwd=$(pwd)
 
-pushd {.Name}
+pushd $cwd/dp-frontend-cookie-controller
   make test
 popd

@@ -14,13 +14,13 @@ import (
 
 // Init initialises routes for the service
 func Init(ctx context.Context, r *mux.Router, cfg *config.Config, hc health.HealthCheck) {
-	log.Event(ctx, "adding routes")
+	log.Event(ctx, "adding api routes")
 
 	rendC := renderer.New(cfg.RendererURL)
 
 	r.StrictSlash(true).Path("/health").HandlerFunc(hc.Handler)
 
 	r.StrictSlash(true).Path("/cookies/accept-all").Methods("GET").HandlerFunc(handlers.AcceptAll())
-	r.StrictSlash(true).Path("/cookies/edit").Methods("GET").HandlerFunc(handlers.Read(rendC))
-	r.StrictSlash(true).Path("/cookies/edit").Methods("POST").HandlerFunc(handlers.Edit(rendC))
+	r.StrictSlash(true).Path("/cookies").Methods("GET").HandlerFunc(handlers.Read(rendC))
+	r.StrictSlash(true).Path("/cookies").Methods("POST").HandlerFunc(handlers.Edit(rendC))
 }

@@ -40,7 +40,7 @@ func main() {
 func run(ctx context.Context) error {
 	log.Namespace = "dp-frontend-cookie-controller"
 
-	signals := make(chan os.Signal, 1)
+	signals := make(chan os.Signal, exitFail)
 	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM)
 
 	cfg, err := config.Get()

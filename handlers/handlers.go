@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"context"
 	"dp-frontend-cookie-controller/mapper"
 	"encoding/json"
 	"errors"
@@ -40,8 +39,9 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 }
 
 // getCookiePreferencePage talks to the renderer to get the cookie preference page
-func getCookiePreferencePage(ctx context.Context, w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy) error {
+func getCookiePreferencePage(w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy) error {
 	var err error
+	ctx := req.Context()
 	m := mapper.CreateCookieSettingPage(cp)
 	b, err := json.Marshal(m)
 	if err != nil {
@@ -64,8 +64,8 @@ func getCookiePreferencePage(ctx context.Context, w http.ResponseWriter, req *ht
 }
 
 // isProtectedCookie is a helper function that checks if a cookie is protected or not
-func isProtectedCookie(stringToFind string, slice [5]string) bool {
-	for _, element := range slice {
+func isProtectedCookie(stringToFind string) bool {
+	for _, element := range protectedCookies {
 		if element == stringToFind {
 			return true
 		}
@@ -77,13 +77,12 @@ func isProtectedCookie(stringToFind string, slice [5]string) bool {
 // This will not remove any protected cookies
 func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 	for _, cookie := range req.Cookies() {
-		if !isProtectedCookie(cookie.Name, protectedCookies) {
+		if !isProtectedCookie(cookie.Name) {
 			cookie := &http.Cookie{
-				Name:    cookie.Name,
-				Value:   "",
-				Path:    "/",
-				Expires: time.Unix(0, 0),
-
+				Name:     cookie.Name,
+				Value:    "",
+				Path:     "/",
+				Expires:  time.Unix(0, 0),
 				HttpOnly: false,
 			}
 			http.SetCookie(w, cookie)
@@ -135,7 +134,7 @@ func acceptAll(w http.ResponseWriter, req *http.Request) {
 		setStatusCode(req, w, err)
 		return
 	}
-
+	log.Event(ctx,"redirecting to " + referer, log.INFO)
 	http.Redirect(w, req, referer, http.StatusFound)
 }
 
@@ -147,21 +146,21 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
 		setStatusCode(req, w, err)
 		return
 	}
-
-	essential, err := strconv.ParseBool(req.FormValue("essential"))
-	if err != nil {
-		log.Event(ctx, "failed to parse cookie value essential", log.Error(err))
+	cookiePolicyUsage := req.FormValue("cookie-policy-usage")
+	if cookiePolicyUsage == "" {
+		err := errors.New("request form value cookie-policy-usage not found")
+		log.Event(ctx, "failed to get cookie value cookie-policy-usage from form", log.Error(err))
 		setStatusCode(req, w, err)
 		return
 	}
-	usage, err := strconv.ParseBool(req.FormValue("usage"))
+	usage, err := strconv.ParseBool(cookiePolicyUsage)
 	if err != nil {
 		log.Event(ctx, "failed to parse cookie value usage", log.Error(err))
 		setStatusCode(req, w, err)
 		return
 	}
 	cp := cookies.Policy{
-		Essential: essential,
+		Essential: true,
 		Usage:     usage,
 	}
 	reqUrl, err := url.Parse(req.URL.Path)
@@ -174,12 +173,11 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
 	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
 	cookies.SetPolicy(w, cp, reqUrl.Hostname())
 
-	err = getCookiePreferencePage(ctx, w, req, rendC, cp)
+	err = getCookiePreferencePage(w, req, rendC, cp)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
 	}
 	return
-
 }
 
 // read handler returns a populated cookie preferences page
@@ -187,7 +185,7 @@ func read(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
 	ctx := req.Context()
 	cookiePref := cookies.GetCookiePreferences(req)
 
-	err := getCookiePreferencePage(ctx, w, req, rendC, cookiePref.Policy)
+	err := getCookiePreferencePage(w, req, rendC, cookiePref.Policy)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
 	}
