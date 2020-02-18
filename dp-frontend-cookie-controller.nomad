@@ -12,7 +12,7 @@ job "dp-frontend-cookie-controller" {
   }
 
   group "web" {
-    count = {{WEB_TASK_COUNT}}
+    count = "{{WEB_TASK_COUNT}}"
 
     constraint {
       attribute = "${node.class}"
