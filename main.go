@@ -16,10 +16,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-const (
-	exitFail = 1
-)
-
 var (
 	// BuildTime represents the time in which the service was built
 	BuildTime string
@@ -33,14 +29,14 @@ func main() {
 	ctx := context.Background()
 	if err := run(ctx); err != nil {
 		log.Event(ctx, "unable to run application", log.Error(err))
-		os.Exit(exitFail)
+		os.Exit(1)
 	}
 }
 
 func run(ctx context.Context) error {
 	log.Namespace = "dp-frontend-cookie-controller"
 
-	signals := make(chan os.Signal, exitFail)
+	signals := make(chan os.Signal, 1)
 	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM)
 
 	cfg, err := config.Get()

@@ -172,7 +172,6 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
 	}
 	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
 	cookies.SetPolicy(w, cp, reqUrl.Hostname())
-
 	err = getCookiePreferencePage(w, req, rendC, cp)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))

@@ -32,7 +32,7 @@ func TestUnitMapper(t *testing.T) {
 			Essential: true,
 			Usage:     false,
 		},
-		CookiesPreferenceSet: true,
+		CookiesPreferencesSet: true,
 		Metadata: model.Metadata{
 			Title: "Cookies",
 		},
