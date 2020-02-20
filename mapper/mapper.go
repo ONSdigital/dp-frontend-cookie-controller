@@ -1,25 +1,25 @@
 package mapper
 
 import (
-	"context"
-	"dp-frontend-cookie-controller/config"
-	"fmt"
+	"github.com/ONSdigital/dp-cookies/cookies"
+	"github.com/ONSdigital/dp-frontend-models/model"
 )
 
-type HelloModel struct {
-	Greeting string `json:"greeting"`
-	Who      string `json:"who"`
-}
-
-type HelloWorldModel struct {
-	HelloWho string `json:"hello-who"`
-}
-
-func HelloWorld(ctx context.Context, hm HelloModel, cfg config.Config) HelloWorldModel {
-	var hwm HelloWorldModel
-	hwm.HelloWho = fmt.Sprintf("%s %s", hm.Greeting, hm.Who)
-	if cfg.Emphasise {
-		hwm.HelloWho += "!"
+// CreateCookieSettingPage maps type cookies.Policy to model.Page
+func CreateCookieSettingPage(policy cookies.Policy) model.Page {
+	var page model.Page
+	page.Breadcrumb = []model.TaxonomyNode{
+		{
+			Title: "Home",
+			URI:   "/",
+		},
+		{
+			Title: "Cookies",
+		},
 	}
-	return hwm
+	page.Metadata.Title = "Cookies"
+	page.CookiesPreferencesSet = true
+	page.CookiesPolicy.Essential = policy.Essential
+	page.CookiesPolicy.Usage = policy.Usage
+	return page
 }

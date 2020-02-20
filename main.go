@@ -2,11 +2,12 @@ package main
 
 import (
 	"context"
+	"fmt"
+	"github.com/ONSdigital/dp-api-clients-go/renderer"
+	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
 	"os"
 	"os/signal"
-	"time"
-
-	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
+	"syscall"
 
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/routes"
@@ -25,17 +26,28 @@ var (
 )
 
 func main() {
-	log.Namespace = "dp-frontend-cookie-controller"
-	cfg, err := config.Get()
 	ctx := context.Background()
-	if err != nil {
-		log.Event(ctx, "unable to retrieve service configuration", log.Error(err))
+	if err := run(ctx); err != nil {
+		log.Event(ctx, "unable to run application", log.Error(err))
 		os.Exit(1)
 	}
+}
 
-    log.Event(ctx, "got service configuration", log.Data{"config": cfg})
+func run(ctx context.Context) error {
+	log.Namespace = "dp-frontend-cookie-controller"
 
-    versionInfo, err := health.NewVersionInfo(
+	signals := make(chan os.Signal, 1)
+	signal.Notify(signals, syscall.SIGINT, syscall.SIGTERM)
+
+	cfg, err := config.Get()
+	if err != nil {
+		log.Event(ctx, "unable to retrieve service configuration", log.Error(err))
+		return err
+	}
+
+	log.Event(ctx, "got service configuration", log.Data{"config": cfg})
+
+	versionInfo, err := health.NewVersionInfo(
 		BuildTime,
 		GitCommit,
 		Version,
@@ -43,13 +55,15 @@ func main() {
 
 	r := mux.NewRouter()
 
-    healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)
-	if err = registerCheckers(ctx, &healthcheck); err != nil {
-    	os.Exit(1)
-    }
+	rend := renderer.New(cfg.RendererURL)
+
+	healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)
+	if err = registerCheckers(ctx, &healthcheck, rend); err != nil {
+		return err
+	}
 	routes.Init(ctx, r, cfg, healthcheck)
 
-    healthcheck.Start(ctx)
+	healthcheck.Start(ctx)
 
 	s := server.New(cfg.BindAddr, r)
 	s.HandleOSSignals = false
@@ -63,20 +77,35 @@ func main() {
 		}
 	}()
 
-	stop := make(chan os.Signal, 1)
-	signal.Notify(stop, os.Interrupt, os.Kill)
+	for {
+		select {
+		case <-signals:
+			log.Event(nil, "os signal received")
+			return gracefulShutdown(cfg, s, healthcheck)
+		}
+	}
+	// protective programming, shouldn't get to this... but just in case
+	// nil translates to exit code 0
+	return nil
+}
 
-	<-stop
-
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+func gracefulShutdown(cfg *config.Config, s *server.Server, hc health.HealthCheck) error {
+	log.Event(nil, fmt.Sprintf("shutdown with timeout: %s", cfg.GracefulShutdownTimeout))
+	ctx, cancel := context.WithTimeout(context.Background(), cfg.GracefulShutdownTimeout)
 	log.Event(ctx, "shutting service down gracefully")
 	defer cancel()
+
+	// Stop health check tickers
+	hc.Stop()
 	if err := s.Server.Shutdown(ctx); err != nil {
 		log.Event(ctx, "failed to shutdown http server", log.Error(err))
 	}
+	return nil
 }
 
-func registerCheckers(ctx context.Context, h *health.HealthCheck) (err error) {
-	// TODO ADD HEALTH CHECKS HERE
+func registerCheckers(ctx context.Context, h *health.HealthCheck, r *renderer.Renderer) (err error) {
+	if err = h.AddCheck("frontend renderer", r.Checker); err != nil {
+		log.Event(ctx, "failed to add frontend renderer checker", log.Error(err))
+	}
 	return
 }
