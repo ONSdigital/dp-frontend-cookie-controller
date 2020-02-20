@@ -24,7 +24,7 @@ func Get() (*Config, error) {
 	}
 
 	cfg := &Config{
-		BindAddr:                   ":23800",
+		BindAddr:                   ":24100",
 		RendererURL:                "http://localhost:20010",
 		GracefulShutdownTimeout:    5 * time.Second,
 		HealthCheckInterval:        10 * time.Second,

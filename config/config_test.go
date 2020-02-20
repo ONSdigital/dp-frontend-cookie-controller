@@ -22,7 +22,7 @@ func TestConfig(t *testing.T) {
 				So(cfg.GracefulShutdownTimeout, ShouldEqual, 5*time.Second)
 				So(cfg.HealthCheckInterval, ShouldEqual, 10*time.Second)
 				So(cfg.HealthCheckCriticalTimeout, ShouldEqual, time.Minute)
-				So(cfg.BindAddr, ShouldEqual, ":23800")
+				So(cfg.BindAddr, ShouldEqual, ":24100")
 				So(cfg.RendererURL, ShouldEqual, "http://localhost:20010")
 
 			})

@@ -91,7 +91,7 @@ func TestUnitHandlers(t *testing.T) {
 	Convey("test setStatusCode", t, func() {
 
 		Convey("test status code handles 404 response from client", func() {
-			req := httptest.NewRequest("GET", "http://localhost:23800", nil)
+			req := httptest.NewRequest("GET", "http://localhost:24100", nil)
 			w := httptest.NewRecorder()
 			err := &testCliError{}
 			setStatusCode(req, w, err)

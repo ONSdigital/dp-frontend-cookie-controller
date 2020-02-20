@@ -17,7 +17,7 @@ If on go 1.12 then ensure the project either resides outside of your `GOPATH` or
 
 | Config                        | Description                                                                               | Default  |
 | ------------------------------|-------------------------------------------------------------------------------------------| -----|
-| BindAddr                      | The Port to run on                                                                            | :23800 |
+| BindAddr                      | The Port to run on                                                                            | :24100 |
 | RendererURL                   | URL dp-frontend-renderer can be reached                                                   |   https://localhost:20010 |
 | GracefulShutdownTimeout       | Time to wait during graceful shutdown                                                          |    5 seconds |
 | HealthCheckInterval           | Interval between health checks                                                            |    10 seconds |
