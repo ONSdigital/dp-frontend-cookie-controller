@@ -6,11 +6,13 @@ image_resource:
   type: docker-image
   source:
     repository: golang
-    tag: 1.13.7
+    tags: 1.13.7
 
 inputs:
   - name: dp-frontend-cookie-controller
-    path: dp-frontend-cookie-controller
+
+caches:
+  - path: go/
 
 run:
   path: dp-frontend-cookie-controller/ci/scripts/unit.sh

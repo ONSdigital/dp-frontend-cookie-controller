@@ -10,7 +10,6 @@ image_resource:
 
 inputs:
   - name: dp-frontend-cookie-controller
-    path: dp-frontend-cookie-controller
 
 outputs:
   - name: build
