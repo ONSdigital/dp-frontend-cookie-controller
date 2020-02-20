@@ -99,7 +99,9 @@ func gracefulShutdown(cfg *config.Config, s *server.Server, hc health.HealthChec
 	hc.Stop()
 	if err := s.Server.Shutdown(ctx); err != nil {
 		log.Event(ctx, "failed to shutdown http server", log.Error(err))
+		return err
 	}
+	log.Event(ctx, "graceful shutdown complete successfully")
 	return nil
 }
 

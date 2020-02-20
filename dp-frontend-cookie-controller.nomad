@@ -108,7 +108,7 @@ job "dp-frontend-cookie-controller" {
         image = "{{ECR_URL}}:concourse-{{REVISION}}"
 
         port_map {
-          http = 23800
+          http = 24100
         }
       }
 
