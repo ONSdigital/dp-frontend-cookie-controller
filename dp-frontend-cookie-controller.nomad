@@ -113,7 +113,7 @@ job "dp-frontend-cookie-controller" {
       }
 
       service {
-        name = dp-frontend-cookie-controller
+        name = "dp-frontend-cookie-controller"
         port = "http"
         tags = ["publishing"]
 
