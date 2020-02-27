@@ -93,7 +93,7 @@ job "dp-frontend-cookie-controller" {
       mode     = "delay"
     }
 
-    task "dp-frontend-cookie-controller-publishing" {
+    task "dp-frontend-cookie-controller" {
       driver = "docker"
 
       artifact {
