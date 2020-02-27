@@ -73,7 +73,7 @@ job "dp-frontend-cookie-controller" {
       }
 
       vault {
-        policies = ["dp-frontend-cookie-controller-web"]
+        policies = ["dp-frontend-cookie-controller"]
       }
     }
   }
@@ -140,7 +140,7 @@ job "dp-frontend-cookie-controller" {
       }
 
       vault {
-        policies = ["dp-frontend-cookie-controller-publishing"]
+        policies = ["dp-frontend-cookie-controller"]
       }
     }
   }
