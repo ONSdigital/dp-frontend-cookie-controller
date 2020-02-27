@@ -1,6 +1,6 @@
 module dp-frontend-cookie-controller
 
-go 1.13.7
+go 1.13
 
 require (
 	github.com/ONSdigital/dp-api-clients-go v1.2.0
