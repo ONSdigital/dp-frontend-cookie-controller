@@ -9,6 +9,7 @@ import (
 type Config struct {
 	BindAddr                   string        `envconfig:"BIND_ADDR"`
 	RendererURL                string        `envconfig:"RENDERER_URL"`
+	SiteDomain                 string        `envconfig:"SITE_DOMAIN"`
 	GracefulShutdownTimeout    time.Duration `envconfig:"GRACEFUL_SHUTDOWN_TIMEOUT"`
 	HealthCheckInterval        time.Duration `envconfig:"HEALTHCHECK_INTERVAL"`
 	HealthCheckCriticalTimeout time.Duration `envconfig:"HEALTHCHECK_CRITICAL_TIMEOUT"`
@@ -25,6 +26,7 @@ func Get() (*Config, error) {
 	cfg := &Config{
 		BindAddr:                   ":24100",
 		RendererURL:                "http://localhost:20010",
+		SiteDomain:                 "localhost",
 		GracefulShutdownTimeout:    5 * time.Second,
 		HealthCheckInterval:        10 * time.Second,
 		HealthCheckCriticalTimeout: time.Minute,
