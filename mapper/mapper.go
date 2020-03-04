@@ -3,7 +3,7 @@ package mapper
 import (
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/dp-frontend-models/model"
-	cookiespreferences "github.com/ONSdigital/dp-frontend-models/model/cookiesPreferences"
+	"github.com/ONSdigital/dp-frontend-models/model/cookiespreferences"
 )
 
 // CreateCookieSettingPage maps type cookies.Policy to model.Page
