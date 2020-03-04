@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/mapper"
 	"encoding/json"
 	"errors"
@@ -92,9 +91,9 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 
 // AcceptAll handler for setting all cookies to enabled then refresh the page. when JS has been disabled
 // Example usage; JavaScript disabled.
-func AcceptAll(cfg config.Config) http.HandlerFunc {
+func AcceptAll(siteDomain string) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		acceptAll(w, req, cfg.SiteDomain)
+		acceptAll(w, req, siteDomain)
 	}
 }
 
@@ -106,30 +105,34 @@ func Read(rendC RenderClient) http.HandlerFunc {
 }
 
 // Edit Handler
-func Edit(rendC RenderClient, cfg config.Config) http.HandlerFunc {
+func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		edit(w, req, rendC, cfg.SiteDomain)
+		edit(w, req, rendC, siteDomain)
 	}
 }
 
 // acceptAll handler for accepting all possible cookies
 func acceptAll(w http.ResponseWriter, req *http.Request, siteDomain string) {
+	log.Event(nil, "acceptAll hit")
 	ctx := req.Context()
 	cp := cookies.Policy{
 		Essential: true,
 		Usage:     true,
 	}
-
+	log.Event(nil, "set policy")
 	cookies.SetPolicy(w, cp, siteDomain)
+	log.Event(nil, "set preferences")
 	cookies.SetPreferenceIsSet(w, siteDomain)
+
 	referer := req.Header.Get("Referer")
+	log.Event(nil, "got referer")
 	if referer == "" {
 		err := errors.New("cannot redirect due to no referer header")
 		log.Event(ctx, "unable to parse url", log.Error(err))
 		setStatusCode(req, w, err)
 		return
 	}
-	log.Event(ctx, "redirecting to "+referer, log.INFO)
+	log.Event(nil, "now redirect")
 	http.Redirect(w, req, referer, http.StatusFound)
 }
 

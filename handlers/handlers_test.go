@@ -125,7 +125,7 @@ func TestUnitHandlers(t *testing.T) {
 			referer := "https://www.ons.gov.uk"
 			req := httptest.NewRequest("GET", "/cookies/accept-all", nil)
 			req.Header.Set("Referer", referer)
-			w := doTestRequest("/cookies/accept-all", req, AcceptAll(cfg), nil)
+			w := doTestRequest("/cookies/accept-all", req, AcceptAll(cfg.SiteDomain), nil)
 
 			So(w.Header().Get("Location"), ShouldEqual, referer)
 			So(w.Code, ShouldEqual, http.StatusFound)
@@ -135,7 +135,7 @@ func TestUnitHandlers(t *testing.T) {
 
 		Convey("is failure no referer header", func() {
 			req := httptest.NewRequest("GET", "/cookies/accept-all", nil)
-			w := doTestRequest("/cookies/accept-all", req, AcceptAll(cfg), nil)
+			w := doTestRequest("/cookies/accept-all", req, AcceptAll(cfg.SiteDomain), nil)
 
 			So(w.Code, ShouldEqual, http.StatusInternalServerError)
 		})
@@ -211,7 +211,7 @@ func TestUnitHandlers(t *testing.T) {
 			b := `cookie-policy-usage=true`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
 			So(w.Code, ShouldEqual, http.StatusOK)
 			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
 			cookiePolicyTest(w, cookiesPol)
@@ -237,7 +237,7 @@ func TestUnitHandlers(t *testing.T) {
 			cookies.SetLang(w, lang, "domain")
 			http.SetCookie(w, cookieRememberBasket)
 			http.SetCookie(w, cookieTimeSeriesBasket)
-			w = doTestRequest("/cookies", req, Edit(mockRend, cfg), w)
+			w = doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), w)
 			So(w.Code, ShouldEqual, http.StatusOK)
 			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
 			cookiePolicyTest(w, cookiesPol)
@@ -250,7 +250,7 @@ func TestUnitHandlers(t *testing.T) {
 			b := `cookie-policy-waffles=true`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
 			So(w.Code, ShouldEqual, http.StatusInternalServerError)
 		})
 		Convey("fail with bad form values", func() {
@@ -258,7 +258,7 @@ func TestUnitHandlers(t *testing.T) {
 			b := `cookie-policy-usage=nonbool`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
 			So(w.Code, ShouldEqual, http.StatusInternalServerError)
 		})
 		Convey("fail with renderer error", func() {
@@ -266,7 +266,7 @@ func TestUnitHandlers(t *testing.T) {
 			b := `cookie-policy-usage=true`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
 			So(w.Code, ShouldEqual, http.StatusInternalServerError)
 		})
 	})
