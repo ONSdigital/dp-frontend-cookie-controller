@@ -2,12 +2,11 @@ package mapper
 
 import (
 	"fmt"
+	"testing"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/dp-frontend-models/model"
-
-	"testing"
-
+	"github.com/ONSdigital/dp-frontend-models/model/cookiespreferences"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -18,27 +17,23 @@ func TestUnitMapper(t *testing.T) {
 		Essential: true,
 		Usage:     false,
 	}
-	expectedModel := model.Page{
-		Breadcrumb: []model.TaxonomyNode{
-			{
-				Title: "Home",
-				URI:   "/",
-			},
-			{
-				Title: "Cookies",
-			},
+	expectedModel := cookiespreferences.Page{}
+	expectedModel.Breadcrumb = []model.TaxonomyNode{
+		{
+			Title: "Home",
+			URI:   "/",
 		},
-		CookiesPolicy: model.CookiesPolicy{
-			Essential: true,
-			Usage:     false,
-		},
-		CookiesPreferencesSet: true,
-		Metadata: model.Metadata{
+		{
 			Title: "Cookies",
 		},
 	}
+	expectedModel.Metadata.Title = "Cookies"
+	expectedModel.CookiesPreferencesSet = true
+	expectedModel.CookiesPolicy.Essential = true
+	expectedModel.CookiesPolicy.Usage = false
+	expectedModel.PreferencesUpdated = false
 	Convey("test CreateCookieSettingPage", t, func() {
-		mcp := CreateCookieSettingPage(cookiesPolicy)
+		mcp := CreateCookieSettingPage(cookiesPolicy, false)
 		fmt.Printf("%+v\n", mcp)
 		So(expectedModel, ShouldResemble, mcp)
 	})
