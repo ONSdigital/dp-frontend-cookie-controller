@@ -105,40 +105,6 @@ func TestUnitHandlers(t *testing.T) {
 			So(w.Code, ShouldEqual, http.StatusNotFound)
 		})
 
-		Convey("test status code handles internal server error", func() {
-			req := httptest.NewRequest("GET", "/cookies/accept-all", nil)
-			w := httptest.NewRecorder()
-			err := errors.New("internal server error")
-			setStatusCode(req, w, err)
-
-			So(w.Code, ShouldEqual, http.StatusInternalServerError)
-		})
-	})
-
-	Convey("test acceptAll", t, func() {
-
-		Convey("is success", func() {
-			cookiesPol := cookies.Policy{
-				Essential: true,
-				Usage:     true,
-			}
-			referer := "https://www.ons.gov.uk"
-			req := httptest.NewRequest("GET", "/cookies/accept-all", nil)
-			req.Header.Set("Referer", referer)
-			w := doTestRequest("/cookies/accept-all", req, AcceptAll(cfg.SiteDomain), nil)
-
-			So(w.Header().Get("Location"), ShouldEqual, referer)
-			So(w.Code, ShouldEqual, http.StatusFound)
-			cookiePolicyTest(w, cookiesPol)
-			// TODO once library update check cookies have been set
-		})
-
-		Convey("is failure no referer header", func() {
-			req := httptest.NewRequest("GET", "/cookies/accept-all", nil)
-			w := doTestRequest("/cookies/accept-all", req, AcceptAll(cfg.SiteDomain), nil)
-
-			So(w.Code, ShouldEqual, http.StatusInternalServerError)
-		})
 	})
 
 	Convey("test read", t, func() {
