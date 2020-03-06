@@ -82,18 +82,11 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 				Value:    "",
 				Path:     "/",
 				Expires:  time.Unix(0, 0),
+				//MaxAge:   0,
 				HttpOnly: false,
 			}
 			http.SetCookie(w, cookie)
 		}
-	}
-}
-
-// AcceptAll handler for setting all cookies to enabled then refresh the page. when JS has been disabled
-// Example usage; JavaScript disabled.
-func AcceptAll(siteDomain string) http.HandlerFunc {
-	return func(w http.ResponseWriter, req *http.Request) {
-		acceptAll(w, req, siteDomain)
 	}
 }
 
@@ -109,31 +102,6 @@ func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		edit(w, req, rendC, siteDomain)
 	}
-}
-
-// acceptAll handler for accepting all possible cookies
-func acceptAll(w http.ResponseWriter, req *http.Request, siteDomain string) {
-	log.Event(nil, "acceptAll hit")
-	ctx := req.Context()
-	cp := cookies.Policy{
-		Essential: true,
-		Usage:     true,
-	}
-	log.Event(nil, "set policy")
-	cookies.SetPolicy(w, cp, siteDomain)
-	log.Event(nil, "set preferences")
-	cookies.SetPreferenceIsSet(w, siteDomain)
-
-	referer := req.Header.Get("Referer")
-	log.Event(nil, "got referer")
-	if referer == "" {
-		err := errors.New("cannot redirect due to no referer header")
-		log.Event(ctx, "unable to parse url", log.Error(err))
-		setStatusCode(req, w, err)
-		return
-	}
-	log.Event(nil, "now redirect")
-	http.Redirect(w, req, referer, http.StatusFound)
 }
 
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
