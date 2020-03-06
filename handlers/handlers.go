@@ -7,7 +7,6 @@ import (
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/log.go/log"
 	"net/http"
-	"net/url"
 	"strconv"
 	"time"
 )
@@ -92,9 +91,9 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 
 // AcceptAll handler for setting all cookies to enabled then refresh the page. when JS has been disabled
 // Example usage; JavaScript disabled.
-func AcceptAll() http.HandlerFunc {
+func AcceptAll(siteDomain string) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		acceptAll(w, req)
+		acceptAll(w, req, siteDomain)
 	}
 }
 
@@ -106,40 +105,39 @@ func Read(rendC RenderClient) http.HandlerFunc {
 }
 
 // Edit Handler
-func Edit(rendC RenderClient) http.HandlerFunc {
+func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		edit(w, req, rendC)
+		edit(w, req, rendC, siteDomain)
 	}
 }
 
 // acceptAll handler for accepting all possible cookies
-func acceptAll(w http.ResponseWriter, req *http.Request) {
+func acceptAll(w http.ResponseWriter, req *http.Request, siteDomain string) {
+	log.Event(nil, "acceptAll hit")
 	ctx := req.Context()
 	cp := cookies.Policy{
 		Essential: true,
 		Usage:     true,
 	}
-	reqUrl, err := url.Parse(req.URL.Path)
-	if err != nil {
-		log.Event(ctx, "unable to parse url", log.Error(err))
-		setStatusCode(req, w, err)
-		return
-	}
-	cookies.SetPolicy(w, cp, reqUrl.Hostname())
-	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
+	log.Event(nil, "set policy")
+	cookies.SetPolicy(w, cp, siteDomain)
+	log.Event(nil, "set preferences")
+	cookies.SetPreferenceIsSet(w, siteDomain)
+
 	referer := req.Header.Get("Referer")
+	log.Event(nil, "got referer")
 	if referer == "" {
 		err := errors.New("cannot redirect due to no referer header")
 		log.Event(ctx, "unable to parse url", log.Error(err))
 		setStatusCode(req, w, err)
 		return
 	}
-	log.Event(ctx,"redirecting to " + referer, log.INFO)
+	log.Event(nil, "now redirect")
 	http.Redirect(w, req, referer, http.StatusFound)
 }
 
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
-func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
+func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain string) {
 	ctx := req.Context()
 	if err := req.ParseForm(); err != nil {
 		log.Event(ctx, "failed to parse form input", log.Error(err))
@@ -163,15 +161,11 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
 		Essential: true,
 		Usage:     usage,
 	}
-	reqUrl, err := url.Parse(req.URL.Path)
-	if err != nil {
-		log.Event(ctx, "unable to parse url", log.Error(err))
-	}
 	if !usage {
 		removeNonProtectedCookies(w, req)
 	}
-	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
-	cookies.SetPolicy(w, cp, reqUrl.Hostname())
+	cookies.SetPreferenceIsSet(w, siteDomain)
+	cookies.SetPolicy(w, cp, siteDomain)
 	err = getCookiePreferencePage(w, req, rendC, cp)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
