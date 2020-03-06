@@ -82,7 +82,7 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 				Value:    "",
 				Path:     "/",
 				Expires:  time.Unix(0, 0),
-				//MaxAge:   0,
+				MaxAge:   0,
 				HttpOnly: false,
 			}
 			http.SetCookie(w, cookie)
