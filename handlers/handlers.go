@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
-	"net/url"
 	"strconv"
 	"time"
 
@@ -84,18 +83,11 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 				Value:    "",
 				Path:     "/",
 				Expires:  time.Unix(0, 0),
+				MaxAge:   0,
 				HttpOnly: false,
 			}
 			http.SetCookie(w, cookie)
 		}
-	}
-}
-
-// AcceptAll handler for setting all cookies to enabled then refresh the page. when JS has been disabled
-// Example usage; JavaScript disabled.
-func AcceptAll() http.HandlerFunc {
-	return func(w http.ResponseWriter, req *http.Request) {
-		acceptAll(w, req)
 	}
 }
 
@@ -107,12 +99,13 @@ func Read(rendC RenderClient) http.HandlerFunc {
 }
 
 // Edit Handler
-func Edit(rendC RenderClient) http.HandlerFunc {
+func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		edit(w, req, rendC)
+		edit(w, req, rendC, siteDomain)
 	}
 }
 
+<<<<<<< HEAD
 // acceptAll handler for accepting all possible cookies
 func acceptAll(w http.ResponseWriter, req *http.Request) {
 	ctx := req.Context()
@@ -139,8 +132,10 @@ func acceptAll(w http.ResponseWriter, req *http.Request) {
 	http.Redirect(w, req, referer, http.StatusFound)
 }
 
+=======
+>>>>>>> develop
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
-func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
+func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain string) {
 	ctx := req.Context()
 	if err := req.ParseForm(); err != nil {
 		log.Event(ctx, "failed to parse form input", log.Error(err))
@@ -164,17 +159,19 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
 		Essential: true,
 		Usage:     usage,
 	}
-	reqUrl, err := url.Parse(req.URL.Path)
-	if err != nil {
-		log.Event(ctx, "unable to parse url", log.Error(err))
-	}
 	if !usage {
 		removeNonProtectedCookies(w, req)
 	}
+<<<<<<< HEAD
 	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
 	cookies.SetPolicy(w, cp, reqUrl.Hostname())
 	isUpdated := true
 	err = getCookiePreferencePage(w, req, rendC, cp, isUpdated)
+=======
+	cookies.SetPreferenceIsSet(w, siteDomain)
+	cookies.SetPolicy(w, cp, siteDomain)
+	err = getCookiePreferencePage(w, req, rendC, cp)
+>>>>>>> develop
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
 	}
