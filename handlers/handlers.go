@@ -105,35 +105,6 @@ func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
 	}
 }
 
-<<<<<<< HEAD
-// acceptAll handler for accepting all possible cookies
-func acceptAll(w http.ResponseWriter, req *http.Request) {
-	ctx := req.Context()
-	cp := cookies.Policy{
-		Essential: true,
-		Usage:     true,
-	}
-	reqUrl, err := url.Parse(req.URL.Path)
-	if err != nil {
-		log.Event(ctx, "unable to parse url", log.Error(err))
-		setStatusCode(req, w, err)
-		return
-	}
-	cookies.SetPolicy(w, cp, reqUrl.Hostname())
-	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
-	referer := req.Header.Get("Referer")
-	if referer == "" {
-		err := errors.New("cannot redirect due to no referer header")
-		log.Event(ctx, "unable to parse url", log.Error(err))
-		setStatusCode(req, w, err)
-		return
-	}
-	log.Event(ctx, "redirecting to "+referer, log.INFO)
-	http.Redirect(w, req, referer, http.StatusFound)
-}
-
-=======
->>>>>>> develop
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
 func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain string) {
 	ctx := req.Context()
@@ -162,16 +133,10 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 	if !usage {
 		removeNonProtectedCookies(w, req)
 	}
-<<<<<<< HEAD
-	cookies.SetPreferenceIsSet(w, reqUrl.Hostname())
-	cookies.SetPolicy(w, cp, reqUrl.Hostname())
-	isUpdated := true
-	err = getCookiePreferencePage(w, req, rendC, cp, isUpdated)
-=======
 	cookies.SetPreferenceIsSet(w, siteDomain)
 	cookies.SetPolicy(w, cp, siteDomain)
-	err = getCookiePreferencePage(w, req, rendC, cp)
->>>>>>> develop
+	isUpdated := true
+	err = getCookiePreferencePage(w, req, rendC, cp, isUpdated)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
 	}
