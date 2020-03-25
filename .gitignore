@@ -1,0 +1,11 @@
+# Mac
+.DS_Store
+
+#VSCode
+.vscode
+
+# Intellij
+.idea/
+*.iml
+*.iws
+build/dp-frontend-cookie-controller
