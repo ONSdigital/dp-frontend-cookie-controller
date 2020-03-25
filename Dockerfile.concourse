@@ -1,0 +1,7 @@
+FROM onsdigital/dp-concourse-tools-ubuntu
+
+WORKDIR /app/
+
+ADD dp-frontend-cookie-controller .
+
+CMD ./dp-frontend-cookie-controller
