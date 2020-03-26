@@ -24,7 +24,6 @@ func TestConfig(t *testing.T) {
 				So(cfg.HealthCheckCriticalTimeout, ShouldEqual, time.Minute)
 				So(cfg.BindAddr, ShouldEqual, ":24100")
 				So(cfg.RendererURL, ShouldEqual, "http://localhost:20010")
-
 			})
 		})
 	})
