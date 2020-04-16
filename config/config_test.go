@@ -1,9 +1,10 @@
 package config
 
 import (
-	. "github.com/smartystreets/goconvey/convey"
 	"testing"
 	"time"
+
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 // TestConfig tests config options correctly default if not set
@@ -20,8 +21,8 @@ func TestConfig(t *testing.T) {
 
 			Convey("That the values should be set to the expected defaults", func() {
 				So(cfg.GracefulShutdownTimeout, ShouldEqual, 5*time.Second)
-				So(cfg.HealthCheckInterval, ShouldEqual, 10*time.Second)
-				So(cfg.HealthCheckCriticalTimeout, ShouldEqual, time.Minute)
+				So(cfg.HealthCheckInterval, ShouldEqual, 30*time.Second)
+				So(cfg.HealthCheckCriticalTimeout, ShouldEqual, 90*time.Second)
 				So(cfg.BindAddr, ShouldEqual, ":24100")
 				So(cfg.RendererURL, ShouldEqual, "http://localhost:20010")
 

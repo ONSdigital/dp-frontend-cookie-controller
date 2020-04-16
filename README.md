@@ -14,13 +14,14 @@ If on go 1.12 then ensure the project either resides outside of your `GOPATH` or
 
 ### Configuration
 
-| Config                        | Description                                                                               | Default  |
-| ------------------------------|-------------------------------------------------------------------------------------------| -----|
-| BindAddr                      | The Port to run on                                                                            | :24100 |
-| RendererURL                   | URL dp-frontend-renderer can be reached                                                   |   https://localhost:20010 |
-| GracefulShutdownTimeout       | Time to wait during graceful shutdown                                                          |    5 seconds |
-| HealthCheckInterval           | Interval between health checks                                                            |    10 seconds |
-| HealthCheckCriticalTimeout    | Amount of time to pass since last healthy health check to be deemed a critical failure    |    60 seconds |
+| Environment variable          | Config                        | Description                                                                            | Default                 |
+| ------------------------------|-------------------------------|----------------------------------------------------------------------------------------| ------------------------|
+| BIND_ADDR                     | BindAddr                      | The Port to run on                                                                     | :24100                  |
+| RENDERER_URL                  | RendererURL                   | URL dp-frontend-renderer can be reached                                                | https://localhost:20010 |
+| SITE_DOMAIN                   | SiteDomain                    |                                                                                        | localhost
+| GRACEFUL_SHUTDOWN_TIMEOUT     | GracefulShutdownTimeout       | Time to wait during graceful shutdown                                                  | 5 seconds               |
+| HEALTHCHECK_INTERVAL          | HealthCheckInterval           | Interval between health checks                                                         | 30 seconds              |
+| HEALTHCHECK_CRITICAL_TIMEOUT  | HealthCheckCriticalTimeout    | Amount of time to pass since last healthy health check to be deemed a critical failure | 90 seconds              |
 
 ### Contributing
 
