@@ -32,6 +32,7 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.CookiesPolicy.Essential = true
 	expectedModel.CookiesPolicy.Usage = false
 	expectedModel.PreferencesUpdated = false
+	expectedModel.FeatureFlags.HideCookieBanner = true
 	Convey("test CreateCookieSettingPage", t, func() {
 		mcp := CreateCookieSettingPage(cookiesPolicy, false)
 		fmt.Printf("%+v\n", mcp)
