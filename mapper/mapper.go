@@ -22,6 +22,7 @@ func CreateCookieSettingPage(policy cookies.Policy, isUpdated bool) cookiesprefe
 	page.CookiesPreferencesSet = true
 	page.CookiesPolicy.Essential = policy.Essential
 	page.CookiesPolicy.Usage = policy.Usage
+	page.FeatureFlags.HideCookieBanner = true
 
 	// Determine whether or not to show success message. Currently this will be shown when cookies preferences have been updated by the user.
 	page.PreferencesUpdated = isUpdated

@@ -15,6 +15,10 @@ test:
 	go test -race -cover ./...
 .PHONY: test
 
+.PHONY: audit
+audit:
+	nancy go.sum
+
 convey:
 	goconvey ./...
 
