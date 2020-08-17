@@ -11,9 +11,10 @@ import (
 
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/routes"
-	"github.com/ONSdigital/go-ns/server"
 	"github.com/ONSdigital/log.go/log"
 	"github.com/gorilla/mux"
+
+	dpnethttp "github.com/ONSdigital/dp-net/http"
 )
 
 var (
@@ -65,7 +66,7 @@ func run(ctx context.Context) error {
 
 	healthcheck.Start(ctx)
 
-	s := server.New(cfg.BindAddr, r)
+	s := dpnethttp.NewServer(cfg.BindAddr, r)
 	s.HandleOSSignals = false
 
 	log.Event(ctx, "Starting server", log.Data{"config": cfg})
@@ -89,7 +90,7 @@ func run(ctx context.Context) error {
 	return nil
 }
 
-func gracefulShutdown(cfg *config.Config, s *server.Server, hc health.HealthCheck) error {
+func gracefulShutdown(cfg *config.Config, s *dpnethttp.Server, hc health.HealthCheck) error {
 	log.Event(nil, fmt.Sprintf("shutdown with timeout: %s", cfg.GracefulShutdownTimeout))
 	ctx, cancel := context.WithTimeout(context.Background(), cfg.GracefulShutdownTimeout)
 	log.Event(ctx, "shutting service down gracefully")
