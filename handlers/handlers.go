@@ -95,19 +95,19 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 // Read Handler
 func Read(rendC RenderClient) http.HandlerFunc {
 	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
-		read(w, req, rendC, accessToken, lang)
+		read(w, req, rendC, lang)
 	})
 }
 
 // Edit Handler
 func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
 	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
-		edit(w, req, rendC, siteDomain, lang, collectionID, accessToken)
+		edit(w, req, rendC, siteDomain, lang)
 	})
 }
 
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
-func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain, lang, collectionID, accessToken string) {
+func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain, lang string) {
 	ctx := req.Context()
 	if err := req.ParseForm(); err != nil {
 		log.Event(ctx, "failed to parse form input", log.Error(err))
@@ -145,7 +145,7 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 }
 
 // read handler returns a populated cookie preferences page
-func read(w http.ResponseWriter, req *http.Request, rendC RenderClient, accessToken, lang string) {
+func read(w http.ResponseWriter, req *http.Request, rendC RenderClient, lang string) {
 	ctx := req.Context()
 	cookiePref := cookies.GetCookiePreferences(req)
 
