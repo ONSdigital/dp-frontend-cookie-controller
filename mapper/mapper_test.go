@@ -27,6 +27,7 @@ func TestUnitMapper(t *testing.T) {
 			Title: "Cookies",
 		},
 	}
+	expectedModel.Language = "en"
 	expectedModel.Metadata.Title = "Cookies"
 	expectedModel.CookiesPreferencesSet = true
 	expectedModel.CookiesPolicy.Essential = true
@@ -34,7 +35,7 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.PreferencesUpdated = false
 	expectedModel.FeatureFlags.HideCookieBanner = true
 	Convey("test CreateCookieSettingPage", t, func() {
-		mcp := CreateCookieSettingPage(cookiesPolicy, false)
+		mcp := CreateCookieSettingPage(cookiesPolicy, false, "en")
 		fmt.Printf("%+v\n", mcp)
 		So(expectedModel, ShouldResemble, mcp)
 	})
