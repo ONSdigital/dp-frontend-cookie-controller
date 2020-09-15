@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
+	dphandlers "github.com/ONSdigital/dp-net/handlers"
 	"github.com/ONSdigital/log.go/log"
 )
 
@@ -39,10 +40,10 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 }
 
 // getCookiePreferencePage talks to the renderer to get the cookie preference page
-func getCookiePreferencePage(w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy, isUpdated bool) error {
+func getCookiePreferencePage(w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) error {
 	var err error
 	ctx := req.Context()
-	m := mapper.CreateCookieSettingPage(cp, isUpdated)
+	m := mapper.CreateCookieSettingPage(cp, isUpdated, lang)
 	b, err := json.Marshal(m)
 	if err != nil {
 		log.Event(ctx, "unable to marshal cookie preferences", log.Error(err))
@@ -93,20 +94,20 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 
 // Read Handler
 func Read(rendC RenderClient) http.HandlerFunc {
-	return func(w http.ResponseWriter, req *http.Request) {
-		read(w, req, rendC)
-	}
+	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
+		read(w, req, rendC, accessToken, lang)
+	})
 }
 
 // Edit Handler
 func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
-	return func(w http.ResponseWriter, req *http.Request) {
-		edit(w, req, rendC, siteDomain)
-	}
+	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
+		edit(w, req, rendC, siteDomain, lang, collectionID, accessToken)
+	})
 }
 
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
-func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain string) {
+func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain, lang, collectionID, accessToken string) {
 	ctx := req.Context()
 	if err := req.ParseForm(); err != nil {
 		log.Event(ctx, "failed to parse form input", log.Error(err))
@@ -136,7 +137,7 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 	cookies.SetPreferenceIsSet(w, siteDomain)
 	cookies.SetPolicy(w, cp, siteDomain)
 	isUpdated := true
-	err = getCookiePreferencePage(w, req, rendC, cp, isUpdated)
+	err = getCookiePreferencePage(w, req, rendC, cp, isUpdated, lang)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
 	}
@@ -144,12 +145,12 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 }
 
 // read handler returns a populated cookie preferences page
-func read(w http.ResponseWriter, req *http.Request, rendC RenderClient) {
+func read(w http.ResponseWriter, req *http.Request, rendC RenderClient, accessToken, lang string) {
 	ctx := req.Context()
 	cookiePref := cookies.GetCookiePreferences(req)
 
 	isUpdated := false
-	err := getCookiePreferencePage(w, req, rendC, cookiePref.Policy, isUpdated)
+	err := getCookiePreferencePage(w, req, rendC, cookiePref.Policy, isUpdated, lang)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
 	}

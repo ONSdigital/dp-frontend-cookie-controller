@@ -7,7 +7,7 @@ import (
 )
 
 // CreateCookieSettingPage maps type cookies.Policy to model.Page
-func CreateCookieSettingPage(policy cookies.Policy, isUpdated bool) cookiespreferences.Page {
+func CreateCookieSettingPage(policy cookies.Policy, isUpdated bool, lang string) cookiespreferences.Page {
 	var page cookiespreferences.Page
 	page.Breadcrumb = []model.TaxonomyNode{
 		{
@@ -19,6 +19,7 @@ func CreateCookieSettingPage(policy cookies.Policy, isUpdated bool) cookiesprefe
 		},
 	}
 	page.Metadata.Title = "Cookies"
+	page.Language = lang
 	page.CookiesPreferencesSet = true
 	page.CookiesPolicy.Essential = policy.Essential
 	page.CookiesPolicy.Usage = policy.Usage

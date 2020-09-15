@@ -5,6 +5,7 @@ import (
 
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/handlers"
+
 	"github.com/ONSdigital/dp-api-clients-go/renderer"
 
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
