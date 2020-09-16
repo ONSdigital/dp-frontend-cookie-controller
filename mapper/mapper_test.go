@@ -7,6 +7,7 @@ import (
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/dp-frontend-models/model"
 	"github.com/ONSdigital/dp-frontend-models/model/cookiespreferences"
+	request "github.com/ONSdigital/dp-net/request"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -35,7 +36,7 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.PreferencesUpdated = false
 	expectedModel.FeatureFlags.HideCookieBanner = true
 	Convey("test CreateCookieSettingPage", t, func() {
-		mcp := CreateCookieSettingPage(cookiesPolicy, false, "en")
+		mcp := CreateCookieSettingPage(cookiesPolicy, false, request.DefaultLang)
 		fmt.Printf("%+v\n", mcp)
 		So(expectedModel, ShouldResemble, mcp)
 	})
