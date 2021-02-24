@@ -17,7 +17,7 @@ test:
 
 .PHONY: audit
 audit:
-	nancy go.sum
+	go list -m all | nancy sleuth
 
 convey:
 	goconvey ./...
