@@ -3,8 +3,6 @@ package routes
 import (
 	"context"
 
-	"dp-frontend-cookie-controller/assets"
-
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/handlers"
 
@@ -16,10 +14,8 @@ import (
 )
 
 // Init initialises routes for the service
-func Init(ctx context.Context, r *mux.Router, cfg *config.Config, hc health.HealthCheck) {
+func Init(ctx context.Context, r *mux.Router, cfg *config.Config, hc health.HealthCheck, rendC *render.Render) {
 	log.Event(ctx, "adding api routes")
-
-	rendC := render.New(cfg.PatternLibraryAssetsPath, cfg.SiteDomain, assets.Asset, assets.AssetNames)
 
 	r.StrictSlash(true).Path("/health").HandlerFunc(hc.Handler)
 

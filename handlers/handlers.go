@@ -43,7 +43,7 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 // getCookiePreferencePage builds the cookie preference page using the rendering library
 func getCookiePreferencePage(cfg *config.Config, w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) {
 	m := mapper.CreateCookieSettingPage(cfg, cp, isUpdated, lang)
-	rendC.Page(w, m, "cookies-preference")
+	rendC.Page(w, m, "cookies-preferences")
 }
 
 // isProtectedCookie is a helper function that checks if a cookie is protected or not

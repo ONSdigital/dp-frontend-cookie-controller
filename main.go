@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"dp-frontend-cookie-controller/assets"
 	"fmt"
 	"os"
 	"os/signal"
@@ -9,6 +10,7 @@ import (
 
 	"github.com/ONSdigital/dp-api-clients-go/renderer"
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
+	"github.com/rav-pradhan/test-modules/render"
 
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/routes"
@@ -56,19 +58,22 @@ func run(ctx context.Context) error {
 		Version,
 	)
 
-	r := mux.NewRouter()
+	router := mux.NewRouter()
 
 	rend := renderer.New(cfg.RendererURL)
-
 	healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)
 	if err = registerCheckers(ctx, &healthcheck, rend); err != nil {
 		return err
 	}
-	routes.Init(ctx, r, cfg, healthcheck)
+
+	// Initialise render client, attach to endpoints and initialise localisations
+	rendC := render.New(cfg.PatternLibraryAssetsPath, cfg.SiteDomain, assets.Asset, assets.AssetNames)
+	routes.Init(ctx, router, cfg, healthcheck, rendC)
+	render.InitialiseLocalisationsHelper(assets.Asset)
 
 	healthcheck.Start(ctx)
 
-	s := dpnethttp.NewServer(cfg.BindAddr, r)
+	s := dpnethttp.NewServer(cfg.BindAddr, router)
 	s.HandleOSSignals = false
 
 	log.Event(ctx, "Starting server", log.Data{"config": cfg})
