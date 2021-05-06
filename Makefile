@@ -13,10 +13,17 @@ build:
 	go build -tags 'production' -o $(BINPATH)/dp-frontend-cookie-controller -ldflags "-X main.BuildTime=$(BUILD_TIME) -X main.GitCommit=$(GIT_COMMIT) -X main.Version=$(VERSION)"
 
 .PHONY: debug
-debug:
+debug: generate-debug
 	go build -tags 'debug' -o $(BINPATH)/dp-frontend-cookie-controller -ldflags "-X main.BuildTime=$(BUILD_TIME) -X main.GitCommit=$(GIT_COMMIT) -X main.Version=$(VERSION)"
 	HUMAN_LOG=1 DEBUG=1 $(BINPATH)/dp-frontend-cookie-controller
 
 .PHONY: test
-test:
+test: generate-debug
 	go test -race -cover ./...
+
+.PHONY: generate-debug
+generate-debug:
+	# build the dev version
+	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -prefix "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets" -debug -o data.go -pkg assets locales/... templates/... /Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/../...
+	{ echo "// +build debug\n"; cat assets/data.go; } > assets/debug.go.new
+	mv assets/debug.go.new assets/data.go

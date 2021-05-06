@@ -1,12 +1,14 @@
 package mapper
 
 import (
+	"dp-frontend-cookie-controller/config"
+	"dp-frontend-cookie-controller/models"
 	"fmt"
 	"testing"
 
+	coreModel "github.com/rav-pradhan/test-modules/render/models"
+
 	"github.com/ONSdigital/dp-cookies/cookies"
-	"github.com/ONSdigital/dp-frontend-models/model"
-	"github.com/ONSdigital/dp-frontend-models/model/cookiespreferences"
 	request "github.com/ONSdigital/dp-net/request"
 	. "github.com/smartystreets/goconvey/convey"
 )
@@ -18,8 +20,8 @@ func TestUnitMapper(t *testing.T) {
 		Essential: true,
 		Usage:     false,
 	}
-	expectedModel := cookiespreferences.Page{}
-	expectedModel.Breadcrumb = []model.TaxonomyNode{
+	expectedModel := models.CookiesPreference{}
+	expectedModel.Breadcrumb = []coreModel.TaxonomyNode{
 		{
 			Title: "Home",
 			URI:   "/",
@@ -35,8 +37,14 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.CookiesPolicy.Usage = false
 	expectedModel.PreferencesUpdated = false
 	expectedModel.FeatureFlags.HideCookieBanner = true
+	expectedModel.SiteDomain = "abcd"
+	expectedModel.PatternLibraryAssetsPath = "1234"
+
 	Convey("test CreateCookieSettingPage", t, func() {
-		mcp := CreateCookieSettingPage(cookiesPolicy, false, request.DefaultLang)
+		mcp := CreateCookieSettingPage(&config.Config{
+			PatternLibraryAssetsPath: "1234",
+			SiteDomain:               "abcd",
+		}, cookiesPolicy, false, request.DefaultLang)
 		fmt.Printf("%+v\n", mcp)
 		So(expectedModel, ShouldResemble, mcp)
 	})

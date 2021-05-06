@@ -1,9 +1,10 @@
 package handlers
 
 import (
+	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/mapper"
-	"encoding/json"
 	"errors"
+	"io"
 	"net/http"
 	"strconv"
 	"time"
@@ -24,7 +25,7 @@ type ClientError interface {
 
 // RenderClient is an interface with methods for require for rendering a template
 type RenderClient interface {
-	Do(string, []byte) ([]byte, error)
+	Page(w io.Writer, page interface{}, templateName string)
 }
 
 // setStatusCode sets the status code of a http response to a relevant error code
@@ -39,29 +40,10 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 	w.WriteHeader(status)
 }
 
-// getCookiePreferencePage talks to the renderer to get the cookie preference page
-func getCookiePreferencePage(w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) error {
-	var err error
-	ctx := req.Context()
-	m := mapper.CreateCookieSettingPage(cp, isUpdated, lang)
-	b, err := json.Marshal(m)
-	if err != nil {
-		log.Event(ctx, "unable to marshal cookie preferences", log.Error(err))
-		setStatusCode(req, w, err)
-		return err
-	}
-
-	templateHTML, err := rendC.Do("cookies-preferences", b)
-	if err != nil {
-		log.Event(ctx, "getting template from renderer cookies-preferences failed", log.Error(err))
-		setStatusCode(req, w, err)
-		return err
-	}
-	if _, err := w.Write(templateHTML); err != nil {
-		log.Event(ctx, "error on write of cookie template", log.Error(err))
-		setStatusCode(req, w, err)
-	}
-	return err
+// getCookiePreferencePage builds the cookie preference page using the rendering library
+func getCookiePreferencePage(cfg *config.Config, w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) {
+	m := mapper.CreateCookieSettingPage(cfg, cp, isUpdated, lang)
+	rendC.Page(w, m, "cookies-preference")
 }
 
 // isProtectedCookie is a helper function that checks if a cookie is protected or not
@@ -93,21 +75,21 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 }
 
 // Read Handler
-func Read(rendC RenderClient) http.HandlerFunc {
+func Read(cfg *config.Config, rendC RenderClient) http.HandlerFunc {
 	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
-		read(w, req, rendC, lang)
+		read(cfg, w, req, rendC, lang)
 	})
 }
 
 // Edit Handler
-func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
+func Edit(cfg *config.Config, rendC RenderClient) http.HandlerFunc {
 	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
-		edit(w, req, rendC, siteDomain, lang)
+		edit(cfg, w, req, rendC, cfg.SiteDomain, lang)
 	})
 }
 
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
-func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain, lang string) {
+func edit(cfg *config.Config, w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain, lang string) {
 	ctx := req.Context()
 	if err := req.ParseForm(); err != nil {
 		log.Event(ctx, "failed to parse form input", log.Error(err))
@@ -137,7 +119,7 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 	cookies.SetPreferenceIsSet(w, siteDomain)
 	cookies.SetPolicy(w, cp, siteDomain)
 	isUpdated := true
-	err = getCookiePreferencePage(w, req, rendC, cp, isUpdated, lang)
+	getCookiePreferencePage(cfg, w, req, rendC, cp, isUpdated, lang)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
 	}
@@ -145,14 +127,9 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 }
 
 // read handler returns a populated cookie preferences page
-func read(w http.ResponseWriter, req *http.Request, rendC RenderClient, lang string) {
-	ctx := req.Context()
+func read(cfg *config.Config, w http.ResponseWriter, req *http.Request, rendC RenderClient, lang string) {
 	cookiePref := cookies.GetCookiePreferences(req)
-
 	isUpdated := false
-	err := getCookiePreferencePage(w, req, rendC, cookiePref.Policy, isUpdated, lang)
-	if err != nil {
-		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
-	}
+	getCookiePreferencePage(cfg, w, req, rendC, cookiePref.Policy, isUpdated, lang)
 	return
 }
