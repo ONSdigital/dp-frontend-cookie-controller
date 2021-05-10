@@ -103,6 +103,16 @@ one = "They always need to be on to allow the website to function properly."
 description = "Find out more about cookies on ons.gov.uk"
 one = "<a href=\"/help/cookies\">Find out more about cookies on ons.gov.uk</a>"
 
+[CookiesPreferencesSaved]
+description = "We have saved your cookie preferences."
+one = "We have saved your cookie preference."
+other = "We have saved your cookie preferences."
+
+[CookiesPreferencesSavedAmend]
+description = "Should you ever wish to amend them, visit <strong><a href=\"/cookies\">ons.gov.uk/cookies</a></strong>."
+one = "Should you ever wish to amend them, visit <strong><a href=\"/cookies\">ons.gov.uk/cookies</a></strong>."
+other = "Should you ever wish to amend them, visit <strong><a href=\"/cookies\">ons.gov.uk/cookies</a></strong>."
+
 [On]
 description = "On"
 one = "On"
@@ -114,6 +124,4 @@ one = "Off"
 [SaveChanges]
 description = "Save changes"
 one = "Save change"
-two = "Save changes"
-few = "Save changes"
 other = "Save changes"
