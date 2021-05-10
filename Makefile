@@ -29,7 +29,3 @@ generate-debug:
 	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -prefix $(CORE_ASSETS_PATH)/assets -debug -o data.go -pkg assets locales/... templates/... $(CORE_ASSETS_PATH)/../...
 	{ echo "// +build debug\n"; cat assets/data.go; } > assets/debug.go.new
 	mv assets/debug.go.new assets/data.go
-
-.PHONY: test-local
-test-local:
-	echo $(CORE_ASSETS_PATH)
