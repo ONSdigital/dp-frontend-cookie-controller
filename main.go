@@ -69,7 +69,6 @@ func run(ctx context.Context) error {
 	// Initialise render client, routes and initialise localisations bundles
 	rendC := render.New(cfg.PatternLibraryAssetsPath, cfg.SiteDomain, assets.Asset, assets.AssetNames)
 	routes.Init(ctx, router, cfg, healthcheck, rendC)
-	render.InitialiseLocalisationsHelper(assets.Asset)
 
 	healthcheck.Start(ctx)
 

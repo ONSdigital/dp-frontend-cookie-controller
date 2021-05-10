@@ -5,42 +5,108 @@
 // locales/service.cy.toml (6.003kB)
 // locales/service.en.toml (6.003kB)
 // templates/cookies-preferences.tmpl (3.68kB)
-// ../../../personal-projects/test-modules/render/Makefile (1.185kB)
-// ../../../personal-projects/test-modules/render/assets/assets.go (139B)
-// ../../../personal-projects/test-modules/render/assets/data.go (24.278kB)
-// ../../../personal-projects/test-modules/render/assets/locales/core.cy.toml (19.237kB)
-// ../../../personal-projects/test-modules/render/assets/locales/core.en.toml (17.835kB)
-// ../../../personal-projects/test-modules/render/assets/templates/error.tmpl (2.136kB)
-// ../../../personal-projects/test-modules/render/assets/templates/main.tmpl (2.746kB)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/banners/census.tmpl (700B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/banners/cookies.tmpl (2.305kB)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/banners/covid.tmpl (736B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/banners/survey.tmpl (778B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/breadcrumb.tmpl (1.025kB)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/feedback.tmpl (2.818kB)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/filter-selection.tmpl (751B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/footer.tmpl (4.278kB)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/gtm-data-layer.tmpl (1.169kB)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/header.tmpl (19.196kB)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/json-ld/base.tmpl (334B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/json-ld/dataset/common.tmpl (747B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/json-ld/dataset/filterable.tmpl (889B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/json-ld/dataset/legacy.tmpl (913B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/json-ld/dataset/timeseries.tmpl (154B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/json-ld/homepage.tmpl (417B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/latest-release-alert.tmpl (494B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/release-alert.tmpl (986B)
-// ../../../personal-projects/test-modules/render/assets/templates/partials/spinner.tmpl (932B)
-// ../../../personal-projects/test-modules/render/build/dp-render (209.256kB)
-// ../../../personal-projects/test-modules/render/go.mod (910B)
-// ../../../personal-projects/test-modules/render/go.sum (8.744kB)
-// ../../../personal-projects/test-modules/render/helpers.go (9.619kB)
-// ../../../personal-projects/test-modules/render/models/cookies.go (170B)
-// ../../../personal-projects/test-modules/render/models/error_response.go (75B)
-// ../../../personal-projects/test-modules/render/models/metadata.go (219B)
-// ../../../personal-projects/test-modules/render/models/page.go (1.806kB)
-// ../../../personal-projects/test-modules/render/models/taxonomy.go (244B)
-// ../../../personal-projects/test-modules/render/render.go (1.961kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/Makefile (1.167kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/assets.go (139B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/data.go (3.126kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/locales/active.cy.toml (23.49kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/locales/active.en.toml (22.601kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/error.tmpl (2.136kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/main.tmpl (2.746kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/census.tmpl (700B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/cookies.tmpl (2.305kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/covid.tmpl (736B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/survey.tmpl (778B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/breadcrumb.tmpl (1.025kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/feedback.tmpl (2.818kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/filter-selection.tmpl (751B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/footer.tmpl (4.278kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/gtm-data-layer.tmpl (1.169kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/header.tmpl (19.196kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/base.tmpl (334B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/common.tmpl (747B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/filterable.tmpl (889B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/legacy.tmpl (913B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/timeseries.tmpl (154B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/homepage.tmpl (417B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/latest-release-alert.tmpl (494B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/release-alert.tmpl (986B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/spinner.tmpl (932B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/build/dp-render (163.226kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/go.mod (792B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/go.sum (8.458kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/helpers.go (9.183kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/render.go (1.947kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/Makefile (1.167kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/assets.go (139B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/data.go (3.126kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/locales/active.cy.toml (23.49kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/locales/active.en.toml (22.601kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/error.tmpl (2.136kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/main.tmpl (2.746kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/census.tmpl (700B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/cookies.tmpl (2.305kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/covid.tmpl (736B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/survey.tmpl (778B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/breadcrumb.tmpl (1.025kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/feedback.tmpl (2.818kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/filter-selection.tmpl (751B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/footer.tmpl (4.278kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/gtm-data-layer.tmpl (1.169kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/header.tmpl (19.196kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/base.tmpl (334B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/common.tmpl (747B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/filterable.tmpl (889B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/legacy.tmpl (913B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/timeseries.tmpl (154B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/homepage.tmpl (417B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/latest-release-alert.tmpl (494B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/release-alert.tmpl (986B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/spinner.tmpl (932B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/build/dp-render (163.226kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/go.mod (957B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/go.sum (8.84kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/helpers.go (9.188kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/cookies.go (170B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/metadata.go (219B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/page.go (1.806kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/taxonomy.go (244B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/render.go (1.952kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/Makefile (1.185kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/assets.go (139B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/data.go (24.278kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/locales/core.cy.toml (19.237kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/locales/core.en.toml (17.835kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/error.tmpl (2.136kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/main.tmpl (2.746kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/banners/census.tmpl (700B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/banners/cookies.tmpl (2.305kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/banners/covid.tmpl (736B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/banners/survey.tmpl (778B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/breadcrumb.tmpl (1.025kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/feedback.tmpl (2.818kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/filter-selection.tmpl (751B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/footer.tmpl (4.278kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/gtm-data-layer.tmpl (1.169kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/header.tmpl (19.196kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/base.tmpl (334B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/dataset/common.tmpl (747B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/dataset/filterable.tmpl (889B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/dataset/legacy.tmpl (913B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/dataset/timeseries.tmpl (154B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/homepage.tmpl (417B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/latest-release-alert.tmpl (494B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/release-alert.tmpl (986B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/spinner.tmpl (932B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/build/dp-render (209.256kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/go.mod (516B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/go.sum (8.744kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/helpers.go (9.619kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/cookies.go (170B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/error_response.go (75B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/metadata.go (219B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/page.go (1.806kB)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/taxonomy.go (244B)
+// ../../../../go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/render.go (2.001kB)
 
 package assets
 
@@ -122,10 +188,1198 @@ func templatesCookiesPreferencesTmpl() (*asset, error) {
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderMakefile reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderMakefile() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/Makefile"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/Makefile"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dMakefile reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dMakefile() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/Makefile"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/Makefile"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsAssetsGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsAssetsGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/assets.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/assets.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsDataGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsDataGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/data.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/data.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsLocalesActiveCyToml reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsLocalesActiveCyToml() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/locales/active.cy.toml"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/locales/active.cy.toml"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsLocalesActiveEnToml reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsLocalesActiveEnToml() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/locales/active.en.toml"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/locales/active.en.toml"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesErrorTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesErrorTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/error.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/error.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesMainTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesMainTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/main.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/main.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCensusTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCensusTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/census.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/census.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCookiesTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCookiesTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/cookies.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/cookies.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCovidTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCovidTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/covid.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/covid.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersSurveyTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersSurveyTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/survey.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/survey.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBreadcrumbTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBreadcrumbTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/breadcrumb.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/breadcrumb.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFeedbackTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFeedbackTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/feedback.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/feedback.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFilterSelectionTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFilterSelectionTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/filter-selection.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/filter-selection.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFooterTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFooterTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/footer.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/footer.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsGtmDataLayerTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsGtmDataLayerTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/gtm-data-layer.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/gtm-data-layer.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsHeaderTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsHeaderTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/header.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/header.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdBaseTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdBaseTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/base.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/base.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetCommonTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetCommonTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/common.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/common.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetFilterableTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetFilterableTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/filterable.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/filterable.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetLegacyTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetLegacyTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/legacy.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/legacy.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetTimeseriesTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetTimeseriesTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/timeseries.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/timeseries.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdHomepageTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdHomepageTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/homepage.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/homepage.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsLatestReleaseAlertTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsLatestReleaseAlertTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/latest-release-alert.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/latest-release-alert.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsReleaseAlertTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsReleaseAlertTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/release-alert.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/release-alert.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsSpinnerTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsSpinnerTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/spinner.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/spinner.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dBuildDpRender reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dBuildDpRender() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/build/dp-render"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/build/dp-render"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dGoMod reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dGoMod() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/go.mod"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/go.mod"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dGoSum reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dGoSum() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/go.sum"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/go.sum"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dHelpersGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dHelpersGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/helpers.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/helpers.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dRenderGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dRenderGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/render.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/render.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498Makefile reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498Makefile() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/Makefile"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/Makefile"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsAssetsGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsAssetsGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/assets.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/assets.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsDataGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsDataGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/data.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/data.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsLocalesActiveCyToml reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsLocalesActiveCyToml() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/locales/active.cy.toml"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/locales/active.cy.toml"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsLocalesActiveEnToml reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsLocalesActiveEnToml() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/locales/active.en.toml"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/locales/active.en.toml"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesErrorTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesErrorTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/error.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/error.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesMainTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesMainTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/main.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/main.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCensusTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCensusTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/census.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/census.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCookiesTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCookiesTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/cookies.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/cookies.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCovidTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCovidTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/covid.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/covid.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersSurveyTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersSurveyTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/survey.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/survey.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBreadcrumbTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBreadcrumbTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/breadcrumb.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/breadcrumb.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFeedbackTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFeedbackTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/feedback.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/feedback.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFilterSelectionTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFilterSelectionTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/filter-selection.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/filter-selection.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFooterTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFooterTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/footer.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/footer.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsGtmDataLayerTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsGtmDataLayerTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/gtm-data-layer.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/gtm-data-layer.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsHeaderTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsHeaderTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/header.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/header.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdBaseTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdBaseTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/base.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/base.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetCommonTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetCommonTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/common.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/common.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetFilterableTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetFilterableTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/filterable.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/filterable.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetLegacyTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetLegacyTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/legacy.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/legacy.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetTimeseriesTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetTimeseriesTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/timeseries.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/timeseries.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdHomepageTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdHomepageTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/homepage.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/homepage.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsLatestReleaseAlertTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsLatestReleaseAlertTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/latest-release-alert.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/latest-release-alert.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsReleaseAlertTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsReleaseAlertTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/release-alert.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/release-alert.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsSpinnerTmpl reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsSpinnerTmpl() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/spinner.tmpl"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/spinner.tmpl"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498BuildDpRender reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498BuildDpRender() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/build/dp-render"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/build/dp-render"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498GoMod reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498GoMod() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/go.mod"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/go.mod"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498GoSum reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498GoSum() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/go.sum"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/go.sum"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498HelpersGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498HelpersGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/helpers.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/helpers.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsCookiesGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsCookiesGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/cookies.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/cookies.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsMetadataGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsMetadataGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/metadata.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/metadata.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsPageGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsPageGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/page.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/page.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsTaxonomyGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsTaxonomyGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/taxonomy.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/taxonomy.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498RenderGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498RenderGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/render.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/render.go"
+	bytes, err := bindataRead(path, name)
+	if err != nil {
+		return nil, err
+	}
+
+	fi, err := os.Stat(path)
+	if err != nil {
+		err = fmt.Errorf("Error reading asset info %s at %s: %w", name, path, err)
+	}
+
+	a := &asset{bytes: bytes, info: fi}
+	return a, err
+}
+
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbMakefile reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbMakefile() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/Makefile"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/Makefile"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -142,7 +1396,7 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderMakefile() (*asse
 
 // assetsGo reads file data from disk. It returns an error on failure.
 func assetsGo() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/assets.go"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/assets.go"
 	name := "assets.go"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -160,7 +1414,7 @@ func assetsGo() (*asset, error) {
 
 // dataGo reads file data from disk. It returns an error on failure.
 func dataGo() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/data.go"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/data.go"
 	name := "data.go"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -178,7 +1432,7 @@ func dataGo() (*asset, error) {
 
 // localesCoreCyToml reads file data from disk. It returns an error on failure.
 func localesCoreCyToml() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/locales/core.cy.toml"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/locales/core.cy.toml"
 	name := "locales/core.cy.toml"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -196,7 +1450,7 @@ func localesCoreCyToml() (*asset, error) {
 
 // localesCoreEnToml reads file data from disk. It returns an error on failure.
 func localesCoreEnToml() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/locales/core.en.toml"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/locales/core.en.toml"
 	name := "locales/core.en.toml"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -214,7 +1468,7 @@ func localesCoreEnToml() (*asset, error) {
 
 // templatesErrorTmpl reads file data from disk. It returns an error on failure.
 func templatesErrorTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/error.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/error.tmpl"
 	name := "templates/error.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -232,7 +1486,7 @@ func templatesErrorTmpl() (*asset, error) {
 
 // templatesMainTmpl reads file data from disk. It returns an error on failure.
 func templatesMainTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/main.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/main.tmpl"
 	name := "templates/main.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -250,7 +1504,7 @@ func templatesMainTmpl() (*asset, error) {
 
 // templatesPartialsBannersCensusTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsBannersCensusTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/banners/census.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/banners/census.tmpl"
 	name := "templates/partials/banners/census.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -268,7 +1522,7 @@ func templatesPartialsBannersCensusTmpl() (*asset, error) {
 
 // templatesPartialsBannersCookiesTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsBannersCookiesTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/banners/cookies.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/banners/cookies.tmpl"
 	name := "templates/partials/banners/cookies.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -286,7 +1540,7 @@ func templatesPartialsBannersCookiesTmpl() (*asset, error) {
 
 // templatesPartialsBannersCovidTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsBannersCovidTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/banners/covid.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/banners/covid.tmpl"
 	name := "templates/partials/banners/covid.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -304,7 +1558,7 @@ func templatesPartialsBannersCovidTmpl() (*asset, error) {
 
 // templatesPartialsBannersSurveyTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsBannersSurveyTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/banners/survey.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/banners/survey.tmpl"
 	name := "templates/partials/banners/survey.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -322,7 +1576,7 @@ func templatesPartialsBannersSurveyTmpl() (*asset, error) {
 
 // templatesPartialsBreadcrumbTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsBreadcrumbTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/breadcrumb.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/breadcrumb.tmpl"
 	name := "templates/partials/breadcrumb.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -340,7 +1594,7 @@ func templatesPartialsBreadcrumbTmpl() (*asset, error) {
 
 // templatesPartialsFeedbackTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsFeedbackTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/feedback.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/feedback.tmpl"
 	name := "templates/partials/feedback.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -358,7 +1612,7 @@ func templatesPartialsFeedbackTmpl() (*asset, error) {
 
 // templatesPartialsFilterSelectionTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsFilterSelectionTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/filter-selection.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/filter-selection.tmpl"
 	name := "templates/partials/filter-selection.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -376,7 +1630,7 @@ func templatesPartialsFilterSelectionTmpl() (*asset, error) {
 
 // templatesPartialsFooterTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsFooterTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/footer.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/footer.tmpl"
 	name := "templates/partials/footer.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -394,7 +1648,7 @@ func templatesPartialsFooterTmpl() (*asset, error) {
 
 // templatesPartialsGtmDataLayerTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsGtmDataLayerTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/gtm-data-layer.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/gtm-data-layer.tmpl"
 	name := "templates/partials/gtm-data-layer.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -412,7 +1666,7 @@ func templatesPartialsGtmDataLayerTmpl() (*asset, error) {
 
 // templatesPartialsHeaderTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsHeaderTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/header.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/header.tmpl"
 	name := "templates/partials/header.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -430,7 +1684,7 @@ func templatesPartialsHeaderTmpl() (*asset, error) {
 
 // templatesPartialsJsonLdBaseTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsJsonLdBaseTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/json-ld/base.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/base.tmpl"
 	name := "templates/partials/json-ld/base.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -448,7 +1702,7 @@ func templatesPartialsJsonLdBaseTmpl() (*asset, error) {
 
 // templatesPartialsJsonLdDatasetCommonTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsJsonLdDatasetCommonTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/json-ld/dataset/common.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/dataset/common.tmpl"
 	name := "templates/partials/json-ld/dataset/common.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -466,7 +1720,7 @@ func templatesPartialsJsonLdDatasetCommonTmpl() (*asset, error) {
 
 // templatesPartialsJsonLdDatasetFilterableTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsJsonLdDatasetFilterableTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/json-ld/dataset/filterable.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/dataset/filterable.tmpl"
 	name := "templates/partials/json-ld/dataset/filterable.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -484,7 +1738,7 @@ func templatesPartialsJsonLdDatasetFilterableTmpl() (*asset, error) {
 
 // templatesPartialsJsonLdDatasetLegacyTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsJsonLdDatasetLegacyTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/json-ld/dataset/legacy.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/dataset/legacy.tmpl"
 	name := "templates/partials/json-ld/dataset/legacy.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -502,7 +1756,7 @@ func templatesPartialsJsonLdDatasetLegacyTmpl() (*asset, error) {
 
 // templatesPartialsJsonLdDatasetTimeseriesTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsJsonLdDatasetTimeseriesTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/json-ld/dataset/timeseries.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/dataset/timeseries.tmpl"
 	name := "templates/partials/json-ld/dataset/timeseries.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -520,7 +1774,7 @@ func templatesPartialsJsonLdDatasetTimeseriesTmpl() (*asset, error) {
 
 // templatesPartialsJsonLdHomepageTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsJsonLdHomepageTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/json-ld/homepage.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/json-ld/homepage.tmpl"
 	name := "templates/partials/json-ld/homepage.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -538,7 +1792,7 @@ func templatesPartialsJsonLdHomepageTmpl() (*asset, error) {
 
 // templatesPartialsLatestReleaseAlertTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsLatestReleaseAlertTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/latest-release-alert.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/latest-release-alert.tmpl"
 	name := "templates/partials/latest-release-alert.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -556,7 +1810,7 @@ func templatesPartialsLatestReleaseAlertTmpl() (*asset, error) {
 
 // templatesPartialsReleaseAlertTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsReleaseAlertTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/release-alert.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/release-alert.tmpl"
 	name := "templates/partials/release-alert.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -574,7 +1828,7 @@ func templatesPartialsReleaseAlertTmpl() (*asset, error) {
 
 // templatesPartialsSpinnerTmpl reads file data from disk. It returns an error on failure.
 func templatesPartialsSpinnerTmpl() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/templates/partials/spinner.tmpl"
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/assets/templates/partials/spinner.tmpl"
 	name := "templates/partials/spinner.tmpl"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
@@ -590,10 +1844,10 @@ func templatesPartialsSpinnerTmpl() (*asset, error) {
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderBuildDpRender reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderBuildDpRender() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/build/dp-render"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/build/dp-render"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbBuildDpRender reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbBuildDpRender() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/build/dp-render"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/build/dp-render"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -608,10 +1862,10 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderBuildDpRender() (
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoMod reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoMod() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/go.mod"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/go.mod"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbGoMod reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbGoMod() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/go.mod"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/go.mod"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -626,10 +1880,10 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoMod() (*asset, 
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoSum reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoSum() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/go.sum"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/go.sum"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbGoSum reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbGoSum() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/go.sum"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/go.sum"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -644,10 +1898,10 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoSum() (*asset, 
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderHelpersGo reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderHelpersGo() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/helpers.go"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/helpers.go"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbHelpersGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbHelpersGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/helpers.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/helpers.go"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -662,10 +1916,10 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderHelpersGo() (*ass
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsCookiesGo reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsCookiesGo() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/models/cookies.go"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/models/cookies.go"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsCookiesGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsCookiesGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/cookies.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/cookies.go"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -680,10 +1934,10 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsCookiesGo()
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsError_responseGo reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsError_responseGo() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/models/error_response.go"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/models/error_response.go"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsError_responseGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsError_responseGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/error_response.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/error_response.go"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -698,10 +1952,10 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsError_respo
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsMetadataGo reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsMetadataGo() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/models/metadata.go"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/models/metadata.go"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsMetadataGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsMetadataGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/metadata.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/metadata.go"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -716,10 +1970,10 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsMetadataGo(
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsPageGo reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsPageGo() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/models/page.go"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/models/page.go"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsPageGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsPageGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/page.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/page.go"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -734,10 +1988,10 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsPageGo() (*
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsTaxonomyGo reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsTaxonomyGo() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/models/taxonomy.go"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/models/taxonomy.go"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsTaxonomyGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsTaxonomyGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/taxonomy.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/taxonomy.go"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -752,10 +2006,10 @@ func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsTaxonomyGo(
 	return a, err
 }
 
-// usersRavipradhanDocumentsPersonalProjectsTestModulesRenderRenderGo reads file data from disk. It returns an error on failure.
-func usersRavipradhanDocumentsPersonalProjectsTestModulesRenderRenderGo() (*asset, error) {
-	path := "/Users/ravipradhan/Documents/personal-projects/test-modules/render/render.go"
-	name := "Users/ravipradhan/Documents/personal-projects/test-modules/render/render.go"
+// usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbRenderGo reads file data from disk. It returns an error on failure.
+func usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbRenderGo() (*asset, error) {
+	path := "/Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/render.go"
+	name := "Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/render.go"
 	bytes, err := bindataRead(path, name)
 	if err != nil {
 		return nil, err
@@ -864,7 +2118,73 @@ var _bindata = map[string]func() (*asset, error){
 	"locales/service.cy.toml":            localesServiceCyToml,
 	"locales/service.en.toml":            localesServiceEnToml,
 	"templates/cookies-preferences.tmpl": templatesCookiesPreferencesTmpl,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/Makefile": usersRavipradhanDocumentsPersonalProjectsTestModulesRenderMakefile,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/Makefile":                                                  usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dMakefile,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/assets.go":                                          usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsAssetsGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/data.go":                                            usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsDataGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/locales/active.cy.toml":                             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsLocalesActiveCyToml,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/locales/active.en.toml":                             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsLocalesActiveEnToml,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/error.tmpl":                               usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesErrorTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/main.tmpl":                                usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesMainTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/census.tmpl":             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCensusTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/cookies.tmpl":            usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCookiesTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/covid.tmpl":              usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCovidTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/banners/survey.tmpl":             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersSurveyTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/breadcrumb.tmpl":                 usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBreadcrumbTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/feedback.tmpl":                   usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFeedbackTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/filter-selection.tmpl":           usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFilterSelectionTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/footer.tmpl":                     usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFooterTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/gtm-data-layer.tmpl":             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsGtmDataLayerTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/header.tmpl":                     usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsHeaderTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/base.tmpl":               usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdBaseTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/common.tmpl":     usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetCommonTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/filterable.tmpl": usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetFilterableTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/legacy.tmpl":     usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetLegacyTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/dataset/timeseries.tmpl": usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetTimeseriesTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/json-ld/homepage.tmpl":           usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdHomepageTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/latest-release-alert.tmpl":       usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsLatestReleaseAlertTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/release-alert.tmpl":              usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsReleaseAlertTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/assets/templates/partials/spinner.tmpl":                    usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsSpinnerTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/build/dp-render":                                           usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dBuildDpRender,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/go.mod":                                                    usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dGoMod,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/go.sum":                                                    usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dGoSum,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/helpers.go":                                                usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dHelpersGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210302115958-f77d03b4b09d/render.go":                                                 usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dRenderGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/Makefile":                                                  usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498Makefile,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/assets.go":                                          usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsAssetsGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/data.go":                                            usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsDataGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/locales/active.cy.toml":                             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsLocalesActiveCyToml,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/locales/active.en.toml":                             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsLocalesActiveEnToml,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/error.tmpl":                               usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesErrorTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/main.tmpl":                                usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesMainTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/census.tmpl":             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCensusTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/cookies.tmpl":            usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCookiesTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/covid.tmpl":              usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCovidTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/banners/survey.tmpl":             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersSurveyTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/breadcrumb.tmpl":                 usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBreadcrumbTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/feedback.tmpl":                   usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFeedbackTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/filter-selection.tmpl":           usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFilterSelectionTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/footer.tmpl":                     usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFooterTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/gtm-data-layer.tmpl":             usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsGtmDataLayerTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/header.tmpl":                     usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsHeaderTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/base.tmpl":               usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdBaseTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/common.tmpl":     usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetCommonTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/filterable.tmpl": usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetFilterableTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/legacy.tmpl":     usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetLegacyTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/dataset/timeseries.tmpl": usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetTimeseriesTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/json-ld/homepage.tmpl":           usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdHomepageTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/latest-release-alert.tmpl":       usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsLatestReleaseAlertTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/release-alert.tmpl":              usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsReleaseAlertTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/assets/templates/partials/spinner.tmpl":                    usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsSpinnerTmpl,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/build/dp-render":                                           usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498BuildDpRender,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/go.mod":                                                    usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498GoMod,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/go.sum":                                                    usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498GoSum,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/helpers.go":                                                usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498HelpersGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/cookies.go":                                         usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsCookiesGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/metadata.go":                                        usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsMetadataGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/page.go":                                            usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsPageGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/models/taxonomy.go":                                        usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsTaxonomyGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210505075426-d0afb7a18498/render.go":                                                 usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498RenderGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/Makefile":                                                  usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbMakefile,
 	"assets.go":                                          assetsGo,
 	"data.go":                                            dataGo,
 	"locales/core.cy.toml":                               localesCoreCyToml,
@@ -890,16 +2210,16 @@ var _bindata = map[string]func() (*asset, error){
 	"templates/partials/latest-release-alert.tmpl":       templatesPartialsLatestReleaseAlertTmpl,
 	"templates/partials/release-alert.tmpl":              templatesPartialsReleaseAlertTmpl,
 	"templates/partials/spinner.tmpl":                    templatesPartialsSpinnerTmpl,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/build/dp-render":          usersRavipradhanDocumentsPersonalProjectsTestModulesRenderBuildDpRender,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/go.mod":                   usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoMod,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/go.sum":                   usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoSum,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/helpers.go":               usersRavipradhanDocumentsPersonalProjectsTestModulesRenderHelpersGo,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/models/cookies.go":        usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsCookiesGo,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/models/error_response.go": usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsError_responseGo,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/models/metadata.go":       usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsMetadataGo,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/models/page.go":           usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsPageGo,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/models/taxonomy.go":       usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsTaxonomyGo,
-	"Users/ravipradhan/Documents/personal-projects/test-modules/render/render.go":                usersRavipradhanDocumentsPersonalProjectsTestModulesRenderRenderGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/build/dp-render":          usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbBuildDpRender,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/go.mod":                   usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbGoMod,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/go.sum":                   usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbGoSum,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/helpers.go":               usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbHelpersGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/cookies.go":        usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsCookiesGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/error_response.go": usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsError_responseGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/metadata.go":       usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsMetadataGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/page.go":           usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsPageGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/models/taxonomy.go":       usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsTaxonomyGo,
+	"Users/ravipradhan/go/pkg/mod/github.com/rav-pradhan/test-modules/render@v0.0.0-20210510082626-9ff1a264adfb/render.go":                usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbRenderGo,
 }
 
 // AssetDebug is true if the assets were built with the debug flag enabled.
@@ -948,25 +2268,135 @@ type bintree struct {
 var _bintree = &bintree{nil, map[string]*bintree{
 	"Users": {nil, map[string]*bintree{
 		"ravipradhan": {nil, map[string]*bintree{
-			"Documents": {nil, map[string]*bintree{
-				"personal-projects": {nil, map[string]*bintree{
-					"test-modules": {nil, map[string]*bintree{
-						"render": {nil, map[string]*bintree{
-							"Makefile": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderMakefile, map[string]*bintree{}},
-							"build": {nil, map[string]*bintree{
-								"dp-render": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderBuildDpRender, map[string]*bintree{}},
+			"go": {nil, map[string]*bintree{
+				"pkg": {nil, map[string]*bintree{
+					"mod": {nil, map[string]*bintree{
+						"github.com": {nil, map[string]*bintree{
+							"rav-pradhan": {nil, map[string]*bintree{
+								"test-modules": {nil, map[string]*bintree{
+									"render@v0.0.0-20210302115958-f77d03b4b09d": {nil, map[string]*bintree{
+										"Makefile": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dMakefile, map[string]*bintree{}},
+										"assets": {nil, map[string]*bintree{
+											"assets.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsAssetsGo, map[string]*bintree{}},
+											"data.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsDataGo, map[string]*bintree{}},
+											"locales": {nil, map[string]*bintree{
+												"active.cy.toml": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsLocalesActiveCyToml, map[string]*bintree{}},
+												"active.en.toml": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsLocalesActiveEnToml, map[string]*bintree{}},
+											}},
+											"templates": {nil, map[string]*bintree{
+												"error.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesErrorTmpl, map[string]*bintree{}},
+												"main.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesMainTmpl, map[string]*bintree{}},
+												"partials": {nil, map[string]*bintree{
+													"banners": {nil, map[string]*bintree{
+														"census.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCensusTmpl, map[string]*bintree{}},
+														"cookies.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCookiesTmpl, map[string]*bintree{}},
+														"covid.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersCovidTmpl, map[string]*bintree{}},
+														"survey.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBannersSurveyTmpl, map[string]*bintree{}},
+													}},
+													"breadcrumb.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsBreadcrumbTmpl, map[string]*bintree{}},
+													"feedback.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFeedbackTmpl, map[string]*bintree{}},
+													"filter-selection.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFilterSelectionTmpl, map[string]*bintree{}},
+													"footer.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsFooterTmpl, map[string]*bintree{}},
+													"gtm-data-layer.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsGtmDataLayerTmpl, map[string]*bintree{}},
+													"header.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsHeaderTmpl, map[string]*bintree{}},
+													"json-ld": {nil, map[string]*bintree{
+														"base.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdBaseTmpl, map[string]*bintree{}},
+														"dataset": {nil, map[string]*bintree{
+															"common.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetCommonTmpl, map[string]*bintree{}},
+															"filterable.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetFilterableTmpl, map[string]*bintree{}},
+															"legacy.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetLegacyTmpl, map[string]*bintree{}},
+															"timeseries.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdDatasetTimeseriesTmpl, map[string]*bintree{}},
+														}},
+														"homepage.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsJsonLdHomepageTmpl, map[string]*bintree{}},
+													}},
+													"latest-release-alert.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsLatestReleaseAlertTmpl, map[string]*bintree{}},
+													"release-alert.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsReleaseAlertTmpl, map[string]*bintree{}},
+													"spinner.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dAssetsTemplatesPartialsSpinnerTmpl, map[string]*bintree{}},
+												}},
+											}},
+										}},
+										"build": {nil, map[string]*bintree{
+											"dp-render": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dBuildDpRender, map[string]*bintree{}},
+										}},
+										"go.mod": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dGoMod, map[string]*bintree{}},
+										"go.sum": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dGoSum, map[string]*bintree{}},
+										"helpers.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dHelpersGo, map[string]*bintree{}},
+										"render.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210302115958F77d03b4b09dRenderGo, map[string]*bintree{}},
+									}},
+									"render@v0.0.0-20210505075426-d0afb7a18498": {nil, map[string]*bintree{
+										"Makefile": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498Makefile, map[string]*bintree{}},
+										"assets": {nil, map[string]*bintree{
+											"assets.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsAssetsGo, map[string]*bintree{}},
+											"data.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsDataGo, map[string]*bintree{}},
+											"locales": {nil, map[string]*bintree{
+												"active.cy.toml": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsLocalesActiveCyToml, map[string]*bintree{}},
+												"active.en.toml": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsLocalesActiveEnToml, map[string]*bintree{}},
+											}},
+											"templates": {nil, map[string]*bintree{
+												"error.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesErrorTmpl, map[string]*bintree{}},
+												"main.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesMainTmpl, map[string]*bintree{}},
+												"partials": {nil, map[string]*bintree{
+													"banners": {nil, map[string]*bintree{
+														"census.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCensusTmpl, map[string]*bintree{}},
+														"cookies.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCookiesTmpl, map[string]*bintree{}},
+														"covid.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersCovidTmpl, map[string]*bintree{}},
+														"survey.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBannersSurveyTmpl, map[string]*bintree{}},
+													}},
+													"breadcrumb.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsBreadcrumbTmpl, map[string]*bintree{}},
+													"feedback.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFeedbackTmpl, map[string]*bintree{}},
+													"filter-selection.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFilterSelectionTmpl, map[string]*bintree{}},
+													"footer.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsFooterTmpl, map[string]*bintree{}},
+													"gtm-data-layer.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsGtmDataLayerTmpl, map[string]*bintree{}},
+													"header.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsHeaderTmpl, map[string]*bintree{}},
+													"json-ld": {nil, map[string]*bintree{
+														"base.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdBaseTmpl, map[string]*bintree{}},
+														"dataset": {nil, map[string]*bintree{
+															"common.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetCommonTmpl, map[string]*bintree{}},
+															"filterable.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetFilterableTmpl, map[string]*bintree{}},
+															"legacy.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetLegacyTmpl, map[string]*bintree{}},
+															"timeseries.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdDatasetTimeseriesTmpl, map[string]*bintree{}},
+														}},
+														"homepage.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsJsonLdHomepageTmpl, map[string]*bintree{}},
+													}},
+													"latest-release-alert.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsLatestReleaseAlertTmpl, map[string]*bintree{}},
+													"release-alert.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsReleaseAlertTmpl, map[string]*bintree{}},
+													"spinner.tmpl": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498AssetsTemplatesPartialsSpinnerTmpl, map[string]*bintree{}},
+												}},
+											}},
+										}},
+										"build": {nil, map[string]*bintree{
+											"dp-render": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498BuildDpRender, map[string]*bintree{}},
+										}},
+										"go.mod": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498GoMod, map[string]*bintree{}},
+										"go.sum": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498GoSum, map[string]*bintree{}},
+										"helpers.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498HelpersGo, map[string]*bintree{}},
+										"models": {nil, map[string]*bintree{
+											"cookies.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsCookiesGo, map[string]*bintree{}},
+											"metadata.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsMetadataGo, map[string]*bintree{}},
+											"page.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsPageGo, map[string]*bintree{}},
+											"taxonomy.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498ModelsTaxonomyGo, map[string]*bintree{}},
+										}},
+										"render.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV00020210505075426D0afb7a18498RenderGo, map[string]*bintree{}},
+									}},
+									"render@v0.0.0-20210510082626-9ff1a264adfb": {nil, map[string]*bintree{
+										"Makefile": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbMakefile, map[string]*bintree{}},
+										"build": {nil, map[string]*bintree{
+											"dp-render": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbBuildDpRender, map[string]*bintree{}},
+										}},
+										"go.mod": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbGoMod, map[string]*bintree{}},
+										"go.sum": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbGoSum, map[string]*bintree{}},
+										"helpers.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbHelpersGo, map[string]*bintree{}},
+										"models": {nil, map[string]*bintree{
+											"cookies.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsCookiesGo, map[string]*bintree{}},
+											"error_response.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsError_responseGo, map[string]*bintree{}},
+											"metadata.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsMetadataGo, map[string]*bintree{}},
+											"page.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsPageGo, map[string]*bintree{}},
+											"taxonomy.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbModelsTaxonomyGo, map[string]*bintree{}},
+										}},
+										"render.go": {usersRavipradhanGoPkgModGithubComRavPradhanTestModulesRenderV000202105100826269ff1a264adfbRenderGo, map[string]*bintree{}},
+									}},
+								}},
 							}},
-							"go.mod": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoMod, map[string]*bintree{}},
-							"go.sum": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderGoSum, map[string]*bintree{}},
-							"helpers.go": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderHelpersGo, map[string]*bintree{}},
-							"models": {nil, map[string]*bintree{
-								"cookies.go": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsCookiesGo, map[string]*bintree{}},
-								"error_response.go": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsError_responseGo, map[string]*bintree{}},
-								"metadata.go": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsMetadataGo, map[string]*bintree{}},
-								"page.go": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsPageGo, map[string]*bintree{}},
-								"taxonomy.go": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderModelsTaxonomyGo, map[string]*bintree{}},
-							}},
-							"render.go": {usersRavipradhanDocumentsPersonalProjectsTestModulesRenderRenderGo, map[string]*bintree{}},
 						}},
 					}},
 				}},

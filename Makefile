@@ -3,6 +3,7 @@ BINPATH ?= build
 BUILD_TIME=$(shell date +%s)
 GIT_COMMIT=$(shell git rev-parse HEAD)
 VERSION ?= $(shell git tag --points-at HEAD | grep ^v | head -n 1)
+CORE_ASSETS_PATH=$(shell go list -f '{{.Dir}}' -m github.com/rav-pradhan/test-modules/render)
 
 .PHONY: audit
 audit:
@@ -24,6 +25,11 @@ test: generate-debug
 .PHONY: generate-debug
 generate-debug:
 	# build the dev version
-	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -prefix "/Users/ravipradhan/Documents/personal-projects/test-modules/render/assets" -debug -o data.go -pkg assets locales/... templates/... /Users/ravipradhan/Documents/personal-projects/test-modules/render/assets/../...
+	go get github.com/rav-pradhan/test-modules/render
+	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -prefix $(CORE_ASSETS_PATH)/assets -debug -o data.go -pkg assets locales/... templates/... $(CORE_ASSETS_PATH)/../...
 	{ echo "// +build debug\n"; cat assets/data.go; } > assets/debug.go.new
 	mv assets/debug.go.new assets/data.go
+
+.PHONY: test-local
+test-local:
+	echo $(CORE_ASSETS_PATH)
