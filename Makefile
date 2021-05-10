@@ -3,7 +3,6 @@ BINPATH ?= build
 BUILD_TIME=$(shell date +%s)
 GIT_COMMIT=$(shell git rev-parse HEAD)
 VERSION ?= $(shell git tag --points-at HEAD | grep ^v | head -n 1)
-CORE_ASSETS_PATH=$(shell go list -f '{{.Dir}}' -m github.com/rav-pradhan/test-modules/render)
 
 .PHONY: audit
 audit:
@@ -23,17 +22,20 @@ test: generate-debug
 	go test -race -cover ./...
 
 .PHONY: generate-debug
-generate-debug:
+generate-debug: fetch-renderer-lib
 	# fetch the renderer library and build the dev version
-	go get github.com/rav-pradhan/test-modules/render
 	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -prefix $(CORE_ASSETS_PATH)/assets -debug -o data.go -pkg assets locales/... templates/... $(CORE_ASSETS_PATH)/assets/locales/... $(CORE_ASSETS_PATH)/assets/templates/...
 	{ echo "// +build debug\n"; cat assets/data.go; } > assets/debug.go.new
 	mv assets/debug.go.new assets/data.go
 
 .PHONY: generate-prod
-generate-prod:
+generate-prod: fetch-renderer-lib
 	# fetch the renderer library and build the prod version
-	go get github.com/rav-pradhan/test-modules/render
 	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -prefix $(CORE_ASSETS_PATH)/assets -debug -o data.go -pkg assets locales/... templates/... $(CORE_ASSETS_PATH)/assets/locales/... $(CORE_ASSETS_PATH)/assets/templates/...
 	{ echo "// +build production\n"; cat assets/data.go; } > assets/data.go.new
 	mv assets/data.go.new assets/data.go
+
+.PHONY: fetch-renderer-lib
+fetch-renderer-lib:
+	go get github.com/rav-pradhan/test-modules/render
+	$(eval CORE_ASSETS_PATH := $(shell go list -f '{{.Dir}}' -m github.com/rav-pradhan/test-modules/render))
