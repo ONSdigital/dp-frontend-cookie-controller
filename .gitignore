@@ -9,3 +9,5 @@
 *.iml
 *.iws
 build/dp-frontend-cookie-controller
+
+assets/data.go
