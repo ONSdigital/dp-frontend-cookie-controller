@@ -30,6 +30,7 @@ generate-debug: fetch-renderer-lib
 
 .PHONY: generate-prod
 generate-prod: fetch-renderer-lib
+	echo ${CORE_ASSETS_PATH}
 	# fetch the renderer library and build the prod version
 	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -prefix $(CORE_ASSETS_PATH)/assets -debug -o data.go -pkg assets locales/... templates/... $(CORE_ASSETS_PATH)/assets/locales/... $(CORE_ASSETS_PATH)/assets/templates/...
 	{ echo "// +build production\n"; cat assets/data.go; } > assets/data.go.new
@@ -37,5 +38,4 @@ generate-prod: fetch-renderer-lib
 
 .PHONY: fetch-renderer-lib
 fetch-renderer-lib:
-	go get github.com/rav-pradhan/test-modules/render
-	$(eval CORE_ASSETS_PATH := $(shell go list -f '{{.Dir}}' -m github.com/rav-pradhan/test-modules/render))
+	$(eval CORE_ASSETS_PATH = $(shell go get github.com/rav-pradhan/test-modules/render && go list -f '{{.Dir}}' -m github.com/rav-pradhan/test-modules/render))
