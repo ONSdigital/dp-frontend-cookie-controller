@@ -8,7 +8,6 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/ONSdigital/dp-api-clients-go/renderer"
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
 	"github.com/rav-pradhan/test-modules/render"
 
@@ -60,11 +59,7 @@ func run(ctx context.Context) error {
 
 	router := mux.NewRouter()
 
-	rend := renderer.New(cfg.RendererURL)
 	healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)
-	if err = registerCheckers(ctx, &healthcheck, rend); err != nil {
-		return err
-	}
 
 	// Initialise render client, routes and initialise localisations bundles
 	rendC := render.New(cfg.PatternLibraryAssetsPath, cfg.SiteDomain, assets.Asset, assets.AssetNames)
@@ -110,11 +105,4 @@ func gracefulShutdown(cfg *config.Config, s *dpnethttp.Server, hc health.HealthC
 	}
 	log.Event(ctx, "graceful shutdown complete successfully")
 	return nil
-}
-
-func registerCheckers(ctx context.Context, h *health.HealthCheck, r *renderer.Renderer) (err error) {
-	// if err = h.AddCheck("frontend renderer", r.Checker); err != nil {
-	// 	log.Event(ctx, "failed to add frontend renderer checker", log.Error(err))
-	// }
-	return
 }

@@ -18,8 +18,8 @@ debug: generate-debug
 	HUMAN_LOG=1 DEBUG=1 $(BINPATH)/dp-frontend-cookie-controller
 
 .PHONY: test
-test: generate-debug
-	go test -race -cover ./...
+test: generate-prod
+	go test -race -cover -tags 'production' ./...
 
 .PHONY: generate-debug
 generate-debug: fetch-renderer-lib
@@ -30,9 +30,8 @@ generate-debug: fetch-renderer-lib
 
 .PHONY: generate-prod
 generate-prod: fetch-renderer-lib
-	echo ${CORE_ASSETS_PATH}
 	# fetch the renderer library and build the prod version
-	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -prefix $(CORE_ASSETS_PATH)/assets -debug -o data.go -pkg assets locales/... templates/... $(CORE_ASSETS_PATH)/assets/locales/... $(CORE_ASSETS_PATH)/assets/templates/...
+	cd assets; go run github.com/kevinburke/go-bindata/go-bindata -prefix $(CORE_ASSETS_PATH)/assets -o data.go -pkg assets locales/... templates/... $(CORE_ASSETS_PATH)/assets/locales/... $(CORE_ASSETS_PATH)/assets/templates/...
 	{ echo "// +build production\n"; cat assets/data.go; } > assets/data.go.new
 	mv assets/data.go.new assets/data.go
 
