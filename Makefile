@@ -36,6 +36,9 @@ generate-prod: fetch-renderer-lib
 	mv assets/data.go.new assets/data.go
 
 .PHONY: fetch-renderer-lib
-fetch-renderer-lib:
-	$(eval APP_RENDERER_VERSION=$(shell awk '{for(i=1;i<=NF;i++) if($$i=="github.com/rav-pradhan/test-modules/render") printf$(i+1)}' go.mod | cut -d ' ' -f2))
+fetch-renderer-lib: get-renderer-version
 	$(eval CORE_ASSETS_PATH = $(shell go get github.com/rav-pradhan/test-modules/render@$(APP_RENDERER_VERSION) && go list -f '{{.Dir}}' -m github.com/rav-pradhan/test-modules/render))
+
+.PHONY: get-renderer-version
+get-renderer-version:
+	$(eval APP_RENDERER_VERSION=$(shell grep "github.com/rav-pradhan/test-modules/render" go.mod | cut -d ' ' -f2 ))
