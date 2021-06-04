@@ -9,6 +9,7 @@ import (
 // Config represents service configuration for dp-frontend-cookie-controller
 type Config struct {
 	BindAddr                   string        `envconfig:"BIND_ADDR"`
+	Debug                      bool          `envconfig:"DEBUG"`
 	RendererURL                string        `envconfig:"RENDERER_URL"`
 	APIRouterURL               string        `envconfig:"API_ROUTER_URL"`
 	SiteDomain                 string        `envconfig:"SITE_DOMAIN"`
@@ -23,17 +24,31 @@ var cfg *Config
 
 // Get returns the default config with any modifications through environment variables
 func Get() (*Config, error) {
+	cfg, err := get()
+	if err != nil {
+		return nil, err
+	}
+
+	if cfg.Debug {
+		cfg.PatternLibraryAssetsPath = "http://localhost:9000/dist"
+	} else {
+		cfg.PatternLibraryAssetsPath = "//cdn.ons.gov.uk/sixteens/2d81e85"
+	}
+	return cfg, nil
+}
+
+func get() (*Config, error) {
 	if cfg != nil {
 		return cfg, nil
 	}
 
-	cfg := &Config{
+	cfg = &Config{
 		BindAddr:                   ":24100",
+		Debug:                      false,
 		RendererURL:                "http://localhost:20010",
 		APIRouterURL:               "http://localhost:22400",
 		SiteDomain:                 "localhost",
 		SupportedLanguages:         [2]string{"en", "cy"},
-		PatternLibraryAssetsPath:   "http://localhost:9000/dist",
 		GracefulShutdownTimeout:    5 * time.Second,
 		HealthCheckInterval:        30 * time.Second,
 		HealthCheckCriticalTimeout: 90 * time.Second,
