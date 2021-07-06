@@ -184,6 +184,8 @@ func TestUnitHandlers(t *testing.T) {
 		})
 		Convey("success with good form and prior cookies set", func() {
 			authToken := "token"
+			refreshToken := "refresh"
+			idToken := "id"
 			collection := "collection"
 			lang := "cy"
 			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
@@ -199,6 +201,8 @@ func TestUnitHandlers(t *testing.T) {
 			cookies.SetPreferenceIsSet(w, "domain")
 			cookies.SetPolicy(w, cookiesPol, "domain")
 			cookies.SetUserAuthToken(w, authToken, "domain")
+			cookies.SetRefreshToken(w, refreshToken, "domain")
+			cookies.SetIDToken(w, idToken, "domain")
 			cookies.SetCollection(w, collection, "domain")
 			cookies.SetLang(w, lang, "domain")
 			http.SetCookie(w, cookieRememberBasket)
