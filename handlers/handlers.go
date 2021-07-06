@@ -14,7 +14,7 @@ import (
 )
 
 // Cookies that will not be removed deleted
-var protectedCookies = [7]string{"access_token", "refresh_token", "id_token", "lang", "collection", "timeseriesbasket", "rememberBasket"}
+var protectedCookies = []string{"access_token", "refresh_token", "id_token", "lang", "collection", "timeseriesbasket", "rememberBasket"}
 
 // ClientError is an interface that can be used to retrieve the status code if a client has errored
 type ClientError interface {
