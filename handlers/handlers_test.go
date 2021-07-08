@@ -106,6 +106,8 @@ func TestEditHandler(t *testing.T) {
 			}
 
 			authToken := "token"
+			refreshToken := "refresh"
+			idToken := "id"
 			collection := "collection"
 			lang := "cy"
 			hasBeenUpdated := true
@@ -123,6 +125,8 @@ func TestEditHandler(t *testing.T) {
 			cookies.SetPreferenceIsSet(w, "domain")
 			cookies.SetPolicy(w, essentialSetCookiesPolicy, "domain")
 			cookies.SetUserAuthToken(w, authToken, "domain")
+			cookies.SetRefreshToken(w, refreshToken, "domain")
+			cookies.SetIDToken(w, idToken, "domain")
 			cookies.SetCollection(w, collection, "domain")
 			cookies.SetLang(w, lang, "domain")
 

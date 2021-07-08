@@ -15,7 +15,7 @@ import (
 )
 
 // Cookies that will not be removed deleted
-var protectedCookies = [5]string{"access_token", "lang", "collection", "timeseriesbasket", "rememberBasket"}
+var protectedCookies = []string{"access_token", "refresh_token", "id_token", "lang", "collection", "timeseriesbasket", "rememberBasket"}
 
 // RenderClient is an interface with required methods for building a template from a page model
 type RenderClient interface {
