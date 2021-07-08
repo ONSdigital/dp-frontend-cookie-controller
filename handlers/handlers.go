@@ -42,7 +42,7 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 }
 
 // getCookiePreferencePage talks to the renderer to get the cookie preference page
-func getCookiePreferencePage(w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) {
+func getCookiePreferencePage(w http.ResponseWriter, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) {
 	basePage := rendC.NewBasePageModel()
 	m := mapper.CreateCookieSettingPage(basePage, cp, isUpdated, lang)
 	rendC.BuildPage(w, m, "cookies-preferences")
@@ -121,7 +121,7 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 	cookies.SetPreferenceIsSet(w, siteDomain)
 	cookies.SetPolicy(w, cp, siteDomain)
 	isUpdated := true
-	getCookiePreferencePage(w, req, rendC, cp, isUpdated, lang)
+	getCookiePreferencePage(w, rendC, cp, isUpdated, lang)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
 	}
@@ -132,5 +132,5 @@ func read(w http.ResponseWriter, req *http.Request, rendC RenderClient, lang str
 	cookiePref := cookies.GetCookiePreferences(req)
 
 	isUpdated := false
-	getCookiePreferencePage(w, req, rendC, cookiePref.Policy, isUpdated, lang)
+	getCookiePreferencePage(w, rendC, cookiePref.Policy, isUpdated, lang)
 }
