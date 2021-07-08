@@ -35,8 +35,7 @@ func TestReadHandler(t *testing.T) {
 			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 			req := httptest.NewRequest("GET", "/cookies", nil)
 			w := doTestRequest("/cookies", req, Read(mockRend), nil)
-			response := w.Result()
-			So(response.Status, ShouldEqual, "200 OK")
+			So(w.Code, ShouldEqual, http.StatusOK)
 		})
 
 		Convey("with cookies already set", func() {
