@@ -3,14 +3,17 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/ONSdigital/dp-api-clients-go/renderer"
-	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
 	"os"
 	"os/signal"
 	"syscall"
 
+	"dp-frontend-cookie-controller/assets"
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/routes"
+
+	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
+	render "github.com/ONSdigital/dp-renderer"
+
 	"github.com/ONSdigital/log.go/log"
 	"github.com/gorilla/mux"
 
@@ -56,14 +59,10 @@ func run(ctx context.Context) error {
 
 	r := mux.NewRouter()
 
-	rend := renderer.New(cfg.RendererURL)
+	rendC := render.NewWithDefaultClient(assets.Asset, assets.AssetNames, cfg.PatternLibraryAssetsPath, cfg.SiteDomain)
 
 	healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)
-	if err = registerCheckers(ctx, &healthcheck, rend); err != nil {
-		return err
-	}
-	routes.Init(ctx, r, cfg, healthcheck)
-
+	routes.Init(ctx, r, cfg, healthcheck, rendC)
 	healthcheck.Start(ctx)
 
 	s := dpnethttp.NewServer(cfg.BindAddr, r)
@@ -104,11 +103,4 @@ func gracefulShutdown(cfg *config.Config, s *dpnethttp.Server, hc health.HealthC
 	}
 	log.Event(ctx, "graceful shutdown complete successfully")
 	return nil
-}
-
-func registerCheckers(ctx context.Context, h *health.HealthCheck, r *renderer.Renderer) (err error) {
-	if err = h.AddCheck("frontend renderer", r.Checker); err != nil {
-		log.Event(ctx, "failed to add frontend renderer checker", log.Error(err))
-	}
-	return
 }

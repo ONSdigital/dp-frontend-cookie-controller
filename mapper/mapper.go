@@ -1,15 +1,18 @@
 package mapper
 
 import (
+	"dp-frontend-cookie-controller/model"
+
 	"github.com/ONSdigital/dp-cookies/cookies"
-	"github.com/ONSdigital/dp-frontend-models/model"
-	"github.com/ONSdigital/dp-frontend-models/model/cookiespreferences"
+	coreModel "github.com/ONSdigital/dp-renderer/model"
 )
 
 // CreateCookieSettingPage maps type cookies.Policy to model.Page
-func CreateCookieSettingPage(policy cookies.Policy, isUpdated bool, lang string) cookiespreferences.Page {
-	var page cookiespreferences.Page
-	page.Breadcrumb = []model.TaxonomyNode{
+func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.Policy, isUpdated bool, lang string) model.CookiesPreference {
+	page := model.CookiesPreference{
+		Page: basePage,
+	}
+	page.Breadcrumb = []coreModel.TaxonomyNode{
 		{
 			Title: "Home",
 			URI:   "/",
@@ -25,7 +28,8 @@ func CreateCookieSettingPage(policy cookies.Policy, isUpdated bool, lang string)
 	page.CookiesPolicy.Usage = policy.Usage
 	page.FeatureFlags.HideCookieBanner = true
 
-	// Determine whether or not to show success message. Currently this will be shown when cookies preferences have been updated by the user.
+	// Determine whether or not to show success message. Currently this will
+	// be shown when cookies preferences have been updated by the user.
 	page.PreferencesUpdated = isUpdated
 
 	return page

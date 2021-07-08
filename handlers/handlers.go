@@ -2,29 +2,31 @@ package handlers
 
 import (
 	"dp-frontend-cookie-controller/mapper"
-	"encoding/json"
 	"errors"
+	io "io"
 	"net/http"
 	"strconv"
 	"time"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
 	dphandlers "github.com/ONSdigital/dp-net/handlers"
+	"github.com/ONSdigital/dp-renderer/model"
 	"github.com/ONSdigital/log.go/log"
 )
 
 // Cookies that will not be removed deleted
 var protectedCookies = [5]string{"access_token", "lang", "collection", "timeseriesbasket", "rememberBasket"}
 
+// RenderClient is an interface with required methods for building a template from a page model
+type RenderClient interface {
+	BuildPage(w io.Writer, pageModel interface{}, templateName string)
+	NewBasePageModel() model.Page
+}
+
 // ClientError is an interface that can be used to retrieve the status code if a client has errored
 type ClientError interface {
 	Error() string
 	Code() int
-}
-
-// RenderClient is an interface with methods for require for rendering a template
-type RenderClient interface {
-	Do(string, []byte) ([]byte, error)
 }
 
 // setStatusCode sets the status code of a http response to a relevant error code
@@ -40,28 +42,10 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 }
 
 // getCookiePreferencePage talks to the renderer to get the cookie preference page
-func getCookiePreferencePage(w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) error {
-	var err error
-	ctx := req.Context()
-	m := mapper.CreateCookieSettingPage(cp, isUpdated, lang)
-	b, err := json.Marshal(m)
-	if err != nil {
-		log.Event(ctx, "unable to marshal cookie preferences", log.Error(err))
-		setStatusCode(req, w, err)
-		return err
-	}
-
-	templateHTML, err := rendC.Do("cookies-preferences", b)
-	if err != nil {
-		log.Event(ctx, "getting template from renderer cookies-preferences failed", log.Error(err))
-		setStatusCode(req, w, err)
-		return err
-	}
-	if _, err := w.Write(templateHTML); err != nil {
-		log.Event(ctx, "error on write of cookie template", log.Error(err))
-		setStatusCode(req, w, err)
-	}
-	return err
+func getCookiePreferencePage(w http.ResponseWriter, req *http.Request, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) {
+	basePage := rendC.NewBasePageModel()
+	m := mapper.CreateCookieSettingPage(basePage, cp, isUpdated, lang)
+	rendC.BuildPage(w, m, "cookies-preferences")
 }
 
 // isProtectedCookie is a helper function that checks if a cookie is protected or not
@@ -137,22 +121,16 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 	cookies.SetPreferenceIsSet(w, siteDomain)
 	cookies.SetPolicy(w, cp, siteDomain)
 	isUpdated := true
-	err = getCookiePreferencePage(w, req, rendC, cp, isUpdated, lang)
+	getCookiePreferencePage(w, req, rendC, cp, isUpdated, lang)
 	if err != nil {
 		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
 	}
-	return
 }
 
 // read handler returns a populated cookie preferences page
 func read(w http.ResponseWriter, req *http.Request, rendC RenderClient, lang string) {
-	ctx := req.Context()
 	cookiePref := cookies.GetCookiePreferences(req)
 
 	isUpdated := false
-	err := getCookiePreferencePage(w, req, rendC, cookiePref.Policy, isUpdated, lang)
-	if err != nil {
-		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
-	}
-	return
+	getCookiePreferencePage(w, req, rendC, cookiePref.Policy, isUpdated, lang)
 }

@@ -1,0 +1,77 @@
+<div class="page-intro background--gallery">
+    <div class="wrapper">
+        <div class="col-wrap">
+            <div class="col margin-top--1">
+                {{ template "partials/breadcrumb" . }}
+                <h1 class="page-intro__title margin-bottom--4 font-weight-700">
+                    {{ localise "CookiesOnONS" .Language 1}}
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper adjust-font-size--18">
+    {{if .PreferencesUpdated }}
+        <div class="min-height--10 margin-top--4 cookies-banner__preferences-success">
+            <div class="font-size--18 cookies-banner__preferences-success-body">
+                <h2 class="font-weight-700 margin-top--2">{{ localise "CookiesPreferencesSaved" .Language 4 }}</h2>
+                <p class="padding-bottom--0 margin-top--1 margin-bottom--1">{{ localise "CookiesPreferencesSavedAmend" .Language 4 | safeHTML }}</p>
+            </div>
+        </div>
+    {{end}}
+
+    <p>{{ localise "CookiesP1" .Language 1}}</p>
+
+    <p>{{ localise "CookiesP2" .Language 1}}</p>
+
+    <h2 class="font-weight-700">{{ localise "CookiesSettings" .Language 1}}</h2>
+
+    <div class="cookies-no-js">
+        <p> {{ localise "CookiesNoJSWarn1" .Language 1}} </p>
+        <ul class="margin-left--1">
+            <li>{{ localise "CookiesNoJSOpt1" .Language 1}}</li>
+            <li>{{ localise "CookiesNoJSOpt2" .Language 1}}</li>
+        </ul>
+        <p> {{ localise "CookiesNoJSWarn2" .Language 1}} </p>
+    </div>
+
+    <p class="cookies-js hidden">{{ localise "CookiesSettingsP1" .Language 1}}</p>
+
+    <form action="/cookies" method="post">
+        <fieldset class="margin-bottom--6 cookies-js hidden">
+            <legend class="font-weight-700 font-size--21">{{ localise "CookiesUsage" .Language 1}}</legend>
+            <p>{{ localise "CookiesUsageP1" .Language 1}}</p>
+            <ul class="margin-left--1">
+                <li>{{ localise "CookiesUsageBP1" .Language 1}}</li>
+                <li>{{ localise "CookiesUsageBP2" .Language 1}}</li>
+                <li>{{ localise "CookiesUsageBP3" .Language 1}}</li>
+                <li>{{ localise "CookiesUsageBP4" .Language 1}}</li>
+                <li>{{ localise "CookiesUsageBP5" .Language 1}}</li>
+            </ul>
+            <p>{{ localise "CookiesUsageP2" .Language 1}}</p>
+
+            <div>
+                <div class="radio margin-top--1 radio--inline">
+                    <input class="radio__input"  type="radio" name="cookie-policy-usage" id="usage-on" value="true" {{ if eq .CookiesPolicy.Usage true }}checked{{ end }}/>
+                    <label class="radio__label" for="usage-on">{{ localise "On" .Language 1}}</label>
+                </div>
+                <div class="radio margin-top--1 radio--inline">
+                    <input class="radio__input"  type="radio" name="cookie-policy-usage" id="usage-off" value="false" {{ if eq .CookiesPolicy.Usage false }}checked{{ end }} />
+                    <label class="radio__label" for="usage-off">{{ localise "Off" .Language 1}}</label>
+                </div>
+            </div>
+        </fieldset>
+    
+        <h3 class="font-weight-700 margin-top--2">{{ localise "CookiesEssential" .Language 1}}</h3>
+
+        <p>{{ localise "CookiesEssentialP1" .Language 1}}</p>
+
+        <p>{{ localise "CookiesEssentialP2" .Language 1}}</p>
+        
+        <p>{{ localise "CookiesEssentialP3" .Language 1 | safeHTML }}</p>
+
+        <button class="btn btn--primary btn--thick btn--wide btn--big btn--focus margin-top--2 margin-right--2 font-weight-700 font-size--17 text-wrap cookies-js hidden" type="submit">{{ localise "SaveChanges" .Language 4}}</button>
+
+    </form>
+</div>

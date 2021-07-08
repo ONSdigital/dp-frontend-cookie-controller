@@ -3,24 +3,159 @@ package handlers
 import (
 	"bytes"
 	"dp-frontend-cookie-controller/config"
+	"dp-frontend-cookie-controller/model"
 	"encoding/json"
-	"errors"
-	"github.com/ONSdigital/dp-cookies/cookies"
-	"github.com/ONSdigital/log.go/log"
-	"github.com/golang/mock/gomock"
-	"github.com/gorilla/mux"
-	. "github.com/smartystreets/goconvey/convey"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"strconv"
 	"testing"
+
+	coreModel "github.com/ONSdigital/dp-renderer/model"
+	"github.com/ONSdigital/log.go/log"
+	"github.com/gorilla/mux"
+
+	"github.com/ONSdigital/dp-cookies/cookies"
+	"github.com/golang/mock/gomock"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 type testCliError struct{}
 
 func (e *testCliError) Error() string { return "client error" }
 func (e *testCliError) Code() int     { return http.StatusNotFound }
+
+func TestReadHandler(t *testing.T) {
+	cfg := initialiseMockConfig()
+	Convey("test read", t, func() {
+		Convey("with no cookies set", func() {
+			mockCtrl := gomock.NewController(t)
+			mockRend := NewMockRenderClient(mockCtrl)
+			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Eq(initialiseMockCookiesPageModel(&cfg, cookies.Policy{Essential: true}, false, false, "en")), gomock.Eq("cookies-preferences"))
+			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+			req := httptest.NewRequest("GET", "/cookies", nil)
+			w := doTestRequest("/cookies", req, Read(mockRend), nil)
+			response := w.Result()
+			So(response.Status, ShouldEqual, "200 OK")
+		})
+
+		Convey("with cookies already set", func() {
+			cookiesSetPolicy := cookies.Policy{
+				Essential: true,
+				Usage:     false,
+			}
+
+			w := httptest.NewRecorder()
+			cookies.SetPreferenceIsSet(w, "domain")
+			cookies.SetPolicy(w, cookiesSetPolicy, "domain")
+
+			mockCtrl := gomock.NewController(t)
+			mockRend := NewMockRenderClient(mockCtrl)
+			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Eq(initialiseMockCookiesPageModel(&cfg, cookiesSetPolicy, false, false, "en")), gomock.Eq("cookies-preferences")).Times(1)
+			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+
+			req := httptest.NewRequest("GET", "/cookies", nil)
+			w = doTestRequest("/cookies", req, Read(mockRend), w)
+			So(w.Code, ShouldEqual, http.StatusOK)
+		})
+	})
+}
+
+func TestEditHandler(t *testing.T) {
+	cfg := initialiseMockConfig()
+	Convey("test edit", t, func() {
+		cookieTimeSeriesBasket := &http.Cookie{
+			Name:     "timeseriesbasket",
+			Value:    url.QueryEscape("timeseriesbasketData"),
+			Path:     "/",
+			Domain:   "domain",
+			HttpOnly: false,
+			SameSite: http.SameSiteLaxMode,
+		}
+		cookieRememberBasket := &http.Cookie{
+			Name:     "rememberBasket",
+			Value:    url.QueryEscape("rememberBasketData"),
+			Path:     "/",
+			Domain:   "domain",
+			HttpOnly: false,
+			SameSite: http.SameSiteLaxMode,
+		}
+
+		mockCtrl := gomock.NewController(t)
+		mockRend := NewMockRenderClient(mockCtrl)
+		Convey("success with good form no prior cookies set", func() {
+			cookiesPol := cookies.Policy{
+				Essential: true,
+				Usage:     true,
+			}
+
+			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
+			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+
+			b := `cookie-policy-usage=true`
+			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+			So(w.Code, ShouldEqual, http.StatusOK)
+			cookiePolicyTest(w, cookiesPol)
+		})
+		Convey("success with good form and prior cookies set", func() {
+			essentialSetCookiesPolicy := cookies.Policy{
+				Essential: true,
+				Usage:     false,
+			}
+
+			authToken := "token"
+			collection := "collection"
+			lang := "cy"
+			hasBeenUpdated := true
+			cookiesPreferenceIsSet := true
+
+			mockRend.EXPECT().BuildPage(gomock.Any(), initialiseMockCookiesPageModel(&cfg, essentialSetCookiesPolicy, hasBeenUpdated, cookiesPreferenceIsSet, "en"), gomock.Eq("cookies-preferences"))
+			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+
+			b := `cookie-policy-usage=false`
+			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+			w := httptest.NewRecorder()
+
+			cookies.SetPreferenceIsSet(w, "domain")
+			cookies.SetPolicy(w, essentialSetCookiesPolicy, "domain")
+			cookies.SetUserAuthToken(w, authToken, "domain")
+			cookies.SetCollection(w, collection, "domain")
+			cookies.SetLang(w, lang, "domain")
+
+			http.SetCookie(w, cookieRememberBasket)
+			http.SetCookie(w, cookieTimeSeriesBasket)
+
+			w = doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), w)
+
+			So(w.Code, ShouldEqual, http.StatusOK)
+			cookiePolicyTest(w, essentialSetCookiesPolicy)
+			allProtectedCookiesFound := protectedCookiesTest(w)
+			So(allProtectedCookiesFound, ShouldEqual, true)
+		})
+
+		Convey("fail with bad form names", func() {
+			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
+			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
+			b := `cookie-policy-waffles=true`
+			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+			So(w.Code, ShouldEqual, http.StatusInternalServerError)
+		})
+
+		Convey("fail with bad form values", func() {
+			b := `cookie-policy-usage=nonbool`
+			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+			So(w.Code, ShouldEqual, http.StatusInternalServerError)
+		})
+	})
+}
 
 // doTestRequest helper function that creates a router and mocks requests
 func doTestRequest(target string, req *http.Request, handlerFunc http.HandlerFunc, w *httptest.ResponseRecorder) *httptest.ResponseRecorder {
@@ -86,16 +221,17 @@ func protectedCookiesTest(w *httptest.ResponseRecorder) bool {
 	return allProtectedCookiesSafe
 }
 
+func initialiseMockConfig() config.Config {
+	return config.Config{
+		PatternLibraryAssetsPath: "http://localhost:9000/dist",
+		SiteDomain:               "ons",
+		SupportedLanguages:       [2]string{"en", "cy"},
+	}
+}
+
 // TestUnitHandlers unit tests for all handlers
 func TestUnitHandlers(t *testing.T) {
-	t.Parallel()
-
-	cfg := config.Config{
-		SiteDomain: "ons",
-	}
-
 	Convey("test setStatusCode", t, func() {
-
 		Convey("test status code handles 404 response from client", func() {
 			req := httptest.NewRequest("GET", "http://localhost:24100", nil)
 			w := httptest.NewRecorder()
@@ -104,136 +240,31 @@ func TestUnitHandlers(t *testing.T) {
 
 			So(w.Code, ShouldEqual, http.StatusNotFound)
 		})
-
 	})
+}
 
-	Convey("test read", t, func() {
-		Convey("with no cookies set", func() {
-			mockCtrl := gomock.NewController(t)
-			mockRend := NewMockRenderClient(mockCtrl)
-			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			req := httptest.NewRequest("GET", "/cookies", nil)
-			w := doTestRequest("/cookies", req, Read(mockRend), nil)
-			So(w.Code, ShouldEqual, http.StatusOK)
-			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
-		})
+func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, isUpdated, hasSetPreference bool, lang string) model.CookiesPreference {
+	page := model.CookiesPreference{
+		Page: coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain),
+	}
+	page.Breadcrumb = []coreModel.TaxonomyNode{
+		{
+			Title: "Home",
+			URI:   "/",
+		},
+		{
+			Title: "Cookies",
+		},
+	}
+	page.Metadata.Title = "Cookies"
+	page.Language = lang
+	page.CookiesPreferencesSet = true
+	page.CookiesPolicy.Essential = policy.Essential
+	page.CookiesPolicy.Usage = policy.Usage
+	page.FeatureFlags.HideCookieBanner = true
+	page.SiteDomain = cfg.SiteDomain
+	page.PatternLibraryAssetsPath = cfg.PatternLibraryAssetsPath
+	page.PreferencesUpdated = hasSetPreference
 
-		Convey("with cookies already set", func() {
-			cookiesPol := cookies.Policy{
-				Essential: true,
-				Usage:     false,
-			}
-
-			w := httptest.NewRecorder()
-			cookies.SetPreferenceIsSet(w, "domain")
-			cookies.SetPolicy(w, cookiesPol, "domain")
-
-			mockCtrl := gomock.NewController(t)
-			mockRend := NewMockRenderClient(mockCtrl)
-			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			req := httptest.NewRequest("GET", "/cookies", nil)
-			w = doTestRequest("/cookies", req, Read(mockRend), w)
-			So(w.Code, ShouldEqual, http.StatusOK)
-			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
-
-		})
-
-		Convey("with renderer failing", func() {
-			mockCtrl := gomock.NewController(t)
-			mockRend := NewMockRenderClient(mockCtrl)
-			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return(nil, errors.New("error from renderer"))
-			req := httptest.NewRequest("GET", "/cookies", nil)
-			w := doTestRequest("/cookies", req, Read(mockRend), nil)
-			So(w.Code, ShouldEqual, http.StatusInternalServerError)
-		})
-	})
-
-	Convey("test edit", t, func() {
-		cookieTimeSeriesBasket := &http.Cookie{
-			Name:     "timeseriesbasket",
-			Value:    url.QueryEscape("timeseriesbasketData"),
-			Path:     "/",
-			Domain:   "domain",
-			HttpOnly: false,
-			SameSite: http.SameSiteLaxMode,
-		}
-		cookieRememberBasket := &http.Cookie{
-			Name:     "rememberBasket",
-			Value:    url.QueryEscape("rememberBasketData"),
-			Path:     "/",
-			Domain:   "domain",
-			HttpOnly: false,
-			SameSite: http.SameSiteLaxMode,
-		}
-
-		mockCtrl := gomock.NewController(t)
-		mockRend := NewMockRenderClient(mockCtrl)
-		Convey("success with good form no prior cookies set", func() {
-			cookiesPol := cookies.Policy{
-				Essential: true,
-				Usage:     true,
-			}
-			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			b := `cookie-policy-usage=true`
-			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
-			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
-			So(w.Code, ShouldEqual, http.StatusOK)
-			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
-			cookiePolicyTest(w, cookiesPol)
-		})
-		Convey("success with good form and prior cookies set", func() {
-			authToken := "token"
-			collection := "collection"
-			lang := "cy"
-			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			b := `cookie-policy-usage=false`
-			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
-			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			cookiesPol := cookies.Policy{
-				Essential: true,
-				Usage:     false,
-			}
-
-			w := httptest.NewRecorder()
-			cookies.SetPreferenceIsSet(w, "domain")
-			cookies.SetPolicy(w, cookiesPol, "domain")
-			cookies.SetUserAuthToken(w, authToken, "domain")
-			cookies.SetCollection(w, collection, "domain")
-			cookies.SetLang(w, lang, "domain")
-			http.SetCookie(w, cookieRememberBasket)
-			http.SetCookie(w, cookieTimeSeriesBasket)
-			w = doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), w)
-			So(w.Code, ShouldEqual, http.StatusOK)
-			So(w.Body.String(), ShouldEqual, "<html><body><h1>Some HTML from renderer!</h1></body></html>")
-			cookiePolicyTest(w, cookiesPol)
-			allProtectedCookiesFound := protectedCookiesTest(w)
-			So(allProtectedCookiesFound, ShouldEqual, true)
-		})
-
-		Convey("fail with bad form names", func() {
-			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			b := `cookie-policy-waffles=true`
-			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
-			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
-			So(w.Code, ShouldEqual, http.StatusInternalServerError)
-		})
-		Convey("fail with bad form values", func() {
-			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return([]byte(`<html><body><h1>Some HTML from renderer!</h1></body></html>`), nil)
-			b := `cookie-policy-usage=nonbool`
-			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
-			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
-			So(w.Code, ShouldEqual, http.StatusInternalServerError)
-		})
-		Convey("fail with renderer error", func() {
-			mockRend.EXPECT().Do("cookies-preferences", gomock.Any()).Return(nil, errors.New("error from renderer"))
-			b := `cookie-policy-usage=true`
-			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
-			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
-			So(w.Code, ShouldEqual, http.StatusInternalServerError)
-		})
-	})
+	return page
 }
