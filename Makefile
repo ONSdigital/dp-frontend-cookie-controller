@@ -18,7 +18,7 @@ debug: generate-debug
 	HUMAN_LOG=1 DEBUG=1 $(BINPATH)/dp-frontend-cookie-controller
 
 .PHONY: test
-test:
+test: generate-prod
 	go test -race -cover -tags 'production' ./...
 
 .PHONY: generate-debug
