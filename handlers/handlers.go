@@ -3,7 +3,7 @@ package handlers
 import (
 	"dp-frontend-cookie-controller/mapper"
 	"errors"
-	io "io"
+	"io"
 	"net/http"
 	"strconv"
 	"time"
@@ -122,9 +122,6 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 	cookies.SetPolicy(w, cp, siteDomain)
 	isUpdated := true
 	getCookiePreferencePage(w, rendC, cp, isUpdated, lang)
-	if err != nil {
-		log.Event(ctx, "getting cookie preference page failed", log.Error(err))
-	}
 }
 
 // read handler returns a populated cookie preferences page

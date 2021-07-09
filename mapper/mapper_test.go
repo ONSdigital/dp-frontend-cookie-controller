@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
-	request "github.com/ONSdigital/dp-net/request"
+	"github.com/ONSdigital/dp-net/request"
 	coreModel "github.com/ONSdigital/dp-renderer/model"
 	. "github.com/smartystreets/goconvey/convey"
 )

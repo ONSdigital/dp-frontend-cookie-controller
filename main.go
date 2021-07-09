@@ -62,7 +62,7 @@ func run(ctx context.Context) error {
 	rendC := render.NewWithDefaultClient(assets.Asset, assets.AssetNames, cfg.PatternLibraryAssetsPath, cfg.SiteDomain)
 
 	healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)
-	routes.Init(ctx, r, cfg, healthcheck, rendC)
+	routes.Init(ctx, r, healthcheck, rendC)
 	healthcheck.Start(ctx)
 
 	s := dpnethttp.NewServer(cfg.BindAddr, r)
@@ -84,9 +84,6 @@ func run(ctx context.Context) error {
 			return gracefulShutdown(cfg, s, healthcheck)
 		}
 	}
-	// protective programming, shouldn't get to this... but just in case
-	// nil translates to exit code 0
-	return nil
 }
 
 func gracefulShutdown(cfg *config.Config, s *dpnethttp.Server, hc health.HealthCheck) error {

@@ -3,7 +3,6 @@ package routes
 import (
 	"context"
 
-	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/handlers"
 
 	render "github.com/ONSdigital/dp-renderer"
@@ -14,7 +13,7 @@ import (
 )
 
 // Init initialises routes for the service
-func Init(ctx context.Context, r *mux.Router, cfg *config.Config, hc health.HealthCheck, rendC *render.Render) {
+func Init(ctx context.Context, r *mux.Router, hc health.HealthCheck, rendC *render.Render) {
 	log.Event(ctx, "adding api routes")
 
 	r.StrictSlash(true).Path("/health").HandlerFunc(hc.Handler)
