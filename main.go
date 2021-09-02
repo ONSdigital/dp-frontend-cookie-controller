@@ -14,7 +14,7 @@ import (
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
 	render "github.com/ONSdigital/dp-renderer"
 
-	"github.com/ONSdigital/log.go/log"
+	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 
 	dpnethttp "github.com/ONSdigital/dp-net/http"
@@ -32,7 +32,7 @@ var (
 func main() {
 	ctx := context.Background()
 	if err := run(ctx); err != nil {
-		log.Event(ctx, "unable to run application", log.Error(err))
+		log.Error(ctx, "unable to run application", err)
 		os.Exit(1)
 	}
 }
@@ -45,11 +45,11 @@ func run(ctx context.Context) error {
 
 	cfg, err := config.Get()
 	if err != nil {
-		log.Event(ctx, "unable to retrieve service configuration", log.Error(err))
+		log.Error(ctx, "unable to retrieve service configuration", err)
 		return err
 	}
 
-	log.Event(ctx, "got service configuration", log.Data{"config": cfg})
+	log.Info(ctx, "got service configuration", log.Data{"config": cfg})
 
 	versionInfo, err := health.NewVersionInfo(
 		BuildTime,
@@ -68,11 +68,11 @@ func run(ctx context.Context) error {
 	s := dpnethttp.NewServer(cfg.BindAddr, r)
 	s.HandleOSSignals = false
 
-	log.Event(ctx, "Starting server", log.Data{"config": cfg})
+	log.Info(ctx, "Starting server", log.Data{"config": cfg})
 
 	go func() {
 		if err := s.ListenAndServe(); err != nil {
-			log.Event(ctx, "failed to start http listen and serve", log.Error(err))
+			log.Error(ctx, "failed to start http listen and serve", err)
 			return
 		}
 	}()
@@ -80,24 +80,24 @@ func run(ctx context.Context) error {
 	for {
 		select {
 		case <-signals:
-			log.Event(nil, "os signal received")
+			log.Info(ctx, "os signal received")
 			return gracefulShutdown(cfg, s, healthcheck)
 		}
 	}
 }
 
 func gracefulShutdown(cfg *config.Config, s *dpnethttp.Server, hc health.HealthCheck) error {
-	log.Event(nil, fmt.Sprintf("shutdown with timeout: %s", cfg.GracefulShutdownTimeout))
+	log.Info(context.Background(), fmt.Sprintf("shutdown with timeout: %s", cfg.GracefulShutdownTimeout))
 	ctx, cancel := context.WithTimeout(context.Background(), cfg.GracefulShutdownTimeout)
-	log.Event(ctx, "shutting service down gracefully")
+	log.Info(ctx, "shutting service down gracefully")
 	defer cancel()
 
 	// Stop health check tickers
 	hc.Stop()
 	if err := s.Server.Shutdown(ctx); err != nil {
-		log.Event(ctx, "failed to shutdown http server", log.Error(err))
+		log.Error(ctx, "failed to shutdown http server", err)
 		return err
 	}
-	log.Event(ctx, "graceful shutdown complete successfully")
+	log.Info(ctx, "graceful shutdown complete successfully")
 	return nil
 }

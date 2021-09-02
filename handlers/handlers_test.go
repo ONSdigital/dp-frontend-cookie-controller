@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"bytes"
+	"context"
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/model"
 	"encoding/json"
@@ -12,7 +13,7 @@ import (
 	"testing"
 
 	coreModel "github.com/ONSdigital/dp-renderer/model"
-	"github.com/ONSdigital/log.go/log"
+	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
@@ -183,14 +184,14 @@ func cookiePolicyTest(w *httptest.ResponseRecorder, correctPolicy cookies.Policy
 		if c.Name == "cookies_policy" {
 			cookiesPolicyUnescaped, err := url.QueryUnescape(c.Value)
 			if err != nil {
-				log.Event(nil, "unable to parse cookie", log.Error(err))
+				log.Error(context.Background(), "unable to parse cookie", err)
 				return
 			}
 			var cpp cookies.Policy
 			s, _ := strconv.Unquote(cookiesPolicyUnescaped)
 			err = json.Unmarshal([]byte(s), &cpp)
 			if err != nil {
-				log.Event(nil, "unable to parse cookie", log.Error(err))
+				log.Error(context.Background(), "unable to parse cookie", err)
 				return
 			}
 			So(cpp, ShouldResemble, correctPolicy)
