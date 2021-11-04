@@ -24,7 +24,7 @@ func TestConfig(t *testing.T) {
 				So(cfg.HealthCheckInterval, ShouldEqual, 30*time.Second)
 				So(cfg.HealthCheckCriticalTimeout, ShouldEqual, 90*time.Second)
 				So(cfg.BindAddr, ShouldEqual, ":24100")
-				So(cfg.PatternLibraryAssetsPath, ShouldEqual, "//cdn.ons.gov.uk/sixteens/f80be2c")
+				So(cfg.PatternLibraryAssetsPath, ShouldEqual, "//cdn.ons.gov.uk/dp-design-system/ba32e79")
 				So(cfg.SiteDomain, ShouldEqual, "localhost")
 			})
 		})
