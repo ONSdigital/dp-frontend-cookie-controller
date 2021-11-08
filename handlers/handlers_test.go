@@ -228,7 +228,7 @@ func protectedCookiesTest(w *httptest.ResponseRecorder) bool {
 
 func initialiseMockConfig() config.Config {
 	return config.Config{
-		PatternLibraryAssetsPath: "http://localhost:9001/dist",
+		PatternLibraryAssetsPath: "http://localhost:9002/dist",
 		SiteDomain:               "ons",
 		SupportedLanguages:       [2]string{"en", "cy"},
 	}
