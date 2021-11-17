@@ -37,6 +37,7 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.CookiesPolicy.Usage = false
 	expectedModel.PreferencesUpdated = false
 	expectedModel.FeatureFlags.HideCookieBanner = true
+	expectedModel.FeatureFlags.SixteensVersion = "67f6982"
 
 	basePage := coreModel.NewPage("path/to/assets", "site-domain")
 	Convey("test CreateCookieSettingPage", t, func() {

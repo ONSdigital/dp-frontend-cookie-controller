@@ -8,13 +8,13 @@ import (
 	render "github.com/ONSdigital/dp-renderer"
 
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
-	"github.com/ONSdigital/log.go/log"
+	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 )
 
 // Init initialises routes for the service
 func Init(ctx context.Context, r *mux.Router, hc health.HealthCheck, rendC *render.Render) {
-	log.Event(ctx, "adding api routes")
+	log.Info(ctx, "adding api routes")
 
 	r.StrictSlash(true).Path("/health").HandlerFunc(hc.Handler)
 

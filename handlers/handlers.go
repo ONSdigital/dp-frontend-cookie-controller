@@ -11,7 +11,7 @@ import (
 	"github.com/ONSdigital/dp-cookies/cookies"
 	dphandlers "github.com/ONSdigital/dp-net/handlers"
 	"github.com/ONSdigital/dp-renderer/model"
-	"github.com/ONSdigital/log.go/log"
+	"github.com/ONSdigital/log.go/v2/log"
 )
 
 // Cookies that will not be removed deleted
@@ -37,7 +37,7 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 			status = err.Code()
 		}
 	}
-	log.Event(req.Context(), "setting-response-status", log.Error(err))
+	log.Error(req.Context(), "setting-response-status", err)
 	w.WriteHeader(status)
 }
 
@@ -94,20 +94,20 @@ func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
 func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain, lang string) {
 	ctx := req.Context()
 	if err := req.ParseForm(); err != nil {
-		log.Event(ctx, "failed to parse form input", log.Error(err))
+		log.Error(ctx, "failed to parse form input", err)
 		setStatusCode(req, w, err)
 		return
 	}
 	cookiePolicyUsage := req.FormValue("cookie-policy-usage")
 	if cookiePolicyUsage == "" {
 		err := errors.New("request form value cookie-policy-usage not found")
-		log.Event(ctx, "failed to get cookie value cookie-policy-usage from form", log.Error(err))
+		log.Error(ctx, "failed to get cookie value cookie-policy-usage from form", err)
 		setStatusCode(req, w, err)
 		return
 	}
 	usage, err := strconv.ParseBool(cookiePolicyUsage)
 	if err != nil {
-		log.Event(ctx, "failed to parse cookie value usage", log.Error(err))
+		log.Error(ctx, "failed to parse cookie value usage", err)
 		setStatusCode(req, w, err)
 		return
 	}

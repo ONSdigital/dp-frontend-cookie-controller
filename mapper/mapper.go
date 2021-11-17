@@ -27,6 +27,7 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.Policy, isU
 	page.CookiesPolicy.Essential = policy.Essential
 	page.CookiesPolicy.Usage = policy.Usage
 	page.FeatureFlags.HideCookieBanner = true
+	page.FeatureFlags.SixteensVersion = "67f6982"
 
 	// Determine whether or not to show success message. Currently this will
 	// be shown when cookies preferences have been updated by the user.

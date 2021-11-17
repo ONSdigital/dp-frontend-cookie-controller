@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"bytes"
+	"context"
 	"dp-frontend-cookie-controller/config"
 	"dp-frontend-cookie-controller/model"
 	"encoding/json"
@@ -12,7 +13,7 @@ import (
 	"testing"
 
 	coreModel "github.com/ONSdigital/dp-renderer/model"
-	"github.com/ONSdigital/log.go/log"
+	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
@@ -183,14 +184,14 @@ func cookiePolicyTest(w *httptest.ResponseRecorder, correctPolicy cookies.Policy
 		if c.Name == "cookies_policy" {
 			cookiesPolicyUnescaped, err := url.QueryUnescape(c.Value)
 			if err != nil {
-				log.Event(nil, "unable to parse cookie", log.Error(err))
+				log.Error(context.Background(), "unable to parse cookie", err)
 				return
 			}
 			var cpp cookies.Policy
 			s, _ := strconv.Unquote(cookiesPolicyUnescaped)
 			err = json.Unmarshal([]byte(s), &cpp)
 			if err != nil {
-				log.Event(nil, "unable to parse cookie", log.Error(err))
+				log.Error(context.Background(), "unable to parse cookie", err)
 				return
 			}
 			So(cpp, ShouldResemble, correctPolicy)
@@ -227,7 +228,7 @@ func protectedCookiesTest(w *httptest.ResponseRecorder) bool {
 
 func initialiseMockConfig() config.Config {
 	return config.Config{
-		PatternLibraryAssetsPath: "http://localhost:9000/dist",
+		PatternLibraryAssetsPath: "http://localhost:9002/dist",
 		SiteDomain:               "ons",
 		SupportedLanguages:       [2]string{"en", "cy"},
 	}
@@ -269,6 +270,7 @@ func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, i
 	page.SiteDomain = cfg.SiteDomain
 	page.PatternLibraryAssetsPath = cfg.PatternLibraryAssetsPath
 	page.PreferencesUpdated = hasSetPreference
+	page.FeatureFlags.SixteensVersion = "67f6982"
 
 	return page
 }
