@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"dp-frontend-cookie-controller/config"
+	"dp-frontend-cookie-controller/mapper"
 	"dp-frontend-cookie-controller/model"
 	"encoding/json"
 	"net/http"
@@ -270,7 +271,7 @@ func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, i
 	page.SiteDomain = cfg.SiteDomain
 	page.PatternLibraryAssetsPath = cfg.PatternLibraryAssetsPath
 	page.PreferencesUpdated = hasSetPreference
-	page.FeatureFlags.SixteensVersion = "67f6982"
+	page.FeatureFlags.SixteensVersion = mapper.SixteensVersionStr
 
 	return page
 }
