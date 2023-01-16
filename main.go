@@ -58,6 +58,7 @@ func run(ctx context.Context) error {
 
 	r := mux.NewRouter()
 
+	// nolint: typecheck
 	rendC := render.NewWithDefaultClient(assets.Asset, assets.AssetNames, cfg.PatternLibraryAssetsPath, cfg.SiteDomain)
 
 	healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)

@@ -63,7 +63,7 @@ func isProtectedCookie(stringToFind string) bool {
 func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 	for _, cookie := range req.Cookies() {
 		if !isProtectedCookie(cookie.Name) {
-			cookie := &http.Cookie{
+			setCookie := &http.Cookie{
 				Name:     cookie.Name,
 				Value:    "",
 				Path:     "/",
@@ -71,7 +71,7 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 				MaxAge:   0,
 				HttpOnly: false,
 			}
-			http.SetCookie(w, cookie)
+			http.SetCookie(w, setCookie)
 		}
 	}
 }
