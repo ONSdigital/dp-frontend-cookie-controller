@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
-	"github.com/ONSdigital/dp-net/request"
-	coreModel "github.com/ONSdigital/dp-renderer/model"
+	"github.com/ONSdigital/dp-net/v2/request"
+	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -37,7 +37,6 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.CookiesPolicy.Usage = false
 	expectedModel.PreferencesUpdated = false
 	expectedModel.FeatureFlags.HideCookieBanner = true
-	expectedModel.FeatureFlags.SixteensVersion = SixteensVersionStr
 
 	basePage := coreModel.NewPage("path/to/assets", "site-domain")
 	Convey("test CreateCookieSettingPage", t, func() {

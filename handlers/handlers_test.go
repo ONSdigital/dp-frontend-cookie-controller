@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"testing"
 
-	coreModel "github.com/ONSdigital/dp-renderer/model"
+	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 
@@ -270,7 +270,6 @@ func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, i
 	page.SiteDomain = cfg.SiteDomain
 	page.PatternLibraryAssetsPath = cfg.PatternLibraryAssetsPath
 	page.PreferencesUpdated = hasSetPreference
-	page.FeatureFlags.SixteensVersion = "67f6982"
 
 	return page
 }

@@ -4,12 +4,11 @@ import (
 	"dp-frontend-cookie-controller/model"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
-	coreModel "github.com/ONSdigital/dp-renderer/model"
+	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 )
 
 const (
-	SixteensVersionStr = "67f6982"
-	CookiesStr         = "Cookies"
+	CookiesStr = "Cookies"
 )
 
 // CreateCookieSettingPage maps type cookies.Policy to model.Page
@@ -32,11 +31,39 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.Policy, isU
 	page.CookiesPolicy.Essential = policy.Essential
 	page.CookiesPolicy.Usage = policy.Usage
 	page.FeatureFlags.HideCookieBanner = true
-	page.FeatureFlags.SixteensVersion = SixteensVersionStr
 
 	// Determine whether or not to show success message. Currently this will
 	// be shown when cookies preferences have been updated by the user.
 	page.PreferencesUpdated = isUpdated
+
+	page.TypeRadios = coreModel.RadioFieldset{
+		Radios: []coreModel.Radio{
+			{
+				Input: coreModel.Input{
+					ID:        "usage-on",
+					IsChecked: page.CookiesPolicy.Usage,
+					Label: coreModel.Localisation{
+						LocaleKey: "on",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usageype",
+					Value: "true",
+				},
+			},
+			{
+				Input: coreModel.Input{
+					ID:        "usage-off",
+					IsChecked: page.CookiesPolicy.Usage,
+					Label: coreModel.Localisation{
+						LocaleKey: "off",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usage",
+					Value: "false",
+				},
+			},
+		},
+	}
 
 	return page
 }

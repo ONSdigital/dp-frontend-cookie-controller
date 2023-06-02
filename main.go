@@ -12,11 +12,11 @@ import (
 	"dp-frontend-cookie-controller/routes"
 
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
-	render "github.com/ONSdigital/dp-renderer"
+	render "github.com/ONSdigital/dp-renderer/v2"
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 
-	dpnethttp "github.com/ONSdigital/dp-net/http"
+	dpnethttp "github.com/ONSdigital/dp-net/v2/http"
 )
 
 var (
