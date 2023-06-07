@@ -84,8 +84,8 @@ description = "whether you have participated in a Hotjar survey"
 one = "whether you have participated in a Hotjar survey"
 
 [CookiesUsageP2]
-description = "We do not allow Google or Hotjar to use or share the data about how you use this site."
-one = "We do not allow Google or Hotjar to use or share the data about how you use this site."
+description = "Regardless of your choice, we do not allow Google or Hotjar to use or share the data about how you use this site."
+one = "Regardless of your choice, we do not allow Google or Hotjar to use or share the data about how you use this site."
 
 [CookiesEssential]
 description = "Strictly necessary cookies"
