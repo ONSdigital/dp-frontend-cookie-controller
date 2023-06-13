@@ -43,10 +43,10 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.Policy, isU
 					ID:        "usage-on",
 					IsChecked: page.CookiesPolicy.Usage,
 					Label: coreModel.Localisation{
-						LocaleKey: "on",
+						LocaleKey: "On",
 						Plural:    1,
 					},
-					Name:  "cookie-policy-usageype",
+					Name:  "cookie-policy-usage",
 					Value: "true",
 				},
 			},
@@ -55,7 +55,7 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.Policy, isU
 					ID:        "usage-off",
 					IsChecked: page.CookiesPolicy.Usage,
 					Label: coreModel.Localisation{
-						LocaleKey: "off",
+						LocaleKey: "Off",
 						Plural:    1,
 					},
 					Name:  "cookie-policy-usage",
