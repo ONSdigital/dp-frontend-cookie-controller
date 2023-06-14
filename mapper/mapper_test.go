@@ -37,6 +37,34 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.CookiesPolicy.Usage = false
 	expectedModel.PreferencesUpdated = false
 	expectedModel.FeatureFlags.HideCookieBanner = true
+	expectedModel.TypeRadios = coreModel.RadioFieldset{
+		Radios: []coreModel.Radio{
+			{
+				Input: coreModel.Input{
+					ID:        "usage-on",
+					IsChecked: false,
+					Label: coreModel.Localisation{
+						LocaleKey: "On",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usage",
+					Value: "true",
+				},
+			},
+			{
+				Input: coreModel.Input{
+					ID:        "usage-off",
+					IsChecked: true,
+					Label: coreModel.Localisation{
+						LocaleKey: "Off",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usage",
+					Value: "false",
+				},
+			},
+		},
+	}
 
 	basePage := coreModel.NewPage("path/to/assets", "site-domain")
 	Convey("test CreateCookieSettingPage", t, func() {

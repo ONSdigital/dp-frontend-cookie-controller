@@ -271,5 +271,33 @@ func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, i
 	page.PatternLibraryAssetsPath = cfg.PatternLibraryAssetsPath
 	page.PreferencesUpdated = hasSetPreference
 
+	page.TypeRadios = coreModel.RadioFieldset{
+		Radios: []coreModel.Radio{
+			{
+				Input: coreModel.Input{
+					ID:        "usage-on",
+					IsChecked: page.CookiesPolicy.Usage,
+					Label: coreModel.Localisation{
+						LocaleKey: "On",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usage",
+					Value: "true",
+				},
+			},
+			{
+				Input: coreModel.Input{
+					ID:        "usage-off",
+					IsChecked: !page.CookiesPolicy.Usage,
+					Label: coreModel.Localisation{
+						LocaleKey: "Off",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usage",
+					Value: "false",
+				},
+			},
+		},
+	}
 	return page
 }

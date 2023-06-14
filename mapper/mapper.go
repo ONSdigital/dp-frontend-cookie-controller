@@ -53,7 +53,7 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.Policy, isU
 			{
 				Input: coreModel.Input{
 					ID:        "usage-off",
-					IsChecked: page.CookiesPolicy.Usage,
+					IsChecked: !page.CookiesPolicy.Usage,
 					Label: coreModel.Localisation{
 						LocaleKey: "Off",
 						Plural:    1,

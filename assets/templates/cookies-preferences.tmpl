@@ -6,10 +6,10 @@
         <h1 class="ons-u-fs-xxxl ons-u-mt-m ons-u-fw-b">
             {{- localise "CookiesOnONS" .Language 1 -}}
         </h1>
-        <div class="ons-grid__col ons-col-12@m ons-u-pl-no">
+        <div class="ons-grid__col ons-u-pl-no">
             <div class="ons-page__main ons-u-mt-no">
                 {{if .PreferencesUpdated }}
-                    <div class="cookies-banner__preferences-success">
+                    <div class="cookies-banner__preferences-success margin-bottom--2">
                         <div class="cookies-banner__preferences-success-body">
                             <h2>{{ localise "CookiesPreferencesSaved" .Language 4 }}</h2>
                             <p>{{ localise "CookiesPreferencesSavedAmend" .Language 4 | safeHTML }}</p>
@@ -36,7 +36,7 @@
                     <fieldset class="ons-fieldset cookies-js hidden">
                         <legend class="ons-fieldset__legend">{{- localise "CookiesUsage" .Language 1 -}}</legend>
                         <p>{{ localise "CookiesUsageP1" .Language 1}}</p>
-                        <ul class="margin-left--1">
+                        <ul>
                             <li>{{ localise "CookiesUsageBP1" .Language 1}}</li>
                             <li>{{ localise "CookiesUsageBP2" .Language 1}}</li>
                             <li>{{ localise "CookiesUsageBP3" .Language 1}}</li>
@@ -47,7 +47,7 @@
                         {{ template "partials/fields/fieldset-radio" .TypeRadios }}
                     </fieldset>
                     
-                    <h3>{{ localise "CookiesEssential" .Language 1}}</h3>
+                    <h3 class="margin-top--2">{{ localise "CookiesEssential" .Language 1}}</h3>
 
                     <p>{{ localise "CookiesEssentialP1" .Language 1}}</p>
 
