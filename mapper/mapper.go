@@ -1,9 +1,8 @@
 package mapper
 
 import (
-	"dp-frontend-cookie-controller/model"
-
 	"github.com/ONSdigital/dp-cookies/cookies"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/model"
 	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 )
 

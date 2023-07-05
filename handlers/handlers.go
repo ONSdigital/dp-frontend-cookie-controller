@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"dp-frontend-cookie-controller/mapper"
 	"errors"
 	"io"
 	"net/http"
@@ -9,6 +8,7 @@ import (
 	"time"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/mapper"
 	dphandlers "github.com/ONSdigital/dp-net/v2/handlers"
 	"github.com/ONSdigital/dp-renderer/v2/model"
 	"github.com/ONSdigital/log.go/v2/log"

@@ -1,4 +1,4 @@
-module dp-frontend-cookie-controller
+module github.com/ONSdigital/dp-frontend-cookie-controller
 
 go 1.20
 

@@ -3,8 +3,6 @@ package handlers
 import (
 	"bytes"
 	"context"
-	"dp-frontend-cookie-controller/config"
-	"dp-frontend-cookie-controller/model"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
@@ -12,12 +10,13 @@ import (
 	"strconv"
 	"testing"
 
+	"github.com/ONSdigital/dp-cookies/cookies"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/config"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/model"
 	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	"github.com/ONSdigital/log.go/v2/log"
-	"github.com/gorilla/mux"
-
-	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/golang/mock/gomock"
+	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -142,8 +141,6 @@ func TestEditHandler(t *testing.T) {
 		})
 
 		Convey("fail with bad form names", func() {
-			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
-			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
 			b := `cookie-policy-waffles=true`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
