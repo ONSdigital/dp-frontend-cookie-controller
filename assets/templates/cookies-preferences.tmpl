@@ -36,12 +36,12 @@
                     <fieldset class="ons-fieldset cookies-js hidden">
                         <legend class="ons-fieldset__legend">{{- localise "CookiesUsage" .Language 1 -}}</legend>
                         <p>{{- localise "CookiesUsageP1" .Language 1 -}}</p>
-                        <ul>
-                            <li>{{- localise "CookiesUsageBP1" .Language 1 -}}</li>
-                            <li>{{- localise "CookiesUsageBP2" .Language 1 -}}</li>
-                            <li>{{- localise "CookiesUsageBP3" .Language 1 -}}</li>
-                            <li>{{- localise "CookiesUsageBP4" .Language 1 -}}</li>
-                            <li>{{- localise "CookiesUsageBP5" .Language 1 -}}</li>
+                        <ul class="ons-list">
+                            <li class="ons-list__item">{{- localise "CookiesUsageBP1" .Language 1 -}}</li>
+                            <li class="ons-list__item">{{- localise "CookiesUsageBP2" .Language 1 -}}</li>
+                            <li class="ons-list__item">{{- localise "CookiesUsageBP3" .Language 1 -}}</li>
+                            <li class="ons-list__item">{{- localise "CookiesUsageBP4" .Language 1 -}}</li>
+                            <li class="ons-list__item">{{- localise "CookiesUsageBP5" .Language 1 -}}</li>
                         </ul>
                         <p>{{- localise "CookiesUsageP2" .Language 1 -}}</p>
                         {{ template "partials/fields/fieldset-radio" .UsageRadios }}
