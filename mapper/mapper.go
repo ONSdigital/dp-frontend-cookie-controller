@@ -20,9 +20,6 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.Policy, isU
 			Title: "Home",
 			URI:   "/",
 		},
-		{
-			Title: "Cookies",
-		},
 	}
 	page.Metadata.Title = CookiesStr
 	page.Language = lang

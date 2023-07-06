@@ -11,49 +11,49 @@
                 {{if .PreferencesUpdated }}
                     <div class="cookies-banner__preferences-success margin-bottom--2">
                         <div class="cookies-banner__preferences-success-body">
-                            <h2>{{ localise "CookiesPreferencesSaved" .Language 4 }}</h2>
-                            <p>{{ localise "CookiesPreferencesSavedAmend" .Language 4 | safeHTML }}</p>
+                            <h2>{{- localise "CookiesPreferencesSaved" .Language 4 -}}</h2>
+                            <p>{{- localise "CookiesPreferencesSavedAmend" .Language 4 | safeHTML -}}</p>
                         </div>
                     </div>
                 {{end}}
 
-                <p>{{ localise "CookiesP1" .Language 1}}</p>
-                <p>{{ localise "CookiesP2" .Language 1}}</p>
+                <p>{{- localise "CookiesP1" .Language 1 -}}</p>
+                <p>{{- localise "CookiesP2" .Language 1 -}}</p>
 
-                <h2>{{ localise "CookiesSettings" .Language 1}}</h2>
+                <h2>{{- localise "CookiesSettings" .Language 1 -}}</h2>
 
-                <p class="cookies-js hidden">{{ localise "CookiesSettingsP1" .Language 1}}</p>
+                <p class="cookies-js hidden">{{- localise "CookiesSettingsP1" .Language 1 -}}</p>
 
                 <div class="cookies-no-js">
-                    <p> {{ localise "CookiesNoJSWarn1" .Language 1}} </p>
+                    <p> {{- localise "CookiesNoJSWarn1" .Language 1 -}} </p>
                     <ul>
-                        <li>{{ localise "CookiesNoJSOpt1" .Language 1}}</li>
-                        <li>{{ localise "CookiesNoJSOpt2" .Language 1}}</li>
+                        <li>{{- localise "CookiesNoJSOpt1" .Language 1 -}}</li>
+                        <li>{{- localise "CookiesNoJSOpt2" .Language 1 -}}</li>
                     </ul>
-                    <p> {{ localise "CookiesNoJSWarn2" .Language 1}} </p>
+                    <p> {{- localise "CookiesNoJSWarn2" .Language 1 -}} </p>
                 </div>
                 <form method="post">
                     <fieldset class="ons-fieldset cookies-js hidden">
                         <legend class="ons-fieldset__legend">{{- localise "CookiesUsage" .Language 1 -}}</legend>
-                        <p>{{ localise "CookiesUsageP1" .Language 1}}</p>
+                        <p>{{- localise "CookiesUsageP1" .Language 1 -}}</p>
                         <ul>
-                            <li>{{ localise "CookiesUsageBP1" .Language 1}}</li>
-                            <li>{{ localise "CookiesUsageBP2" .Language 1}}</li>
-                            <li>{{ localise "CookiesUsageBP3" .Language 1}}</li>
-                            <li>{{ localise "CookiesUsageBP4" .Language 1}}</li>
-                            <li>{{ localise "CookiesUsageBP5" .Language 1}}</li>
+                            <li>{{- localise "CookiesUsageBP1" .Language 1 -}}</li>
+                            <li>{{- localise "CookiesUsageBP2" .Language 1 -}}</li>
+                            <li>{{- localise "CookiesUsageBP3" .Language 1 -}}</li>
+                            <li>{{- localise "CookiesUsageBP4" .Language 1 -}}</li>
+                            <li>{{- localise "CookiesUsageBP5" .Language 1 -}}</li>
                         </ul>
-                        <p>{{ localise "CookiesUsageP2" .Language 1}}</p>
+                        <p>{{- localise "CookiesUsageP2" .Language 1 -}}</p>
                         {{ template "partials/fields/fieldset-radio" .TypeRadios }}
                     </fieldset>
                     
-                    <h3 class="margin-top--2">{{ localise "CookiesEssential" .Language 1}}</h3>
+                    <h3 class="margin-top--2">{{- localise "CookiesEssential" .Language 1 -}}</h3>
 
-                    <p>{{ localise "CookiesEssentialP1" .Language 1}}</p>
+                    <p>{{- localise "CookiesEssentialP1" .Language 1 -}}</p>
 
-                    <p>{{ localise "CookiesEssentialP2" .Language 1}}</p>
+                    <p>{{- localise "CookiesEssentialP2" .Language 1 -}}</p>
                     
-                    <p>{{ localise "CookiesEssentialP3" .Language 1 | safeHTML }}</p>
+                    <p>{{- localise "CookiesEssentialP3" .Language 1 | safeHTML -}}</p>
 
                     <button
                         type="submit"
