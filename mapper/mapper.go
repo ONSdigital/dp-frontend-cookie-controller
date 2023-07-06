@@ -32,7 +32,7 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.Policy, isU
 	// be shown when cookies preferences have been updated by the user.
 	page.PreferencesUpdated = isUpdated
 
-	page.TypeRadios = coreModel.RadioFieldset{
+	page.UsageRadios = coreModel.RadioFieldset{
 		Radios: []coreModel.Radio{
 			{
 				Input: coreModel.Input{

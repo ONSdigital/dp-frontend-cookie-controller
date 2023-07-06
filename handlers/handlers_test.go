@@ -268,7 +268,7 @@ func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, i
 	page.PatternLibraryAssetsPath = cfg.PatternLibraryAssetsPath
 	page.PreferencesUpdated = hasSetPreference
 
-	page.TypeRadios = coreModel.RadioFieldset{
+	page.UsageRadios = coreModel.RadioFieldset{
 		Radios: []coreModel.Radio{
 			{
 				Input: coreModel.Input{

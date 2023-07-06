@@ -37,7 +37,7 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.CookiesPolicy.Usage = false
 	expectedModel.PreferencesUpdated = false
 	expectedModel.FeatureFlags.HideCookieBanner = true
-	expectedModel.TypeRadios = coreModel.RadioFieldset{
+	expectedModel.UsageRadios = coreModel.RadioFieldset{
 		Radios: []coreModel.Radio{
 			{
 				Input: coreModel.Input{
