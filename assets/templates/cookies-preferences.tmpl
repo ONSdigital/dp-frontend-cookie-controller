@@ -6,8 +6,9 @@
         <div class="ons-grid__col ons-u-pl-no">
             <div class="ons-page__main ons-u-mt-no">
                 {{if .PreferencesUpdated }}
-                    <div class="cookies-banner__preferences-success margin-bottom--2">
-                        <div class="cookies-banner__preferences-success-body">
+                    <div aria-labelledby="alert" role="alert" tabindex="-1" class="ons-panel ons-panel--success ons-panel--no-title" id="success-id">
+                        <span id="alert" class="ons-panel__assistive-text ons-u-vh">Completed: </span>
+                        <div class="ons-panel__body">
                             <h2>{{- localise "CookiesPreferencesSaved" .Language 4 -}}</h2>
                             <p>{{- localise "CookiesPreferencesSavedAmend" .Language 4 | safeHTML -}}</p>
                         </div>
