@@ -254,9 +254,6 @@ func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, i
 			Title: "Home",
 			URI:   "/",
 		},
-		{
-			Title: "Cookies",
-		},
 	}
 	page.Metadata.Title = "Cookies"
 	page.Language = lang
