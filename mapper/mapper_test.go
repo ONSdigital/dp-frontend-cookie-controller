@@ -24,9 +24,6 @@ func TestUnitMapper(t *testing.T) {
 			Title: "Home",
 			URI:   "/",
 		},
-		{
-			Title: "Cookies",
-		},
 	}
 	expectedModel.PatternLibraryAssetsPath = "path/to/assets"
 	expectedModel.SiteDomain = "site-domain"
