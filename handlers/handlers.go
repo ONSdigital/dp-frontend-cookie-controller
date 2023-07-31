@@ -32,13 +32,10 @@ type ClientError interface {
 	Code() int
 }
 
-// setStatusCode sets the status code of a http response to a relevant error code
 func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 	status := http.StatusInternalServerError
 	if err, ok := err.(ClientError); ok {
-		if err.Code() == http.StatusNotFound {
-			status = err.Code()
-		}
+		status = err.Code()
 	}
 	log.Error(req.Context(), "setting-response-status", err)
 	w.WriteHeader(status)
@@ -102,8 +99,9 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 		return
 	}
 	cookiePolicyUsage := req.FormValue("cookie-policy-usage")
+
 	if cookiePolicyUsage == "" {
-		err := errors.New("request form value cookie-policy-usage not found")
+		err := clientErr{errors.New("request form value cookie-policy-usage not found")}
 		log.Error(ctx, "failed to get cookie value cookie-policy-usage from form", err)
 		setStatusCode(req, w, err)
 		return

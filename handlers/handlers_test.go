@@ -145,7 +145,7 @@ func TestEditHandler(t *testing.T) {
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
-			So(w.Code, ShouldEqual, http.StatusInternalServerError)
+			So(w.Code, ShouldEqual, http.StatusBadRequest)
 		})
 
 		Convey("fail with bad form values", func() {

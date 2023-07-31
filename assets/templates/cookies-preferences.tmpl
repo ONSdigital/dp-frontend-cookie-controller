@@ -1,9 +1,7 @@
 <div class="ons-page__container ons-container">
     <div class="ons-grid ons-u-ml-no">
-        <h1 class="ons-u-fs-xxxl ons-u-mt-m ons-u-fw-b">
-            {{- localise "CookiesOnONS" .Language 1 -}}
-        </h1>
         <div class="ons-grid__col ons-u-pl-no">
+            <h1 class="ons-u-fs-xxxl ons-u-mt-m ons-u-fw-b"> {{- localise "CookiesOnONS" .Language 1 -}} </h1>
             <div class="ons-page__main ons-u-mt-no">
                 {{if .PreferencesUpdated }}
                     <div aria-labelledby="alert" role="alert" tabindex="-1" class="ons-panel ons-panel--success ons-panel--no-title" id="success-id">
@@ -45,7 +43,7 @@
                         {{ template "partials/fields/fieldset-radio" .UsageRadios }}
                     </fieldset>
                     
-                    <h3 class="margin-top--2">{{- localise "CookiesEssential" .Language 1 -}}</h3>
+                    <h3 class="ons-u-mt-s">{{- localise "CookiesEssential" .Language 1 -}}</h3>
 
                     <p>{{- localise "CookiesEssentialP1" .Language 1 -}}</p>
 
@@ -53,10 +51,7 @@
                     
                     <p>{{- localise "CookiesEssentialP3" .Language 1 | safeHTML -}}</p>
 
-                    <button
-                        type="submit"
-                        class="ons-btn ons-u-mt-xl cookies-js hidden"
-                    >
+                    <button type="submit" class="ons-btn ons-u-mt-xl ons-u-mb-s cookies-js hidden">
                         <span class="ons-btn__inner">
                             <span class="ons-btn__text">{{- localise "SaveChanges" .Language 1 -}}</span>
                         </span>
