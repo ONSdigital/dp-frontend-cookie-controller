@@ -6,5 +6,5 @@ import "github.com/ONSdigital/dp-renderer/v2/model"
 type CookiesPreference struct {
 	model.Page
 	PreferencesUpdated bool                `json:"preferences_updated"`
-	UsageRadios        model.RadioFieldset `json:"type_radios"`
+	UsageRadios        model.RadioFieldset `json:"usage_radios"`
 }

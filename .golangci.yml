@@ -51,7 +51,6 @@ linters:
   disable-all: true
   enable:
     - deadcode
-    - depguard
     - dogsled
     - gochecknoinits
     - goconst
