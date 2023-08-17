@@ -1,13 +1,13 @@
 package mapper
 
 import (
-	"dp-frontend-cookie-controller/model"
 	"fmt"
 	"testing"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
-	"github.com/ONSdigital/dp-net/request"
-	coreModel "github.com/ONSdigital/dp-renderer/model"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/model"
+	"github.com/ONSdigital/dp-net/v2/request"
+	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -24,9 +24,6 @@ func TestUnitMapper(t *testing.T) {
 			Title: "Home",
 			URI:   "/",
 		},
-		{
-			Title: "Cookies",
-		},
 	}
 	expectedModel.PatternLibraryAssetsPath = "path/to/assets"
 	expectedModel.SiteDomain = "site-domain"
@@ -37,7 +34,34 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.CookiesPolicy.Usage = false
 	expectedModel.PreferencesUpdated = false
 	expectedModel.FeatureFlags.HideCookieBanner = true
-	expectedModel.FeatureFlags.SixteensVersion = SixteensVersionStr
+	expectedModel.UsageRadios = coreModel.RadioFieldset{
+		Radios: []coreModel.Radio{
+			{
+				Input: coreModel.Input{
+					ID:        "usage-on",
+					IsChecked: false,
+					Label: coreModel.Localisation{
+						LocaleKey: "On",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usage",
+					Value: "true",
+				},
+			},
+			{
+				Input: coreModel.Input{
+					ID:        "usage-off",
+					IsChecked: true,
+					Label: coreModel.Localisation{
+						LocaleKey: "Off",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usage",
+					Value: "false",
+				},
+			},
+		},
+	}
 
 	basePage := coreModel.NewPage("path/to/assets", "site-domain")
 	Convey("test CreateCookieSettingPage", t, func() {

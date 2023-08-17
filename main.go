@@ -7,16 +7,15 @@ import (
 	"os/signal"
 	"syscall"
 
-	"dp-frontend-cookie-controller/assets"
-	"dp-frontend-cookie-controller/config"
-	"dp-frontend-cookie-controller/routes"
-
+	"github.com/ONSdigital/dp-frontend-cookie-controller/assets"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/config"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/routes"
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
-	render "github.com/ONSdigital/dp-renderer"
+	render "github.com/ONSdigital/dp-renderer/v2"
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 
-	dpnethttp "github.com/ONSdigital/dp-net/http"
+	dpnethttp "github.com/ONSdigital/dp-net/v2/http"
 )
 
 var (
@@ -58,7 +57,7 @@ func run(ctx context.Context) error {
 
 	r := mux.NewRouter()
 
-	// nolint: typecheck
+	//nolint:typecheck
 	rendC := render.NewWithDefaultClient(assets.Asset, assets.AssetNames, cfg.PatternLibraryAssetsPath, cfg.SiteDomain)
 
 	healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)

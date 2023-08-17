@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"dp-frontend-cookie-controller/mapper"
 	"errors"
 	"io"
 	"net/http"
@@ -9,13 +8,17 @@ import (
 	"time"
 
 	"github.com/ONSdigital/dp-cookies/cookies"
-	dphandlers "github.com/ONSdigital/dp-net/handlers"
-	"github.com/ONSdigital/dp-renderer/model"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/mapper"
+	dphandlers "github.com/ONSdigital/dp-net/v2/handlers"
+	"github.com/ONSdigital/dp-renderer/v2/model"
 	"github.com/ONSdigital/log.go/v2/log"
 )
 
 // Cookies that will not be removed deleted
 var protectedCookies = []string{"access_token", "refresh_token", "id_token", "lang", "collection", "timeseriesbasket", "rememberBasket"}
+
+// To mock interfaces in this file
+//go:generate mockgen -source=handlers.go -destination=mock_handlers.go -package=handlers github.com/ONSdigital/dp-frontend-cookie-controller/handlers RenderClient
 
 // RenderClient is an interface with required methods for building a template from a page model
 type RenderClient interface {
@@ -29,13 +32,10 @@ type ClientError interface {
 	Code() int
 }
 
-// setStatusCode sets the status code of a http response to a relevant error code
 func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 	status := http.StatusInternalServerError
 	if err, ok := err.(ClientError); ok {
-		if err.Code() == http.StatusNotFound {
-			status = err.Code()
-		}
+		status = err.Code()
 	}
 	log.Error(req.Context(), "setting-response-status", err)
 	w.WriteHeader(status)
@@ -99,8 +99,9 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 		return
 	}
 	cookiePolicyUsage := req.FormValue("cookie-policy-usage")
+
 	if cookiePolicyUsage == "" {
-		err := errors.New("request form value cookie-policy-usage not found")
+		err := clientErr{errors.New("request form value cookie-policy-usage not found")}
 		log.Error(ctx, "failed to get cookie value cookie-policy-usage from form", err)
 		setStatusCode(req, w, err)
 		return

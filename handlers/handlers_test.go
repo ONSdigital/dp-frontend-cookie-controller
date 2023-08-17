@@ -3,8 +3,6 @@ package handlers
 import (
 	"bytes"
 	"context"
-	"dp-frontend-cookie-controller/config"
-	"dp-frontend-cookie-controller/model"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
@@ -12,12 +10,13 @@ import (
 	"strconv"
 	"testing"
 
-	coreModel "github.com/ONSdigital/dp-renderer/model"
-	"github.com/ONSdigital/log.go/v2/log"
-	"github.com/gorilla/mux"
-
 	"github.com/ONSdigital/dp-cookies/cookies"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/config"
+	"github.com/ONSdigital/dp-frontend-cookie-controller/model"
+	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
+	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/golang/mock/gomock"
+	"github.com/gorilla/mux"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -142,13 +141,11 @@ func TestEditHandler(t *testing.T) {
 		})
 
 		Convey("fail with bad form names", func() {
-			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
-			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
 			b := `cookie-policy-waffles=true`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
-			So(w.Code, ShouldEqual, http.StatusInternalServerError)
+			So(w.Code, ShouldEqual, http.StatusBadRequest)
 		})
 
 		Convey("fail with bad form values", func() {
@@ -257,9 +254,6 @@ func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, i
 			Title: "Home",
 			URI:   "/",
 		},
-		{
-			Title: "Cookies",
-		},
 	}
 	page.Metadata.Title = "Cookies"
 	page.Language = lang
@@ -270,7 +264,34 @@ func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, i
 	page.SiteDomain = cfg.SiteDomain
 	page.PatternLibraryAssetsPath = cfg.PatternLibraryAssetsPath
 	page.PreferencesUpdated = hasSetPreference
-	page.FeatureFlags.SixteensVersion = "67f6982"
 
+	page.UsageRadios = coreModel.RadioFieldset{
+		Radios: []coreModel.Radio{
+			{
+				Input: coreModel.Input{
+					ID:        "usage-on",
+					IsChecked: page.CookiesPolicy.Usage,
+					Label: coreModel.Localisation{
+						LocaleKey: "On",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usage",
+					Value: "true",
+				},
+			},
+			{
+				Input: coreModel.Input{
+					ID:        "usage-off",
+					IsChecked: !page.CookiesPolicy.Usage,
+					Label: coreModel.Localisation{
+						LocaleKey: "Off",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-usage",
+					Value: "false",
+				},
+			},
+		},
+	}
 	return page
 }
