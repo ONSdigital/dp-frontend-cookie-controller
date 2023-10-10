@@ -1,11 +1,11 @@
 module github.com/ONSdigital/dp-frontend-cookie-controller
 
-go 1.20
+go 1.21
 
 require (
 	github.com/ONSdigital/dp-cookies v0.4.0
 	github.com/ONSdigital/dp-healthcheck v1.6.1
-	github.com/ONSdigital/dp-net/v2 v2.10.0
+	github.com/ONSdigital/dp-net/v2 v2.11.0
 	github.com/ONSdigital/dp-renderer/v2 v2.5.0
 	github.com/ONSdigital/log.go/v2 v2.4.1
 	github.com/golang/mock v1.6.0
