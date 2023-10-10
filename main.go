@@ -12,8 +12,10 @@ import (
 	"github.com/ONSdigital/dp-frontend-cookie-controller/routes"
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
 	render "github.com/ONSdigital/dp-renderer/v2"
+	"github.com/ONSdigital/dp-renderer/v2/middleware/renderror"
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
+	"github.com/justinas/alice"
 
 	dpnethttp "github.com/ONSdigital/dp-net/v2/http"
 )
@@ -64,7 +66,13 @@ func run(ctx context.Context) error {
 	routes.Init(ctx, r, healthcheck, rendC)
 	healthcheck.Start(ctx)
 
-	s := dpnethttp.NewServer(cfg.BindAddr, r)
+	middleware := []alice.Constructor{
+		renderror.Handler(rendC),
+	}
+
+	newAlice := alice.New(middleware...).Then(r)
+
+	s := dpnethttp.NewServer(cfg.BindAddr, newAlice)
 	s.HandleOSSignals = false
 
 	log.Info(ctx, "Starting server", log.Data{"config": cfg})
