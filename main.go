@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"os"
 	"os/signal"
@@ -11,13 +12,17 @@ import (
 	"github.com/ONSdigital/dp-frontend-cookie-controller/config"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/routes"
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
+	dphttp "github.com/ONSdigital/dp-net/http"
+	dpotelgo "github.com/ONSdigital/dp-otel-go"
 	render "github.com/ONSdigital/dp-renderer/v2"
 	"github.com/ONSdigital/dp-renderer/v2/middleware/renderror"
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/gorilla/mux"
 	"github.com/justinas/alice"
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 
-	dpnethttp "github.com/ONSdigital/dp-net/v2/http"
+	dpnethttp "github.com/ONSdigital/dp-net/http"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
 )
 
 var (
@@ -51,6 +56,23 @@ func run(ctx context.Context) error {
 
 	log.Info(ctx, "got service configuration", log.Data{"config": cfg})
 
+	// Set up OpenTelemetry
+	otelConfig := dpotelgo.Config{
+		OtelServiceName:          cfg.OTServiceName,
+		OtelExporterOtlpEndpoint: cfg.OTExporterOTLPEndpoint,
+	}
+
+	otelShutdown, err := dpotelgo.SetupOTelSDK(ctx, otelConfig)
+
+	if err != nil {
+		log.Error(ctx, "error setting up OpenTelemetry - hint: ensure OTEL_EXPORTER_OTLP_ENDPOINT is set", err)
+	}
+
+	// Handle shutdown properly so nothing leaks.
+	defer func() {
+		err = errors.Join(err, otelShutdown(context.Background()))
+	}()
+
 	versionInfo, err := health.NewVersionInfo(
 		BuildTime,
 		GitCommit,
@@ -58,6 +80,7 @@ func run(ctx context.Context) error {
 	)
 
 	r := mux.NewRouter()
+	r.Use(otelmux.Middleware(cfg.OTServiceName))
 
 	//nolint:typecheck
 	rendC := render.NewWithDefaultClient(assets.Asset, assets.AssetNames, cfg.PatternLibraryAssetsPath, cfg.SiteDomain)
@@ -72,7 +95,8 @@ func run(ctx context.Context) error {
 
 	newAlice := alice.New(middleware...).Then(r)
 
-	s := dpnethttp.NewServer(cfg.BindAddr, newAlice)
+	otelHandler := otelhttp.NewHandler(newAlice, "/")
+	s := dphttp.NewServer(cfg.BindAddr, otelHandler)
 	s.HandleOSSignals = false
 
 	log.Info(ctx, "Starting server", log.Data{"config": cfg})
