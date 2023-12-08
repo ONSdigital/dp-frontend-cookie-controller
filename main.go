@@ -12,7 +12,7 @@ import (
 	"github.com/ONSdigital/dp-frontend-cookie-controller/config"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/routes"
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
-	dphttp "github.com/ONSdigital/dp-net/v2/http"
+	dpnethttp "github.com/ONSdigital/dp-net/v2/http"
 	dpotelgo "github.com/ONSdigital/dp-otel-go"
 	render "github.com/ONSdigital/dp-renderer/v2"
 	"github.com/ONSdigital/dp-renderer/v2/middleware/renderror"
@@ -95,7 +95,7 @@ func run(ctx context.Context) error {
 	newAlice := alice.New(middleware...).Then(r)
 
 	otelHandler := otelhttp.NewHandler(newAlice, "/")
-	s := dphttp.NewServer(cfg.BindAddr, otelHandler)
+	s := dpnethttp.NewServer(cfg.BindAddr, otelHandler)
 	s.HandleOSSignals = false
 
 	log.Info(ctx, "Starting server", log.Data{"config": cfg})
@@ -116,7 +116,7 @@ func run(ctx context.Context) error {
 	}
 }
 
-func gracefulShutdown(cfg *config.Config, s *dphttp.Server, hc health.HealthCheck) error {
+func gracefulShutdown(cfg *config.Config, s *dpnethttp.Server, hc health.HealthCheck) error {
 	log.Info(context.Background(), fmt.Sprintf("shutdown with timeout: %s", cfg.GracefulShutdownTimeout))
 	ctx, cancel := context.WithTimeout(context.Background(), cfg.GracefulShutdownTimeout)
 	log.Info(ctx, "shutting service down gracefully")
