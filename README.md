@@ -9,15 +9,15 @@ If on go 1.12 then ensure the project either resides outside of your `GOPATH` or
 
 ## Configuration
 
-| Environment variable         | Config                     | Description                                                                            | Default                 |
-| ---------------------------- | -------------------------- | -------------------------------------------------------------------------------------- | ----------------------- |
-| BIND_ADDR                    | BindAddr                   | The Port to run on                                                                     | :24100                  |
-| SITE_DOMAIN                  | SiteDomain                 |                                                                                        | localhost               |
-| GRACEFUL_SHUTDOWN_TIMEOUT    | GracefulShutdownTimeout    | Time to wait during graceful shutdown                                                  | 5 seconds               |
-| HEALTHCHECK_INTERVAL         | HealthCheckInterval        | Interval between health checks                                                         | 30 seconds              |
-| HEALTHCHECK_CRITICAL_TIMEOUT | HealthCheckCriticalTimeout | Amount of time to pass since last healthy health check to be deemed a critical failure | 90 seconds              |
-| OTEL_EXPORTER_OTLP_ENDPOINT         | localhost:4317                         | Endpoint for OpenTelemetry service
-| OTEL_SERVICE_NAME                   | dp-frontend-cookie-controller          | Label of service for OpenTelemetry service
+| Environment variable         | Config                     | Description                                                                            | Default                       |
+| ---------------------------- | -------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
+| BIND_ADDR                    | BindAddr                   | The Port to run on                                                                     | :24100                        |
+| SITE_DOMAIN                  | SiteDomain                 |                                                                                        | localhost                     |
+| GRACEFUL_SHUTDOWN_TIMEOUT    | GracefulShutdownTimeout    | Time to wait during graceful shutdown                                                  | 5 seconds                     |
+| HEALTHCHECK_INTERVAL         | HealthCheckInterval        | Interval between health checks                                                         | 30 seconds                    |
+| HEALTHCHECK_CRITICAL_TIMEOUT | HealthCheckCriticalTimeout | Amount of time to pass since last healthy health check to be deemed a critical failure | 90 seconds                    |
+| OTEL_EXPORTER_OTLP_ENDPOINT  | OTExporterOTLPEndpoint     | Endpoint for OpenTelemetry service                                                     | localhost:4317                |
+| OTEL_SERVICE_NAME            | OTServiceName              | Label of service for OpenTelemetry service                                             | dp-frontend-cookie-controller |
 
 ## Contributing
 
