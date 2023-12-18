@@ -18,6 +18,7 @@ If on go 1.12 then ensure the project either resides outside of your `GOPATH` or
 | HEALTHCHECK_CRITICAL_TIMEOUT | HealthCheckCriticalTimeout | Amount of time to pass since last healthy health check to be deemed a critical failure | 90 seconds                    |
 | OTEL_EXPORTER_OTLP_ENDPOINT  | OTExporterOTLPEndpoint     | Endpoint for OpenTelemetry service                                                     | localhost:4317                |
 | OTEL_SERVICE_NAME            | OTServiceName              | Label of service for OpenTelemetry service                                             | dp-frontend-cookie-controller |
+| OTEL_BATCH_TIMEOUT           | OTBatchTimeout             | Timeout for OpenTelemetry                                                              | 5s                            |
 
 ## Contributing
 

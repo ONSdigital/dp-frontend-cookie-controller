@@ -59,6 +59,7 @@ func run(ctx context.Context) error {
 	otelConfig := dpotelgo.Config{
 		OtelServiceName:          cfg.OTServiceName,
 		OtelExporterOtlpEndpoint: cfg.OTExporterOTLPEndpoint,
+		OtelBatchTimeout:         cfg.OTBatchTimeout,
 	}
 
 	otelShutdown, err := dpotelgo.SetupOTelSDK(ctx, otelConfig)
