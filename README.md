@@ -19,6 +19,7 @@ If on go 1.12 then ensure the project either resides outside of your `GOPATH` or
 | OTEL_EXPORTER_OTLP_ENDPOINT  | OTExporterOTLPEndpoint     | Endpoint for OpenTelemetry service                                                     | localhost:4317                |
 | OTEL_SERVICE_NAME            | OTServiceName              | Label of service for OpenTelemetry service                                             | dp-frontend-cookie-controller |
 | OTEL_BATCH_TIMEOUT           | OTBatchTimeout             | Timeout for OpenTelemetry                                                              | 5s                            |
+| OTEL_ENABLED                 | false                      | Feature flag to enable OpenTelemetry
 
 ## Contributing
 

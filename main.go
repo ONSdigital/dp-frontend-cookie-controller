@@ -55,23 +55,25 @@ func run(ctx context.Context) error {
 
 	log.Info(ctx, "got service configuration", log.Data{"config": cfg})
 
-	// Set up OpenTelemetry
-	otelConfig := dpotelgo.Config{
-		OtelServiceName:          cfg.OTServiceName,
-		OtelExporterOtlpEndpoint: cfg.OTExporterOTLPEndpoint,
-		OtelBatchTimeout:         cfg.OTBatchTimeout,
+	if cfg.OtelEnabled {
+		// Set up OpenTelemetry
+		otelConfig := dpotelgo.Config{
+			OtelServiceName:          cfg.OTServiceName,
+			OtelExporterOtlpEndpoint: cfg.OTExporterOTLPEndpoint,
+			OtelBatchTimeout:         cfg.OTBatchTimeout,
+		}
+
+		otelShutdown, err := dpotelgo.SetupOTelSDK(ctx, otelConfig)
+
+		if err != nil {
+			log.Error(ctx, "error setting up OpenTelemetry - hint: ensure OTEL_EXPORTER_OTLP_ENDPOINT is set", err)
+		}
+
+		// Handle shutdown properly so nothing leaks.
+		defer func() {
+			err = errors.Join(err, otelShutdown(context.Background()))
+		}()
 	}
-
-	otelShutdown, err := dpotelgo.SetupOTelSDK(ctx, otelConfig)
-
-	if err != nil {
-		log.Error(ctx, "error setting up OpenTelemetry - hint: ensure OTEL_EXPORTER_OTLP_ENDPOINT is set", err)
-	}
-
-	// Handle shutdown properly so nothing leaks.
-	defer func() {
-		err = errors.Join(err, otelShutdown(context.Background()))
-	}()
 
 	versionInfo, err := health.NewVersionInfo(
 		BuildTime,
@@ -80,7 +82,10 @@ func run(ctx context.Context) error {
 	)
 
 	r := mux.NewRouter()
-	r.Use(otelmux.Middleware(cfg.OTServiceName))
+
+	if cfg.OtelEnabled {
+		r.Use(otelmux.Middleware(cfg.OTServiceName))
+	}
 
 	//nolint:typecheck
 	rendC := render.NewWithDefaultClient(assets.Asset, assets.AssetNames, cfg.PatternLibraryAssetsPath, cfg.SiteDomain)
@@ -95,8 +100,14 @@ func run(ctx context.Context) error {
 
 	newAlice := alice.New(middleware...).Then(r)
 
-	otelHandler := otelhttp.NewHandler(newAlice, "/")
-	s := dpnethttp.NewServer(cfg.BindAddr, otelHandler)
+	var s *dpnethttp.Server
+	if cfg.OtelEnabled {
+		otelHandler := otelhttp.NewHandler(newAlice, "/")
+		s = dpnethttp.NewServer(cfg.BindAddr, otelHandler)
+	} else {
+		s = dpnethttp.NewServer(cfg.BindAddr, newAlice)
+	}
+
 	s.HandleOSSignals = false
 
 	log.Info(ctx, "Starting server", log.Data{"config": cfg})

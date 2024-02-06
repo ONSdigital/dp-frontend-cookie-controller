@@ -19,6 +19,7 @@ type Config struct {
 	OTExporterOTLPEndpoint     string        `envconfig:"OTEL_EXPORTER_OTLP_ENDPOINT"`
 	OTServiceName              string        `envconfig:"OTEL_SERVICE_NAME"`
 	OTBatchTimeout             time.Duration `envconfig:"OTEL_BATCH_TIMEOUT"`
+	OtelEnabled                bool          `envconfig:"OTEL_ENABLED"`
 }
 
 var cfg *Config
@@ -54,6 +55,7 @@ func get() (*Config, error) {
 		OTExporterOTLPEndpoint:     "localhost:4317",
 		OTServiceName:              "dp-frontend-cookie-controller",
 		OTBatchTimeout:             5 * time.Second,
+		OtelEnabled:                false,
 	}
 
 	return cfg, envconfig.Process("", cfg)
