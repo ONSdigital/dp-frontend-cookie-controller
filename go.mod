@@ -1,6 +1,6 @@
 module github.com/ONSdigital/dp-frontend-cookie-controller
 
-go 1.21
+go 1.22
 
 require (
 	github.com/ONSdigital/dp-cookies v0.4.0
