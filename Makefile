@@ -14,8 +14,7 @@ build: generate-prod
 	go build -tags 'production' -o $(BINPATH)/dp-frontend-cookie-controller -ldflags "-X main.BuildTime=$(BUILD_TIME) -X main.GitCommit=$(GIT_COMMIT) -X main.Version=$(VERSION)"
 
 lint:
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.53.3
-	golangci-lint run ./...
+	npx mega-linter-runner
 
 .PHONY: debug
 debug: generate-debug

@@ -1,5 +1,7 @@
 #!/bin/bash -eux
 
 pushd dp-frontend-cookie-controller
-  make lint
+DEFAULT_WORKSPACE=$(pwd)
+export DEFAULT_WORKSPACE
+bash -ex /entrypoint.sh
 popd
