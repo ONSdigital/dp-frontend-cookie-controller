@@ -11,3 +11,6 @@
 build/dp-frontend-cookie-controller
 
 assets/data.go
+
+# Linting reports
+megalinter-reports/

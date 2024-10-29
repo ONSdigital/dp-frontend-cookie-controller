@@ -10,7 +10,7 @@ If on go 1.12 then ensure the project either resides outside of your `GOPATH` or
 ## Configuration
 
 | Environment variable         | Config                     | Description                                                                            | Default                       |
-| ---------------------------- | -------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
+|------------------------------|----------------------------|----------------------------------------------------------------------------------------|-------------------------------|
 | BIND_ADDR                    | BindAddr                   | The Port to run on                                                                     | :24100                        |
 | SITE_DOMAIN                  | SiteDomain                 |                                                                                        | localhost                     |
 | GRACEFUL_SHUTDOWN_TIMEOUT    | GracefulShutdownTimeout    | Time to wait during graceful shutdown                                                  | 5 seconds                     |
@@ -19,7 +19,11 @@ If on go 1.12 then ensure the project either resides outside of your `GOPATH` or
 | OTEL_EXPORTER_OTLP_ENDPOINT  | OTExporterOTLPEndpoint     | Endpoint for OpenTelemetry service                                                     | localhost:4317                |
 | OTEL_SERVICE_NAME            | OTServiceName              | Label of service for OpenTelemetry service                                             | dp-frontend-cookie-controller |
 | OTEL_BATCH_TIMEOUT           | OTBatchTimeout             | Timeout for OpenTelemetry                                                              | 5s                            |
-| OTEL_ENABLED                 | false                      | Feature flag to enable OpenTelemetry
+| OTEL_ENABLED                 | false                      | Feature flag to enable OpenTelemetry                                                   |                               |
+
+## Linting
+
+For linting we use [mega-linter-runner](https://github.com/oxsecurity/megalinter) which can be run using `make lint`. This takes a long time to build the image the first time but after that it will be cached. The minimum Node.js version for this is v20.
 
 ## Contributing
 
@@ -27,6 +31,6 @@ See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## License
 
-Copyright © 2021, Office for National Statistics (https://www.ons.gov.uk)
+Copyright © 2021, Office for National Statistics (<https://www.ons.gov.uk>)
 
 Released under MIT license, see [LICENSE](LICENSE.md) for details.
