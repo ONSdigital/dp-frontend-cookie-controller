@@ -78,6 +78,7 @@ func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 
 // Read Handler
 func Read(rendC RenderClient) http.HandlerFunc {
+	//nolint:revive // names of unused params are useful here to provide context
 	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
 		read(w, req, rendC, lang)
 	})
@@ -85,6 +86,7 @@ func Read(rendC RenderClient) http.HandlerFunc {
 
 // Edit Handler
 func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
+	//nolint:revive // names of unused params are useful here to provide context
 	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
 		edit(w, req, rendC, siteDomain, lang)
 	})
@@ -101,9 +103,9 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 	cookiePolicyUsage := req.FormValue("cookie-policy-usage")
 
 	if cookiePolicyUsage == "" {
-		err := clientErr{errors.New("request form value cookie-policy-usage not found")}
-		log.Error(ctx, "failed to get cookie value cookie-policy-usage from form", err)
-		setStatusCode(req, w, err)
+		testErr := ClientErr{error: errors.New("request form value cookie-policy-usage not found")}
+		log.Error(ctx, "failed to get cookie value cookie-policy-usage from form", testErr)
+		setStatusCode(req, w, testErr)
 		return
 	}
 	usage, err := strconv.ParseBool(cookiePolicyUsage)

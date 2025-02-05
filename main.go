@@ -80,6 +80,9 @@ func run(ctx context.Context) error {
 		GitCommit,
 		Version,
 	)
+	if err != nil {
+		return err
+	}
 
 	r := mux.NewRouter()
 
@@ -87,7 +90,6 @@ func run(ctx context.Context) error {
 		r.Use(otelmux.Middleware(cfg.OTServiceName))
 	}
 
-	//nolint:typecheck
 	rendC := render.NewWithDefaultClient(assets.Asset, assets.AssetNames, cfg.PatternLibraryAssetsPath, cfg.SiteDomain)
 
 	healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)
@@ -119,12 +121,11 @@ func run(ctx context.Context) error {
 		}
 	}()
 
-	for {
-		select {
-		case <-signals:
-			log.Info(ctx, "os signal received")
-			return gracefulShutdown(cfg, s, healthcheck)
-		}
+	//nolint:gosimple // Leaving this select in so it can be expanded later.
+	select {
+	case <-signals:
+		log.Info(ctx, "os signal received")
+		return gracefulShutdown(cfg, s, healthcheck)
 	}
 }
 
