@@ -13,6 +13,9 @@
                     </div>
                 {{end}}
 
+                <!-- This triggers an error in the linter as no alt attribute -->
+                <img />
+
                 <p>{{- localise "CookiesP1" .Language 1 -}}</p>
                 <p>{{- localise "CookiesP2" .Language 1 -}}</p>
 
