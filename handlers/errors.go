@@ -6,10 +6,10 @@ import (
 
 // clientErr is an error which occurred while validating client input,
 // e.g. request is missing a hidden form field.
-type clientErr struct {
+type ClientErr struct {
 	error
 }
 
-func (c clientErr) Code() int {
+func (c ClientErr) Code() int {
 	return http.StatusBadRequest
 }

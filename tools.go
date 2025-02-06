@@ -7,4 +7,6 @@ package main
 
 import (
 	_ "github.com/kevinburke/go-bindata"
+	// adding glog to override nested indirect dependency
+	_ "github.com/golang/glog"
 )
