@@ -5,7 +5,7 @@
 # linters documentation
 
 # all, none, or list of linter keys
-APPLY_FIXES: all
+APPLY_FIXES: none
 
 # If you use ENABLE variable, all other languages/formats/tooling-formats will
 # be disabled by default
@@ -44,3 +44,5 @@ FILEIO_REPORTER: false
 
 HTML_DJLINT_ARGUMENTS: ["--profile", "golang"]
 HTML_DJLINT_FILE_EXTENSIONS: [".tmpl"]
+
+FORMATTERS_DISABLE_ERRORS: false
