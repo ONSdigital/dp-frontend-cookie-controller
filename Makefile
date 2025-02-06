@@ -13,8 +13,24 @@ audit:
 build: generate-prod
 	go build -tags 'production' -o $(BINPATH)/dp-frontend-cookie-controller -ldflags "-X main.BuildTime=$(BUILD_TIME) -X main.GitCommit=$(GIT_COMMIT) -X main.Version=$(VERSION)"
 
-lint:
-	npx mega-linter-runner
+.PHONY: prepare-lint-go
+prepare-lint-go:
+	cp assets/assets.go assets/assets.go.bak
+	echo 'func Asset(_ string) ([]byte, error) { return nil, nil }' >> assets/assets.go
+	echo 'func AssetNames() []string { return []string{} }' >> assets/assets.go
+	gofmt -w assets/assets.go
+
+.PHONY: post-lint-go
+post-lint-go:
+	mv assets/assets.go.bak assets/assets.go
+
+.PHONY: lint
+lint: prepare-lint-go
+	npx mega-linter-runner || { make post-lint-go; exit 1; }
+
+.PHONY: lint-go
+lint-go: prepare-lint-go
+	golangci-lint run ./... || { make post-lint-go; exit 1; }
 
 .PHONY: debug
 debug: generate-debug
