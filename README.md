@@ -5,6 +5,12 @@
 This project uses go modules, ensure that go version 1.12 or above is in use.
 If on go 1.12 then ensure the project either resides outside of your `GOPATH` or `GO111MODULE` is set to true
 
+This (link)[http://www.bbc.co.uk] is an error
+
+- bad list
+    - bad list
+  - bad
+
 1. To start the service use make, `make debug`
 
 ## Configuration
