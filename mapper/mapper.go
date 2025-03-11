@@ -1,9 +1,9 @@
 package mapper
 
 import (
+	coreModel "github.com/ONSdigital/dis-design-system-go/model"
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/model"
-	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 )
 
 const (
