@@ -5,7 +5,7 @@ go 1.24
 toolchain go1.24.1
 
 require (
-	github.com/ONSdigital/dis-design-system-go v0.0.0-20250307105745-2f85da18aba3
+	github.com/ONSdigital/dis-design-system-go v0.0.0-20250311091618-209c318a0e1c
 	github.com/ONSdigital/dp-cookies v0.5.0
 	github.com/ONSdigital/dp-healthcheck v1.6.3
 	github.com/ONSdigital/dp-net/v2 v2.13.0
