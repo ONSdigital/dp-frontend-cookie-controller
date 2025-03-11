@@ -1,6 +1,6 @@
 package model
 
-import "github.com/ONSdigital/dp-renderer/v2/model"
+import "github.com/ONSdigital/dis-design-system-go/model"
 
 // CookiesPreference is the model struct for the cookies preferences form
 type CookiesPreference struct {
