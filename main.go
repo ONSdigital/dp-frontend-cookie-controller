@@ -12,7 +12,7 @@ import (
 	"github.com/ONSdigital/dp-frontend-cookie-controller/config"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/routes"
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
-	dpnethttp "github.com/ONSdigital/dp-net/v2/http"
+	dpnethttp "github.com/ONSdigital/dp-net/v3/http"
 	dpotelgo "github.com/ONSdigital/dp-otel-go"
 	render "github.com/ONSdigital/dp-renderer/v2"
 	"github.com/ONSdigital/dp-renderer/v2/middleware/renderror"
