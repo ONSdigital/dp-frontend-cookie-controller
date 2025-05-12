@@ -20,40 +20,40 @@
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 [CookiesOnONS]
-description = "Cookies on ONS.GOV.UK"
-one = "Cookies on ONS.GOV.UK"
+description = "Cookies on ons.gov.uk"
+one = "Cookies on ons.gov.uk"
 
 [CookiesP1]
-description = "Cookies are files saved on your phone, tablet or computer when you visit a website."
-one = "Cookies are files saved on your phone, tablet or computer when you visit a website."
+description = "Cookies are small files saved on your phone, tablet or computer when you visit a website."
+one = "Cookies are small files saved on your phone, tablet or computer when you visit a website."
 
 [CookiesP2]
-description = "We use cookies to store information about how you use the ons.gov.uk website, such as the pages you visit."
-one = "We use cookies to store information about how you use the ons.gov.uk website, such as the pages you visit."
+description = "We use cookies to store information about how you use the ONS website, such as the pages you visit."
+one = "We use cookies to store information about how you use the ONS website, such as the pages you visit."
 
 [CookiesSettings]
 description = "Cookie settings"
 one = "Cookie settings"
 
 [CookiesNoJSWarn1]
-description = "We use JavaScript to set most of our cookies. It appears that JavaScript is not running on your browser, so we are unable to change your cookie settings. To change this you can try:"
-one = "We use JavaScript to set most of our cookies. It appears that JavaScript is not running on your browser, so we are unable to change your cookie settings. To change this you can try:"
+description = "We use JavaScript to set our cookies. Javascript is not running on your browser so you cannot change your settings."
+one = "We use JavaScript to set our cookies. Javascript is not running on your browser so you cannot change your settings."
 
 [CookiesNoJSWarn2]
-description = "Without JavaScript we will only set cookies that are strictly necessary."
-one = "Without JavaScript we will only set cookies that are strictly necessary."
+description = "You can try:"
+one = "You can try:"
 
 [CookiesNoJSOpt1]
-description = "reloading the page"
-one = "reloading the page"
-
-[CookiesNoJSOpt2]
 description = "turning on JavaScript in your browser"
 one = "turning on JavaScript in your browser"
 
+[CookiesNoJSOpt2]
+description = "reloading the page in case there was a temporary fault with JavaScript"
+one = "reloading the page in case there was a temporary fault with JavaScript"
+
 [CookiesSettingsP1]
-description = "We use 2 types of cookie. You can choose which cookies you're happy for us to use."
-one = "We use 2 types of cookie. You can choose which cookies you're happy for us to use."
+description = "We use three types of cookie. You can choose which cookies you're happy for us to use."
+one = "We use three types of cookie. You can choose which cookies you're happy for us to use."
 
 [CookiesUsage]
 description = "Cookies that measure website use"
@@ -72,8 +72,8 @@ description = "the pages you visit on ons.gov.uk and how long you spend on each 
 one = "the pages you visit on ons.gov.uk and how long you spend on each page"
 
 [CookiesUsageBP3]
-description = "what you click on while you are visiting the site"
-one = "what you click on while you are visiting the site"
+description = "what you click on while you're visiting the site"
+one = "what you click on while you're visiting the site"
 
 [CookiesUsageBP4]
 description = "the way in which you interact with a page"
@@ -87,28 +87,64 @@ one = "whether you have participated in a Hotjar survey"
 description = "Regardless of your choice, we do not allow Google or Hotjar to use or share the data about how you use this site."
 one = "Regardless of your choice, we do not allow Google or Hotjar to use or share the data about how you use this site."
 
+[CookiesComms]
+description = "Cookies that help with our communications"
+one = "Cookies that help with our communications"
+
+[CookiesCommsP1]
+description = "Some of our pages may contain content from other sites, like YouTube, which may set their own cookies. These sites are sometimes called “third party” services. This tells us how many people are seeing the content and whether it’s useful."
+one = "Some of our pages may contain content from other sites, like YouTube, which may set their own cookies. These sites are sometimes called “third party” services. This tells us how many people are seeing the content and whether it’s useful."
+
+[CookiesCommsP2]
+description = "In addition, if you share a link to a ons.gov.uk page, the service you share it on may set a cookie. We have no control over cookies set on other websites – you can turn them off, but not through us."
+one = "In addition, if you share a link to a ons.gov.uk page, the service you share it on may set a cookie. We have no control over cookies set on other websites – you can turn them off, but not through us."
+
+[CookiesCommsSubHead1]
+description = "YouTube videos"
+one = "YouTube videos"
+
+[CookiesCommsSubP1]
+description = "We use YouTube to show videos on some ons.gov.uk pages. YouTube sets cookies when you visit one of these pages."
+one = "We use YouTube to show videos on some ons.gov.uk pages. YouTube sets cookies when you visit one of these pages."
+
+[CookiesSiteSettings]
+description = "Cookies that remember your settings"
+one = "Cookies that remember your settings"
+
+[CookiesSiteSettingsP1]
+description = "These cookies do things like remember your preferences and the choices you make, to personalise your experience of using the site."
+one = "These cookies do things like remember your preferences and the choices you make, to personalise your experience of using the site."
+
 [CookiesEssential]
 description = "Strictly necessary cookies"
 one = "Strictly necessary cookies"
 
 [CookiesEssentialP1]
-description = "These essential cookies do things like remember your progress through a form."
-one = "These essential cookies do things like remember your progress through a form."
+description = "These essential cookies do things like:"
+one = "These essential cookies do things like:"
+
+[CookiesEssentialBP1]
+description = "remember the notifications you've seen so we do not show them to you again"
+one = "remember the notifications you've seen so we do not show them to you again"
+
+[CookiesEssentialBP2]
+description = "remember your progress through a form (for example, an ons study)"
+one = "remember your progress through a form (for example, an ons study)"
 
 [CookiesEssentialP2]
-description = "They always need to be on to allow the website to function properly."
-one = "They always need to be on to allow the website to function properly."
+description = "They always need to be on."
+one = "They always need to be on."
 
 [CookiesEssentialP3]
-description = "Find out more about cookies on ons.gov.uk"
-one = "<a href=\"/help/cookies\">Find out more about cookies on ons.gov.uk</a>"
+description = "Learn more about cookies on ons.gov.uk"
+one = "<a href=\"/help/cookies\">Learn more about cookies on ons.gov.uk</a>"
 
 [CookiesPreferencesSaved]
-description = "We have saved your cookie preferences."
-one = "We have saved your cookie preference."
-other = "We have saved your cookie preferences."
+description = "Your cookie settings have been saved"
+one = "Your cookie setting has been saved"
+other = "Your cookie settings have been saved"
 
 [CookiesPreferencesSavedAmend]
-description = "Should you ever wish to amend them, visit <strong><a href=\"/cookies\">ons.gov.uk/cookies</a></strong>."
-one = "Should you ever wish to amend them, visit <strong><a href=\"/cookies\">ons.gov.uk/cookies</a></strong>."
-other = "Should you ever wish to amend them, visit <strong><a href=\"/cookies\">ons.gov.uk/cookies</a></strong>."
+description = "Some parts of the ONS may use additional cookies and will have their own cookie policy and banner."
+one = "Some parts of the ONS may use an additional cookie and will have their own cookie policy and banner."
+other = "Some parts of the ONS may use additional cookies and will have their own cookie policy and banner."
