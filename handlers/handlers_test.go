@@ -32,7 +32,7 @@ func TestReadHandler(t *testing.T) {
 			mockRend := NewMockRenderClient(mockCtrl)
 			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
-			req := httptest.NewRequest("GET", "/cookies", nil)
+			req := httptest.NewRequest("GET", "/cookies", http.NoBody)
 			w := doTestRequest("/cookies", req, Read(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusOK)
 		})
@@ -54,7 +54,7 @@ func TestReadHandler(t *testing.T) {
 			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
 
-			req := httptest.NewRequest("GET", "/cookies", nil)
+			req := httptest.NewRequest("GET", "/cookies", http.NoBody)
 			w = doTestRequest("/cookies", req, Read(mockRend), w)
 			So(w.Code, ShouldEqual, http.StatusOK)
 		})
@@ -278,7 +278,7 @@ func initialiseMockConfig() config.Config {
 func TestUnitHandlers(t *testing.T) {
 	Convey("test setStatusCode", t, func() {
 		Convey("test status code handles 404 response from client", func() {
-			req := httptest.NewRequest("GET", "http://localhost:24100", nil)
+			req := httptest.NewRequest("GET", "http://localhost:24100", http.NoBody)
 			w := httptest.NewRecorder()
 			err := &testCliError{}
 			setStatusCode(req, w, err)
