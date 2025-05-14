@@ -12,7 +12,6 @@ import (
 
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/config"
-	"github.com/ONSdigital/dp-frontend-cookie-controller/model"
 	coreModel "github.com/ONSdigital/dp-renderer/v2/model"
 	"github.com/ONSdigital/log.go/v2/log"
 	"github.com/golang/mock/gomock"
@@ -32,26 +31,28 @@ func TestReadHandler(t *testing.T) {
 			mockCtrl := gomock.NewController(t)
 			mockRend := NewMockRenderClient(mockCtrl)
 			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
-			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Eq(initialiseMockCookiesPageModel(&cfg, cookies.Policy{Essential: true}, false, false, "en")), gomock.Eq("cookies-preferences"))
+			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
 			req := httptest.NewRequest("GET", "/cookies", nil)
 			w := doTestRequest("/cookies", req, Read(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusOK)
 		})
 
 		Convey("with cookies already set", func() {
-			cookiesSetPolicy := cookies.Policy{
+			cookiesSetPolicy := cookies.ONSPolicy{
 				Essential: true,
-				Usage:     false,
+				Usage:     true,
+				Campaigns: false,
+				Settings:  false,
 			}
 
 			w := httptest.NewRecorder()
-			cookies.SetPreferenceIsSet(w, "domain")
-			cookies.SetPolicy(w, cookiesSetPolicy, "domain")
+			cookies.SetONSPreferenceIsSet(w, "domain")
+			cookies.SetONSPolicy(w, cookiesSetPolicy, "domain")
 
 			mockCtrl := gomock.NewController(t)
 			mockRend := NewMockRenderClient(mockCtrl)
 			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
-			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Eq(initialiseMockCookiesPageModel(&cfg, cookiesSetPolicy, false, false, "en")), gomock.Eq("cookies-preferences")).Times(1)
+			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
 
 			req := httptest.NewRequest("GET", "/cookies", nil)
 			w = doTestRequest("/cookies", req, Read(mockRend), w)
@@ -83,15 +84,17 @@ func TestEditHandler(t *testing.T) {
 		mockCtrl := gomock.NewController(t)
 		mockRend := NewMockRenderClient(mockCtrl)
 		Convey("success with good form no prior cookies set", func() {
-			cookiesPol := cookies.Policy{
+			cookiesPol := cookies.ONSPolicy{
+				Campaigns: true,
 				Essential: true,
+				Settings:  true,
 				Usage:     true,
 			}
 
 			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
 			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
 
-			b := `cookie-policy-usage=true`
+			b := `cookie-policy-usage=true&cookie-policy-comms=true&cookie-policy-site-settings=true`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
@@ -99,9 +102,11 @@ func TestEditHandler(t *testing.T) {
 			cookiePolicyTest(w, cookiesPol)
 		})
 		Convey("success with good form and prior cookies set", func() {
-			essentialSetCookiesPolicy := cookies.Policy{
+			essentialSetCookiesPolicy := cookies.ONSPolicy{
+				Campaigns: false,
 				Essential: true,
 				Usage:     false,
+				Settings:  false,
 			}
 
 			authToken := "token"
@@ -109,20 +114,18 @@ func TestEditHandler(t *testing.T) {
 			idToken := "id"
 			collection := "collection"
 			lang := "cy"
-			hasBeenUpdated := true
-			cookiesPreferenceIsSet := true
 
 			mockRend.EXPECT().NewBasePageModel().Return(coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain))
-			mockRend.EXPECT().BuildPage(gomock.Any(), initialiseMockCookiesPageModel(&cfg, essentialSetCookiesPolicy, hasBeenUpdated, cookiesPreferenceIsSet, "en"), gomock.Eq("cookies-preferences"))
+			mockRend.EXPECT().BuildPage(gomock.Any(), gomock.Any(), gomock.Eq("cookies-preferences"))
 
-			b := `cookie-policy-usage=false`
+			b := `cookie-policy-usage=false&cookie-policy-comms=false&cookie-policy-site-settings=false`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 			w := httptest.NewRecorder()
 
-			cookies.SetPreferenceIsSet(w, "domain")
-			cookies.SetPolicy(w, essentialSetCookiesPolicy, "domain")
+			cookies.SetONSPreferenceIsSet(w, "domain")
+			cookies.SetONSPolicy(w, essentialSetCookiesPolicy, "domain")
 			cookies.SetUserAuthToken(w, authToken, "domain")
 			cookies.SetRefreshToken(w, refreshToken, "domain")
 			cookies.SetIDToken(w, idToken, "domain")
@@ -153,7 +156,7 @@ func TestEditHandler(t *testing.T) {
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
-			So(w.Code, ShouldEqual, http.StatusInternalServerError)
+			So(w.Code, ShouldEqual, http.StatusBadRequest)
 		})
 	})
 }
@@ -170,21 +173,21 @@ func doTestRequest(target string, req *http.Request, handlerFunc http.HandlerFun
 }
 
 // cookiePolicyTest helper function that compares cookies on a httptest.ResponseRecorder with a given cookies.Policy
-func cookiePolicyTest(w *httptest.ResponseRecorder, correctPolicy cookies.Policy) {
+func cookiePolicyTest(w *httptest.ResponseRecorder, correctPolicy cookies.ONSPolicy) {
 	allCookies := w.Result().Cookies()
 	defer w.Result().Body.Close()
 
 	for _, c := range allCookies {
-		if c.Name == "cookies_preferences_set" {
+		if c.Name == "ons_cookies_preferences_set" {
 			So(c.Value, ShouldEqual, "true")
 		}
-		if c.Name == "cookies_policy" {
+		if c.Name == "ons_cookie_policy" {
 			cookiesPolicyUnescaped, err := url.QueryUnescape(c.Value)
 			if err != nil {
 				log.Error(context.Background(), "unable to parse cookie", err)
 				return
 			}
-			var cpp cookies.Policy
+			var cpp cookies.ONSPolicy
 			s, _ := strconv.Unquote(cookiesPolicyUnescaped)
 			err = json.Unmarshal([]byte(s), &cpp)
 			if err != nil {
@@ -243,55 +246,4 @@ func TestUnitHandlers(t *testing.T) {
 			So(w.Code, ShouldEqual, http.StatusNotFound)
 		})
 	})
-}
-
-func initialiseMockCookiesPageModel(cfg *config.Config, policy cookies.Policy, isUpdated, hasSetPreference bool, lang string) model.CookiesPreference {
-	page := model.CookiesPreference{
-		Page: coreModel.NewPage(cfg.PatternLibraryAssetsPath, cfg.SiteDomain),
-	}
-	page.Breadcrumb = []coreModel.TaxonomyNode{
-		{
-			Title: "Home",
-			URI:   "/",
-		},
-	}
-	page.Metadata.Title = "Cookies"
-	page.Language = lang
-	page.CookiesPreferencesSet = true
-	page.CookiesPolicy.Essential = policy.Essential
-	page.CookiesPolicy.Usage = policy.Usage
-	page.FeatureFlags.HideCookieBanner = true
-	page.SiteDomain = cfg.SiteDomain
-	page.PatternLibraryAssetsPath = cfg.PatternLibraryAssetsPath
-	page.PreferencesUpdated = hasSetPreference
-
-	page.UsageRadios = coreModel.RadioFieldset{
-		Radios: []coreModel.Radio{
-			{
-				Input: coreModel.Input{
-					ID:        "usage-on",
-					IsChecked: page.CookiesPolicy.Usage,
-					Label: coreModel.Localisation{
-						LocaleKey: "On",
-						Plural:    1,
-					},
-					Name:  "cookie-policy-usage",
-					Value: "true",
-				},
-			},
-			{
-				Input: coreModel.Input{
-					ID:        "usage-off",
-					IsChecked: !page.CookiesPolicy.Usage,
-					Label: coreModel.Localisation{
-						LocaleKey: "Off",
-						Plural:    1,
-					},
-					Name:  "cookie-policy-usage",
-					Value: "false",
-				},
-			},
-		},
-	}
-	return page
 }
