@@ -152,9 +152,8 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 		Usage:     usage,
 	}
 
-	if !usage {
-		removeNonProtectedCookies(w, req)
-	}
+	// always remove non-protected cookies
+	removeNonProtectedCookies(w, req)
 	cookies.SetONSPreferenceIsSet(w, siteDomain)
 	cookies.SetONSPolicy(w, cp, siteDomain)
 	isUpdated := true
