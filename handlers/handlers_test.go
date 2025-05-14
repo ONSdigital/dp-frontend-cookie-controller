@@ -143,7 +143,7 @@ func TestEditHandler(t *testing.T) {
 			So(allProtectedCookiesFound, ShouldEqual, true)
 		})
 
-		Convey("fail with bad form names", func() {
+		Convey("400 with bad form names", func() {
 			b := `cookie-policy-waffles=true`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
@@ -151,12 +151,52 @@ func TestEditHandler(t *testing.T) {
 			So(w.Code, ShouldEqual, http.StatusBadRequest)
 		})
 
-		Convey("fail with bad form values", func() {
-			b := `cookie-policy-usage=nonbool`
-			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
-			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
-			So(w.Code, ShouldEqual, http.StatusBadRequest)
+		Convey("400 with omitted form values", func() {
+			Convey("cookie-policy-usage", func() {
+				b := `cookie-policy-usage=&cookie-policy-comms=false&cookie-policy-site-settings=false`
+				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				So(w.Code, ShouldEqual, http.StatusBadRequest)
+			})
+			Convey("cookie-policy-comms", func() {
+				b := `cookie-policy-usage=false&cookie-policy-comms=`
+				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				So(w.Code, ShouldEqual, http.StatusBadRequest)
+			})
+			Convey("cookie-policy-settings", func() {
+				b := `cookie-policy-usage=false&cookie-policy-comms=false&cookie-policy-site-settings=`
+				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				So(w.Code, ShouldEqual, http.StatusBadRequest)
+			})
+		})
+
+		Convey("400 with bad form values", func() {
+			Convey("cookie-policy-usage", func() {
+				b := `cookie-policy-usage=nonbool&cookie-policy-comms=false&cookie-policy-site-settings=false`
+				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				So(w.Code, ShouldEqual, http.StatusBadRequest)
+			})
+			Convey("cookie-policy-comms", func() {
+				b := `cookie-policy-usage=false&cookie-policy-comms=blah&cookie-policy-site-settings=false`
+				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				So(w.Code, ShouldEqual, http.StatusBadRequest)
+			})
+			Convey("cookie-policy-settings", func() {
+				b := `cookie-policy-usage=false&cookie-policy-comms=false&cookie-policy-site-settings=notbool`
+				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
+				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				So(w.Code, ShouldEqual, http.StatusBadRequest)
+			})
 		})
 	})
 }

@@ -103,21 +103,21 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 	cookiePolicyUsage := req.FormValue("cookie-policy-usage")
 	if cookiePolicyUsage == "" {
 		err := clientErr{errors.New("request form value cookie-policy-usage not found")}
-		log.Error(ctx, "failed to get cookie value cookie-policy-usage from form", err)
+		log.Info(ctx, "failed to get cookie value cookie-policy-usage from form", log.Data{"client_error": err})
 		setStatusCode(req, w, err)
 		return
 	}
 	cookiePolicyComms := req.FormValue("cookie-policy-comms")
 	if cookiePolicyComms == "" {
 		err := clientErr{errors.New("request form value cookie-policy-comms not found")}
-		log.Error(ctx, "failed to get cookie value cookie-policy-comms from form", err)
+		log.Info(ctx, "failed to get cookie value cookie-policy-comms from form", log.Data{"client_error": err})
 		setStatusCode(req, w, err)
 		return
 	}
 	cookiePolicySiteSettings := req.FormValue("cookie-policy-site-settings")
 	if cookiePolicySiteSettings == "" {
 		err := clientErr{errors.New("request form value cookie-policy-site-settings not found")}
-		log.Error(ctx, "failed to get cookie value cookie-policy-site-settings from form", err)
+		log.Info(ctx, "failed to get cookie value cookie-policy-site-settings from form", log.Data{"client_error": err})
 		setStatusCode(req, w, err)
 		return
 	}
@@ -125,19 +125,22 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 	// parse form values and make type safe
 	usage, err := strconv.ParseBool(cookiePolicyUsage)
 	if err != nil {
-		log.Error(ctx, "failed to parse cookie value usage", err)
+		err := clientErr{errors.New("request form value cookie-policy-usage not valid")}
+		log.Info(ctx, "failed to parse cookie value usage", log.Data{"client_error": err})
 		setStatusCode(req, w, err)
 		return
 	}
 	comms, err := strconv.ParseBool(cookiePolicyComms)
 	if err != nil {
-		log.Error(ctx, "failed to parse cookie value comms", err)
+		err := clientErr{errors.New("request form value cookie-policy-comms not valid")}
+		log.Info(ctx, "failed to parse cookie value comms", log.Data{"client_error": err})
 		setStatusCode(req, w, err)
 		return
 	}
 	siteSettings, err := strconv.ParseBool(cookiePolicySiteSettings)
 	if err != nil {
-		log.Error(ctx, "failed to parse cookie value site settings", err)
+		err := clientErr{errors.New("request form value cookie-policy-site-usage not valid")}
+		log.Info(ctx, "failed to parse cookie value site settings", log.Data{"client_error": err})
 		setStatusCode(req, w, err)
 		return
 	}
