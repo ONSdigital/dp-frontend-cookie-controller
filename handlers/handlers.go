@@ -42,7 +42,7 @@ func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 }
 
 // getCookiePreferencePage talks to the renderer to get the cookie preference page
-func getCookiePreferencePage(w http.ResponseWriter, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) {
+func getCookiePreferencePage(w http.ResponseWriter, rendC RenderClient, cp cookies.ONSPolicy, isUpdated bool, lang string) {
 	basePage := rendC.NewBasePageModel()
 	m := mapper.CreateCookieSettingPage(basePage, cp, isUpdated, lang)
 	rendC.BuildPage(w, m, "cookies-preferences")
@@ -98,36 +98,69 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 		setStatusCode(req, w, err)
 		return
 	}
-	cookiePolicyUsage := req.FormValue("cookie-policy-usage")
 
+	// get form values
+	cookiePolicyUsage := req.FormValue("cookie-policy-usage")
 	if cookiePolicyUsage == "" {
 		err := clientErr{errors.New("request form value cookie-policy-usage not found")}
 		log.Error(ctx, "failed to get cookie value cookie-policy-usage from form", err)
 		setStatusCode(req, w, err)
 		return
 	}
+	cookiePolicyComms := req.FormValue("cookie-policy-comms")
+	if cookiePolicyComms == "" {
+		err := clientErr{errors.New("request form value cookie-policy-comms not found")}
+		log.Error(ctx, "failed to get cookie value cookie-policy-comms from form", err)
+		setStatusCode(req, w, err)
+		return
+	}
+	cookiePolicySiteSettings := req.FormValue("cookie-policy-site-settings")
+	if cookiePolicySiteSettings == "" {
+		err := clientErr{errors.New("request form value cookie-policy-site-settings not found")}
+		log.Error(ctx, "failed to get cookie value cookie-policy-site-settings from form", err)
+		setStatusCode(req, w, err)
+		return
+	}
+
+	// parse form values and make type safe
 	usage, err := strconv.ParseBool(cookiePolicyUsage)
 	if err != nil {
 		log.Error(ctx, "failed to parse cookie value usage", err)
 		setStatusCode(req, w, err)
 		return
 	}
-	cp := cookies.Policy{
-		Essential: true,
+	comms, err := strconv.ParseBool(cookiePolicyComms)
+	if err != nil {
+		log.Error(ctx, "failed to parse cookie value comms", err)
+		setStatusCode(req, w, err)
+		return
+	}
+	siteSettings, err := strconv.ParseBool(cookiePolicySiteSettings)
+	if err != nil {
+		log.Error(ctx, "failed to parse cookie value site settings", err)
+		setStatusCode(req, w, err)
+		return
+	}
+
+	cp := cookies.ONSPolicy{
+		Campaigns: comms,
+		Essential: true, // always set to true
+		Settings:  siteSettings,
 		Usage:     usage,
 	}
+
 	if !usage {
 		removeNonProtectedCookies(w, req)
 	}
-	cookies.SetPreferenceIsSet(w, siteDomain)
-	cookies.SetPolicy(w, cp, siteDomain)
+	cookies.SetONSPreferenceIsSet(w, siteDomain)
+	cookies.SetONSPolicy(w, cp, siteDomain)
 	isUpdated := true
 	getCookiePreferencePage(w, rendC, cp, isUpdated, lang)
 }
 
 // read handler returns a populated cookie preferences page
 func read(w http.ResponseWriter, req *http.Request, rendC RenderClient, lang string) {
-	cookiePref := cookies.GetCookiePreferences(req)
+	cookiePref := cookies.GetONSCookiePreferences(req)
 
 	isUpdated := false
 	getCookiePreferencePage(w, rendC, cookiePref.Policy, isUpdated, lang)
