@@ -97,7 +97,7 @@ func TestEditHandler(t *testing.T) {
 			b := `cookie-policy-usage=true&cookie-policy-comms=true&cookie-policy-site-settings=true`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusOK)
 			cookiePolicyTest(w, cookiesPol)
 		})
@@ -135,7 +135,7 @@ func TestEditHandler(t *testing.T) {
 			http.SetCookie(w, cookieRememberBasket)
 			http.SetCookie(w, cookieTimeSeriesBasket)
 
-			w = doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), w)
+			w = doTestRequest("/cookies", req, Edit(mockRend), w)
 
 			So(w.Code, ShouldEqual, http.StatusOK)
 			cookiePolicyTest(w, essentialSetCookiesPolicy)
@@ -147,7 +147,7 @@ func TestEditHandler(t *testing.T) {
 			b := `cookie-policy-waffles=true`
 			req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 			req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-			w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+			w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 			So(w.Code, ShouldEqual, http.StatusBadRequest)
 		})
 
@@ -156,21 +156,21 @@ func TestEditHandler(t *testing.T) {
 				b := `cookie-policy-usage=&cookie-policy-comms=false&cookie-policy-site-settings=false`
 				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 				So(w.Code, ShouldEqual, http.StatusBadRequest)
 			})
 			Convey("cookie-policy-comms", func() {
 				b := `cookie-policy-usage=false&cookie-policy-comms=`
 				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 				So(w.Code, ShouldEqual, http.StatusBadRequest)
 			})
 			Convey("cookie-policy-settings", func() {
 				b := `cookie-policy-usage=false&cookie-policy-comms=false&cookie-policy-site-settings=`
 				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 				So(w.Code, ShouldEqual, http.StatusBadRequest)
 			})
 		})
@@ -180,21 +180,21 @@ func TestEditHandler(t *testing.T) {
 				b := `cookie-policy-usage=nonbool&cookie-policy-comms=false&cookie-policy-site-settings=false`
 				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 				So(w.Code, ShouldEqual, http.StatusBadRequest)
 			})
 			Convey("cookie-policy-comms", func() {
 				b := `cookie-policy-usage=false&cookie-policy-comms=blah&cookie-policy-site-settings=false`
 				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 				So(w.Code, ShouldEqual, http.StatusBadRequest)
 			})
 			Convey("cookie-policy-settings", func() {
 				b := `cookie-policy-usage=false&cookie-policy-comms=false&cookie-policy-site-settings=notbool`
 				req := httptest.NewRequest("POST", "/cookies", bytes.NewBufferString(b))
 				req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-				w := doTestRequest("/cookies", req, Edit(mockRend, cfg.SiteDomain), nil)
+				w := doTestRequest("/cookies", req, Edit(mockRend), nil)
 				So(w.Code, ShouldEqual, http.StatusBadRequest)
 			})
 		})

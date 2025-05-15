@@ -86,14 +86,14 @@ func Read(rendC RenderClient) http.HandlerFunc {
 }
 
 // Edit Handler
-func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
+func Edit(rendC RenderClient) http.HandlerFunc {
 	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
-		edit(w, req, rendC, siteDomain, lang)
+		edit(w, req, rendC, lang)
 	})
 }
 
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
-func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain, lang string) {
+func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, lang string) {
 	ctx := req.Context()
 	if err := req.ParseForm(); err != nil {
 		log.Error(ctx, "failed to parse form input", err)
@@ -127,8 +127,9 @@ func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDoma
 
 	// always remove non-protected cookies
 	removeNonProtectedCookies(w, req)
-	cookies.SetONSPreferenceIsSet(w, siteDomain)
-	cookies.SetONSPolicy(w, cp, siteDomain)
+	domain := req.Header.Get("X-Forwarded-Host")
+	cookies.SetONSPreferenceIsSet(w, domain)
+	cookies.SetONSPolicy(w, cp, domain)
 	isUpdated := true
 	getCookiePreferencePage(w, rendC, cp, isUpdated, lang)
 }
