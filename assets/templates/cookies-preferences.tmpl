@@ -14,7 +14,7 @@
                     <span
                         id="alert"
                         class="ons-panel__assistive-text ons-u-vh"
-                    >Completed: </span>
+                    >{{- localise "CookiesPreferencesCompleted" .Language 1 -}}: </span>
                     <div class="ons-panel__body">
                         <h2>{{- localise "CookiesPreferencesSaved" .Language 4 -}}</h2>
                         <p>{{- localise "CookiesPreferencesSavedAmend" .Language 4 | safeHTML -}}</p>
@@ -62,7 +62,6 @@
                     <p>{{- localise "CookiesSiteSettingsP1" .Language 1 -}}</p>
                     {{ template "partials/fields/fieldset-radio" .SiteSettingsRadios }}
 
-
                     <h3 class="ons-u-mt-l">{{- localise "CookiesEssential" .Language 1 -}}</h3>
                     <p>{{- localise "CookiesEssentialP1" .Language 1 -}}</p>
                     <ul>
@@ -83,7 +82,6 @@
                         </span>
                     </button>
                 </form>
-
             </div>
         </div>
     </div>
