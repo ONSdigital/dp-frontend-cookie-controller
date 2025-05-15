@@ -14,9 +14,11 @@ import (
 // TestUnitMapper tests mapper functions
 func TestUnitMapper(t *testing.T) {
 	t.Parallel()
-	cookiesPolicy := cookies.Policy{
+	cookiesPolicy := cookies.ONSPolicy{
+		Campaigns: false,
 		Essential: true,
 		Usage:     false,
+		Settings:  false,
 	}
 	expectedModel := model.CookiesPreference{}
 	expectedModel.Breadcrumb = []coreModel.TaxonomyNode{
@@ -30,11 +32,16 @@ func TestUnitMapper(t *testing.T) {
 	expectedModel.Language = "en"
 	expectedModel.Metadata.Title = CookiesStr
 	expectedModel.CookiesPreferencesSet = true
-	expectedModel.CookiesPolicy.Essential = true
-	expectedModel.CookiesPolicy.Usage = false
+	expectedModel.CookiesPolicy = coreModel.CookiesPolicy{
+		Communications: cookiesPolicy.Campaigns,
+		Essential:      cookiesPolicy.Essential,
+		Settings:       cookiesPolicy.Settings,
+		Usage:          cookiesPolicy.Usage,
+	}
 	expectedModel.PreferencesUpdated = false
 	expectedModel.FeatureFlags.HideCookieBanner = true
 	expectedModel.UsageRadios = coreModel.RadioFieldset{
+		HasBorder: true,
 		Radios: []coreModel.Radio{
 			{
 				Input: coreModel.Input{
@@ -62,7 +69,64 @@ func TestUnitMapper(t *testing.T) {
 			},
 		},
 	}
-
+	expectedModel.CommsRadios = coreModel.RadioFieldset{
+		HasBorder: true,
+		Radios: []coreModel.Radio{
+			{
+				Input: coreModel.Input{
+					ID:        "comms-on",
+					IsChecked: false,
+					Label: coreModel.Localisation{
+						LocaleKey: "On",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-comms",
+					Value: "true",
+				},
+			},
+			{
+				Input: coreModel.Input{
+					ID:        "comms-off",
+					IsChecked: true,
+					Label: coreModel.Localisation{
+						LocaleKey: "Off",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-comms",
+					Value: "false",
+				},
+			},
+		},
+	}
+	expectedModel.SiteSettingsRadios = coreModel.RadioFieldset{
+		HasBorder: true,
+		Radios: []coreModel.Radio{
+			{
+				Input: coreModel.Input{
+					ID:        "site-settings-on",
+					IsChecked: false,
+					Label: coreModel.Localisation{
+						LocaleKey: "On",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-site-settings",
+					Value: "true",
+				},
+			},
+			{
+				Input: coreModel.Input{
+					ID:        "site-settings-off",
+					IsChecked: true,
+					Label: coreModel.Localisation{
+						LocaleKey: "Off",
+						Plural:    1,
+					},
+					Name:  "cookie-policy-site-settings",
+					Value: "false",
+				},
+			},
+		},
+	}
 	basePage := coreModel.NewPage("path/to/assets", "site-domain")
 	Convey("test CreateCookieSettingPage", t, func() {
 		mcp := CreateCookieSettingPage(basePage, cookiesPolicy, false, request.DefaultLang)

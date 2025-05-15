@@ -80,6 +80,10 @@ func run(ctx context.Context) error {
 		GitCommit,
 		Version,
 	)
+	if err != nil {
+		log.Error(ctx, "failed to create service version information", err)
+		return err
+	}
 
 	r := mux.NewRouter()
 
@@ -87,7 +91,6 @@ func run(ctx context.Context) error {
 		r.Use(otelmux.Middleware(cfg.OTServiceName))
 	}
 
-	//nolint:typecheck
 	rendC := render.NewWithDefaultClient(assets.Asset, assets.AssetNames, cfg.PatternLibraryAssetsPath, cfg.SiteDomain)
 
 	healthcheck := health.New(versionInfo, cfg.HealthCheckCriticalTimeout, cfg.HealthCheckInterval)
@@ -119,6 +122,7 @@ func run(ctx context.Context) error {
 		}
 	}()
 
+	//nolint:gosimple // ignore this as intention is to continue to listen for signals
 	for {
 		select {
 		case <-signals:

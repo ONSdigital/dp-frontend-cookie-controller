@@ -17,5 +17,5 @@ func Init(ctx context.Context, r *mux.Router, hc health.HealthCheck, rendC *rend
 	r.StrictSlash(true).Path("/health").HandlerFunc(hc.Handler)
 
 	r.StrictSlash(true).Path("/cookies").Methods("GET").HandlerFunc(handlers.Read(rendC))
-	r.StrictSlash(true).Path("/cookies").Methods("POST").HandlerFunc(handlers.Edit(rendC, rendC.SiteDomain))
+	r.StrictSlash(true).Path("/cookies").Methods("POST").HandlerFunc(handlers.Edit(rendC))
 }

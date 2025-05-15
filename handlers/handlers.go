@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"errors"
+	"context"
 	"io"
 	"net/http"
 	"strconv"
@@ -34,15 +34,17 @@ type ClientError interface {
 
 func setStatusCode(req *http.Request, w http.ResponseWriter, err error) {
 	status := http.StatusInternalServerError
-	if err, ok := err.(ClientError); ok {
-		status = err.Code()
+	if clientErr, ok := err.(ClientError); ok {
+		status = clientErr.Code()
+		log.Info(req.Context(), "setting client error response status")
+	} else {
+		log.Error(req.Context(), "setting internal error response status", err)
 	}
-	log.Error(req.Context(), "setting-response-status", err)
 	w.WriteHeader(status)
 }
 
 // getCookiePreferencePage talks to the renderer to get the cookie preference page
-func getCookiePreferencePage(w http.ResponseWriter, rendC RenderClient, cp cookies.Policy, isUpdated bool, lang string) {
+func getCookiePreferencePage(w http.ResponseWriter, rendC RenderClient, cp cookies.ONSPolicy, isUpdated bool, lang string) {
 	basePage := rendC.NewBasePageModel()
 	m := mapper.CreateCookieSettingPage(basePage, cp, isUpdated, lang)
 	rendC.BuildPage(w, m, "cookies-preferences")
@@ -84,51 +86,88 @@ func Read(rendC RenderClient) http.HandlerFunc {
 }
 
 // Edit Handler
-func Edit(rendC RenderClient, siteDomain string) http.HandlerFunc {
+func Edit(rendC RenderClient) http.HandlerFunc {
 	return dphandlers.ControllerHandler(func(w http.ResponseWriter, req *http.Request, lang, collectionID, accessToken string) {
-		edit(w, req, rendC, siteDomain, lang)
+		edit(w, req, rendC, lang)
 	})
 }
 
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
-func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, siteDomain, lang string) {
+func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, lang string) {
 	ctx := req.Context()
 	if err := req.ParseForm(); err != nil {
 		log.Error(ctx, "failed to parse form input", err)
 		setStatusCode(req, w, err)
 		return
 	}
-	cookiePolicyUsage := req.FormValue("cookie-policy-usage")
 
-	if cookiePolicyUsage == "" {
-		err := clientErr{errors.New("request form value cookie-policy-usage not found")}
-		log.Error(ctx, "failed to get cookie value cookie-policy-usage from form", err)
-		setStatusCode(req, w, err)
-		return
-	}
-	usage, err := strconv.ParseBool(cookiePolicyUsage)
+	// get and parse form values
+	usage, err := getParsedBool(ctx, req, "cookie-policy-usage")
 	if err != nil {
-		log.Error(ctx, "failed to parse cookie value usage", err)
 		setStatusCode(req, w, err)
 		return
 	}
-	cp := cookies.Policy{
-		Essential: true,
+	comms, err := getParsedBool(ctx, req, "cookie-policy-comms")
+	if err != nil {
+		setStatusCode(req, w, err)
+		return
+	}
+	siteSettings, err := getParsedBool(ctx, req, "cookie-policy-site-settings")
+	if err != nil {
+		setStatusCode(req, w, err)
+		return
+	}
+
+	cp := cookies.ONSPolicy{
+		Campaigns: comms,
+		Essential: true, // always set to true
+		Settings:  siteSettings,
 		Usage:     usage,
 	}
-	if !usage {
-		removeNonProtectedCookies(w, req)
-	}
-	cookies.SetPreferenceIsSet(w, siteDomain)
-	cookies.SetPolicy(w, cp, siteDomain)
+
+	// always remove non-protected cookies
+	removeNonProtectedCookies(w, req)
+	domain := req.Header.Get("X-Forwarded-Host")
+	cookies.SetONSPreferenceIsSet(w, domain)
+	cookies.SetONSPolicy(w, cp, domain)
 	isUpdated := true
 	getCookiePreferencePage(w, rendC, cp, isUpdated, lang)
 }
 
 // read handler returns a populated cookie preferences page
 func read(w http.ResponseWriter, req *http.Request, rendC RenderClient, lang string) {
-	cookiePref := cookies.GetCookiePreferences(req)
+	cookiePref := cookies.GetONSCookiePreferences(req)
 
 	isUpdated := false
 	getCookiePreferencePage(w, rendC, cookiePref.Policy, isUpdated, lang)
+}
+
+// getFormValue is a helper function that retrieves the value of a form field from the request or returns an error
+func getFormValue(ctx context.Context, req *http.Request, key string) (string, error) {
+	value := req.FormValue(key)
+	if value == "" {
+		log.Info(ctx, "failed to get form value", log.Data{"key": key})
+		return "", &clientErr{}
+	}
+	return value, nil
+}
+
+// parseFormValue is a helper function that parses a form value into a type safe boolean or returns an error
+func parseFormValue(ctx context.Context, value string) (bool, error) {
+	parsedValue, err := strconv.ParseBool(value)
+	if err != nil {
+		log.Info(ctx, "failed to parse form value", log.Data{"value": value})
+		return false, &clientErr{}
+	}
+
+	return parsedValue, nil
+}
+
+// getParsedBool is a helper function to retrieve and parse form values
+func getParsedBool(ctx context.Context, req *http.Request, key string) (bool, error) {
+	value, err := getFormValue(ctx, req, key)
+	if err != nil {
+		return false, err
+	}
+	return parseFormValue(ctx, value)
 }

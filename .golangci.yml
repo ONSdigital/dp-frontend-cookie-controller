@@ -1,20 +1,20 @@
 # This file was inspired by the golangci-lint one:
 # https://github.com/golangci/golangci-lint/blob/master/.golangci.yml
 run:
-  # default concurrency is a available CPU number
+  # number of operating system threads that can execute golangci-lint simultaneously
   concurrency: 4
 
   # timeout for analysis, e.g. 30s, 5m, default is 1m
   timeout: 5m
 linters-settings:
   govet:
-    check-shadowing: true
+    shadow: true
   golint:
     min-confidence: 0
   gocyclo:
     min-complexity: 20
   gocognit:
-    min-complexity: 100
+    min-complexity: 40
   maligned:
     suggest-new: true
   dupl:
@@ -41,6 +41,14 @@ linters-settings:
       - ifElseChain
       - octalLiteral
       - hugeParam
+  revive:
+    rules:
+      # disabled as parameter names are useful for context even when unused, especially in interface implementations
+      - name: unused-parameter
+        severity: warning
+        disabled: true
+    include:
+      - "**/*_test.go" # Specify test files to include
   funlen:
   # lines: 100
   # statements: 100
@@ -50,8 +58,8 @@ linters:
   # inverted configuration with `enable-all` and `disable` is not scalable during updates of golangci-lint
   disable-all: true
   enable:
-    - deadcode
     - dogsled
+    - errcheck
     - gochecknoinits
     - goconst
     - gocritic
@@ -60,11 +68,15 @@ linters:
     - goimports
     - revive
     - gosec
+    - gosimple
     - govet
     - ineffassign
     - nakedret
+    - staticcheck
+    - stylecheck
+    - typecheck
     - unconvert
-    - varcheck
+    - unused
     - whitespace
     - gocognit
     - prealloc
@@ -77,20 +89,10 @@ issues:
         - errcheck
         - dupl
         - gosec
-        - goconst
-        - revive
-        - gocritic
-        - ineffassign
-        - govet
-        - typecheck
-    - path: main.go
+    # Allow dot import in test files for goconvey
+    - path: _test.go
+      text: "dot-imports"
       linters:
-        - typecheck
+        - revive
+      source: "github.com/smartystreets/goconvey/convey"
   new: false
-
-# golangci.com configuration
-# https://github.com/golangci/golangci/wiki/Configuration
-service:
-  golangci-lint-version: 1.53.x # use the fixed version to not introduce new linters unexpectedly
-  prepare:
-    - echo "here I can run custom commands, but no preparation needed for this repo"
