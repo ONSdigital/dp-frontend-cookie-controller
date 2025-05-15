@@ -36,8 +36,8 @@ description = "Cookie settings"
 one = "Cookie settings"
 
 [CookiesNoJSWarn1]
-description = "We use JavaScript to set our cookies. Javascript is not running on your browser so you cannot change your settings."
-one = "We use JavaScript to set our cookies. Javascript is not running on your browser so you cannot change your settings."
+description = "We use JavaScript to set our cookies. JavaScript is not running on your browser so you cannot change your settings."
+one = "We use JavaScript to set our cookies. JavaScript is not running on your browser so you cannot change your settings."
 
 [CookiesNoJSWarn2]
 description = "You can try:"
@@ -92,8 +92,8 @@ description = "Cookies that help with our communications"
 one = "Cookies that help with our communications"
 
 [CookiesCommsP1]
-description = "Some of our pages may contain content from other sites, like YouTube, which may set their own cookies. These sites are sometimes called “third party” services. This tells us how many people are seeing the content and whether it’s useful."
-one = "Some of our pages may contain content from other sites, like YouTube, which may set their own cookies. These sites are sometimes called “third party” services. This tells us how many people are seeing the content and whether it’s useful."
+description = "Some of our pages may contain content from other sites, like YouTube, which may set their own cookies. These sites are sometimes called \"third party\" services. This tells us how many people are seeing the content and whether it’s useful."
+one = "Some of our pages may contain content from other sites, like YouTube, which may set their own cookies. These sites are sometimes called \"third party\" services. This tells us how many people are seeing the content and whether it’s useful."
 
 [CookiesCommsP2]
 description = "In addition, if you share a link to a ons.gov.uk page, the service you share it on may set a cookie. We have no control over cookies set on other websites – you can turn them off, but not through us."
@@ -128,8 +128,8 @@ description = "remember the notifications you've seen so we do not show them to 
 one = "remember the notifications you've seen so we do not show them to you again"
 
 [CookiesEssentialBP2]
-description = "remember your progress through a form (for example, an ons study)"
-one = "remember your progress through a form (for example, an ons study)"
+description = "remember your progress through a form (for example, an ONS study)"
+one = "remember your progress through a form (for example, an ONS study)"
 
 [CookiesEssentialP2]
 description = "They always need to be on."
@@ -138,6 +138,10 @@ one = "They always need to be on."
 [CookiesEssentialP3]
 description = "Learn more about cookies on ons.gov.uk"
 one = "<a href=\"/help/cookies\">Learn more about cookies on ons.gov.uk</a>"
+
+[CookiesPreferencesCompleted]
+description = "Completed"
+one = "Completed"
 
 [CookiesPreferencesSaved]
 description = "Your cookie settings have been saved"
