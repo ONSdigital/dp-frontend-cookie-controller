@@ -122,7 +122,7 @@ func run(ctx context.Context) error {
 		}
 	}()
 
-	//nolint:gosimple // ignore this as intention is to continue to listen for signals
+	//nolint:staticcheck // ignore this as intention is to continue to listen for signals
 	for {
 		select {
 		case <-signals:
