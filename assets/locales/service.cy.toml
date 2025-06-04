@@ -52,8 +52,8 @@ description = "reloading the page in case there was a temporary fault with JavaS
 one = "reloading the page in case there was a temporary fault with JavaScript"
 
 [CookiesSettingsP1]
-description = "We use three types of cookie. You can choose which cookies you're happy for us to use."
-one = "We use three types of cookie. You can choose which cookies you're happy for us to use."
+description = "We use four types of cookie. You can choose which cookies you're happy for us to use."
+one = "We use four types of cookie. You can choose which cookies you're happy for us to use."
 
 [CookiesUsage]
 description = "Cookies that measure website use"
