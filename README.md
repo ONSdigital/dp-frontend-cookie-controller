@@ -5,7 +5,8 @@
 This project uses go modules, ensure that go version 1.12 or above is in use.
 If on go 1.12 then ensure the project either resides outside of your `GOPATH` or `GO111MODULE` is set to true
 
-1. To start the service use make, `make debug`
+1. Run [`dis-design-system-go`](https://github.com/ONSdigital/dis-design-system-go) in a separate shell to generate static assets (css/js)
+2. To start the service use make, `make debug`
 
 ## Tools
 
@@ -23,6 +24,7 @@ We use v2 of golangci-lint, which you will [need to install](https://golangci-li
 
 | Environment variable         | Config                     | Description                                                                            | Default                       |
 | ---------------------------- | -------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
+| APP_RENDERER_VERSION         | RendererVersion            | Defines default version of renderer being used                                         | v0.1.0                        |
 | BIND_ADDR                    | BindAddr                   | The Port to run on                                                                     | :24100                        |
 | SITE_DOMAIN                  | SiteDomain                 |                                                                                        | localhost                     |
 | GRACEFUL_SHUTDOWN_TIMEOUT    | GracefulShutdownTimeout    | Time to wait during graceful shutdown                                                  | 5 seconds                     |
