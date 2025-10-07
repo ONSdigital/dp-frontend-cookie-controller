@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/kelseyhightower/envconfig"
@@ -20,6 +21,7 @@ type Config struct {
 	OTServiceName              string        `envconfig:"OTEL_SERVICE_NAME"`
 	OTBatchTimeout             time.Duration `envconfig:"OTEL_BATCH_TIMEOUT"`
 	OtelEnabled                bool          `envconfig:"OTEL_ENABLED"`
+	RendererVersion            string        `envconfig:"APP_RENDERER_VERSION"`
 }
 
 var cfg *Config
@@ -34,8 +36,9 @@ func Get() (*Config, error) {
 	if config.Debug {
 		config.PatternLibraryAssetsPath = "http://localhost:9002/dist/assets"
 	} else {
-		config.PatternLibraryAssetsPath = "//cdn.ons.gov.uk/dp-design-system/f3e1909"
+		config.PatternLibraryAssetsPath = fmt.Sprintf("//cdn.ons.gov.uk/dis-design-system-go/%s", config.RendererVersion)
 	}
+
 	return config, nil
 }
 
@@ -56,6 +59,7 @@ func get() (*Config, error) {
 		OTServiceName:              "dp-frontend-cookie-controller",
 		OTBatchTimeout:             5 * time.Second,
 		OtelEnabled:                false,
+		RendererVersion:            "v0.1.0",
 	}
 
 	return cfg, envconfig.Process("", cfg)

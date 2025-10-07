@@ -23,7 +23,7 @@ func TestConfig(t *testing.T) {
 				So(cfg.HealthCheckInterval, ShouldEqual, 30*time.Second)
 				So(cfg.HealthCheckCriticalTimeout, ShouldEqual, 90*time.Second)
 				So(cfg.BindAddr, ShouldEqual, ":24100")
-				So(cfg.PatternLibraryAssetsPath, ShouldEqual, "//cdn.ons.gov.uk/dp-design-system/f3e1909")
+				So(cfg.PatternLibraryAssetsPath, ShouldEqual, "//cdn.ons.gov.uk/dis-design-system-go/v0.1.0")
 				So(cfg.SiteDomain, ShouldEqual, "localhost")
 				So(cfg.OTExporterOTLPEndpoint, ShouldEqual, "localhost:4317")
 				So(cfg.OTServiceName, ShouldEqual, "dp-frontend-cookie-controller")
