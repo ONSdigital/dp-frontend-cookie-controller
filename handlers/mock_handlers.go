@@ -5,10 +5,11 @@
 package handlers
 
 import (
-	model "github.com/ONSdigital/dp-renderer/v2/model"
-	gomock "github.com/golang/mock/gomock"
 	io "io"
 	reflect "reflect"
+
+	model "github.com/ONSdigital/dis-design-system-go/model"
+	gomock "github.com/golang/mock/gomock"
 )
 
 // MockRenderClient is a mock of RenderClient interface
