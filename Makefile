@@ -11,8 +11,7 @@ audit: generate-prod
 
 .PHONY: build
 build: generate-prod
-	go build -tags 'production' -o $(BINPATH)/dp-frontend-cookie-controller -ldflags "-X main.BuildTime=$(BUILD_TIME) -X main.GitCommit=$(GIT_COMMIT) -X main.Version=$(VERSION)"
-	APP_RENDERER_VERSION=$(APP_RENDERER_VERSION)
+	go build -tags 'production' -o $(BINPATH)/dp-frontend-cookie-controller -ldflags "-X main.BuildTime=$(BUILD_TIME) -X main.GitCommit=$(GIT_COMMIT) -X main.Version=$(VERSION) -X github.com/ONSdigital/dp-frontend-cookie-controller/config.RendererVersion=$(APP_RENDERER_VERSION)"
 
 .PHONY: lint
 lint: generate-prod
