@@ -59,7 +59,7 @@ func get() (*Config, error) {
 		OTServiceName:              "dp-frontend-cookie-controller",
 		OTBatchTimeout:             5 * time.Second,
 		OtelEnabled:                false,
-		RendererVersion:            "v0.1.0",
+		RendererVersion:            "v0.2.0",
 	}
 
 	return cfg, envconfig.Process("", cfg)
