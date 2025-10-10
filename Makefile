@@ -20,7 +20,7 @@ lint: generate-prod
 .PHONY: debug
 debug: generate-debug
 	go build -tags 'debug' -o $(BINPATH)/dp-frontend-cookie-controller -ldflags "-X main.BuildTime=$(BUILD_TIME) -X main.GitCommit=$(GIT_COMMIT) -X main.Version=$(VERSION)"
-	HUMAN_LOG=1 DEBUG=1 APP_RENDERER_VERSION=$(APP_RENDERER_VERSION) $(BINPATH)/dp-frontend-cookie-controller
+	HUMAN_LOG=1 DEBUG=1 $(BINPATH)/dp-frontend-cookie-controller
 
 .PHONY: test
 test: generate-prod
