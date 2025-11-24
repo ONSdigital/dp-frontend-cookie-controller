@@ -1,14 +1,14 @@
 module github.com/ONSdigital/dp-frontend-cookie-controller
 
-go 1.25
+go 1.24.0
 
 require (
-	github.com/ONSdigital/dis-design-system-go v0.2.0
-	github.com/ONSdigital/dp-cookies v0.7.0
+	github.com/ONSdigital/dis-design-system-go v1.3.0
+	github.com/ONSdigital/dp-cookies v0.7.1
 	github.com/ONSdigital/dp-healthcheck v1.6.4
-	github.com/ONSdigital/dp-net/v3 v3.5.0
+	github.com/ONSdigital/dp-net/v3 v3.8.0
 	github.com/ONSdigital/dp-otel-go v0.0.8
-	github.com/ONSdigital/log.go/v2 v2.5.0
+	github.com/ONSdigital/log.go/v2 v2.5.1
 	github.com/golang/mock v1.6.0
 	github.com/gorilla/mux v1.8.1
 	github.com/justinas/alice v1.2.0
@@ -21,7 +21,7 @@ require (
 
 require (
 	github.com/BurntSushi/toml v1.5.0 // indirect
-	github.com/ONSdigital/dp-api-clients-go/v2 v2.269.0 // indirect
+	github.com/ONSdigital/dp-api-clients-go/v2 v2.270.0 // indirect
 	github.com/c2h5oh/datasize v0.0.0-20231215233829-aa82cc1e6500 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/fatih/color v1.18.0 // indirect
@@ -55,13 +55,13 @@ require (
 	go.opentelemetry.io/otel/metric v1.38.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.38.0 // indirect
 	go.opentelemetry.io/otel/trace v1.38.0 // indirect
-	go.opentelemetry.io/proto/otlp v1.8.0 // indirect
+	go.opentelemetry.io/proto/otlp v1.9.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/net v0.44.0 // indirect
-	golang.org/x/sys v0.36.0 // indirect
-	golang.org/x/text v0.29.0 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20251006185510-65f7160b3a87 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251006185510-65f7160b3a87 // indirect
-	google.golang.org/grpc v1.76.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20251111163417-95abcf5c77ba // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251111163417-95abcf5c77ba // indirect
+	google.golang.org/grpc v1.77.0 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
 )
