@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	coreModel "github.com/ONSdigital/dis-design-system-go/model"
+	coreModel "github.com/ONSdigital/dis-design-system-go/v2/model"
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/model"
 	"github.com/ONSdigital/dp-net/v3/request"

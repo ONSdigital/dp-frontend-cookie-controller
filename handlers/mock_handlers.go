@@ -8,7 +8,7 @@ import (
 	io "io"
 	reflect "reflect"
 
-	model "github.com/ONSdigital/dis-design-system-go/model"
+	model "github.com/ONSdigital/dis-design-system-go/v2/model"
 	gomock "github.com/golang/mock/gomock"
 )
 

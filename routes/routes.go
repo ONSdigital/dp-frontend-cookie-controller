@@ -3,7 +3,7 @@ package routes
 import (
 	"context"
 
-	render "github.com/ONSdigital/dis-design-system-go"
+	render "github.com/ONSdigital/dis-design-system-go/v2"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/handlers"
 	health "github.com/ONSdigital/dp-healthcheck/healthcheck"
 	"github.com/ONSdigital/log.go/v2/log"

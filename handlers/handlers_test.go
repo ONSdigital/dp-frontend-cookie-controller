@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"testing"
 
-	coreModel "github.com/ONSdigital/dis-design-system-go/model"
+	coreModel "github.com/ONSdigital/dis-design-system-go/v2/model"
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/config"
 	"github.com/ONSdigital/log.go/v2/log"

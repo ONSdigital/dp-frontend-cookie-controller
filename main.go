@@ -8,8 +8,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	render "github.com/ONSdigital/dis-design-system-go"
-	"github.com/ONSdigital/dis-design-system-go/middleware/renderror"
+	render "github.com/ONSdigital/dis-design-system-go/v2"
+	"github.com/ONSdigital/dis-design-system-go/v2/middleware/renderror"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/assets"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/config"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/routes"

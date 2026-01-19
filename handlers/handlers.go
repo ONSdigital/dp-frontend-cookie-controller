@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ONSdigital/dis-design-system-go/model"
+	"github.com/ONSdigital/dis-design-system-go/v2/model"
 	"github.com/ONSdigital/dp-cookies/cookies"
 	"github.com/ONSdigital/dp-frontend-cookie-controller/mapper"
 	dphandlers "github.com/ONSdigital/dp-net/v3/handlers"
