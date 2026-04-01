@@ -95,6 +95,7 @@ func Edit(rendC RenderClient) http.HandlerFunc {
 // edit handler for changing and setting cookie preferences, returns populated cookie preferences page from the renderer
 func edit(w http.ResponseWriter, req *http.Request, rendC RenderClient, lang string) {
 	ctx := req.Context()
+	req.Body = http.MaxBytesReader(w, req.Body, 12<<10)
 	if err := req.ParseForm(); err != nil {
 		log.Error(ctx, "failed to parse form input", err)
 		setStatusCode(req, w, err)
