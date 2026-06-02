@@ -67,6 +67,7 @@ func isProtectedCookie(stringToFind string) bool {
 func removeNonProtectedCookies(w http.ResponseWriter, req *http.Request) {
 	for _, cookie := range req.Cookies() {
 		if !isProtectedCookie(cookie.Name) {
+			//nolint:gosec // deletion of unprotected cookies so security warnings not relevant
 			setCookie := &http.Cookie{
 				Name:     cookie.Name,
 				Value:    "",

@@ -8,6 +8,11 @@ import (
 
 const (
 	CookiesStr = "Cookies"
+
+	localeOn  = "On"
+	localeOff = "Off"
+	valTrue   = "true"
+	valFalse  = "false"
 )
 
 // CreateCookieSettingPage maps type cookies.Policy to model.Page
@@ -45,11 +50,11 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.ONSPolicy, 
 					ID:        "usage-on",
 					IsChecked: page.CookiesPolicy.Usage,
 					Label: coreModel.Localisation{
-						LocaleKey: "On",
+						LocaleKey: localeOn,
 						Plural:    1,
 					},
 					Name:  "cookie-policy-usage",
-					Value: "true",
+					Value: valTrue,
 				},
 			},
 			{
@@ -57,11 +62,11 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.ONSPolicy, 
 					ID:        "usage-off",
 					IsChecked: !page.CookiesPolicy.Usage,
 					Label: coreModel.Localisation{
-						LocaleKey: "Off",
+						LocaleKey: localeOff,
 						Plural:    1,
 					},
 					Name:  "cookie-policy-usage",
-					Value: "false",
+					Value: valFalse,
 				},
 			},
 		},
@@ -75,11 +80,11 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.ONSPolicy, 
 					ID:        "comms-on",
 					IsChecked: page.CookiesPolicy.Communications,
 					Label: coreModel.Localisation{
-						LocaleKey: "On",
+						LocaleKey: localeOn,
 						Plural:    1,
 					},
 					Name:  "cookie-policy-comms",
-					Value: "true",
+					Value: valTrue,
 				},
 			},
 			{
@@ -87,11 +92,11 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.ONSPolicy, 
 					ID:        "comms-off",
 					IsChecked: !page.CookiesPolicy.Communications,
 					Label: coreModel.Localisation{
-						LocaleKey: "Off",
+						LocaleKey: localeOff,
 						Plural:    1,
 					},
 					Name:  "cookie-policy-comms",
-					Value: "false",
+					Value: valFalse,
 				},
 			},
 		},
@@ -105,11 +110,11 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.ONSPolicy, 
 					ID:        "site-settings-on",
 					IsChecked: page.CookiesPolicy.Settings,
 					Label: coreModel.Localisation{
-						LocaleKey: "On",
+						LocaleKey: localeOn,
 						Plural:    1,
 					},
 					Name:  "cookie-policy-site-settings",
-					Value: "true",
+					Value: valTrue,
 				},
 			},
 			{
@@ -117,11 +122,11 @@ func CreateCookieSettingPage(basePage coreModel.Page, policy cookies.ONSPolicy, 
 					ID:        "site-settings-off",
 					IsChecked: !page.CookiesPolicy.Settings,
 					Label: coreModel.Localisation{
-						LocaleKey: "Off",
+						LocaleKey: localeOff,
 						Plural:    1,
 					},
 					Name:  "cookie-policy-site-settings",
-					Value: "false",
+					Value: valFalse,
 				},
 			},
 		},
