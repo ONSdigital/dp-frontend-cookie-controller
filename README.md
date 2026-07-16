@@ -1,5 +1,7 @@
 # dp-frontend-cookie-controller
 
+⚠️  This repository was archived in July 2026 as it is no longer in development. ⚠️
+
 ## Getting started
 
 This project uses go modules, ensure that go version 1.12 or above is in use.

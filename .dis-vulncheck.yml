@@ -1,0 +1,5 @@
+ignore:
+  - id: GO-2026-5856
+    module: golang/stdlib
+    reason: Due to archival of his repository this vulnerability is being ignored and will not be fixed
+    expiry: "2030-12-12"

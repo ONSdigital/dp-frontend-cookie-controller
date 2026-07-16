@@ -1,3 +1,4 @@
+// Deprecated: This repository was be archived in July 2026 as it is no longer in development
 module github.com/ONSdigital/dp-frontend-cookie-controller
 
 go 1.26.0
